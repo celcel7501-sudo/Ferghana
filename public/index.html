@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ferghana Podcasts</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>🎙️ Ferghana Podcasts</h1>
+    <form id="search-form" class="search-form">
+      <input
+        type="search"
+        id="search-input"
+        placeholder="Rechercher un podcast (ex. actualités, histoire, technologie...)"
+        autocomplete="off"
+        required
+      />
+      <button type="submit">Rechercher</button>
+    </form>
+  </header>
+
+  <main id="main-content">
+    <section id="results-view">
+      <p class="hint">Recherchez un podcast pour commencer.</p>
+      <div id="results-grid" class="results-grid"></div>
+    </section>
+
+    <section id="episodes-view" class="hidden">
+      <button id="back-button" class="back-button">&larr; Retour aux résultats</button>
+      <div id="podcast-header" class="podcast-header"></div>
+      <ul id="episodes-list" class="episodes-list"></ul>
+    </section>
+  </main>
+
+  <footer id="player-bar" class="player-bar hidden">
+    <div id="now-playing" class="now-playing"></div>
+    <audio id="audio-player" controls></audio>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

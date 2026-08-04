@@ -1,0 +1,17 @@
+{
+  "name": "ferghana-podcasts",
+  "version": "1.0.0",
+  "description": "Application web pour rechercher des podcasts et écouter leurs épisodes",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "fast-xml-parser": "^5.10.1"
+  }
+}
