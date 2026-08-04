@@ -240,9 +240,48 @@ body {
   min-width: 200px;
 }
 
-.player-bar audio {
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   flex: 2;
-  min-width: 260px;
+  min-width: 300px;
+  flex-wrap: wrap;
+}
+
+.player-bar audio {
+  flex: 1;
+  min-width: 220px;
+}
+
+.player-controls button {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.player-controls button:hover {
+  background: var(--surface-hover);
+}
+
+.player-controls select {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.episode-item.playing {
+  border-color: var(--accent);
+  background: var(--surface-hover);
 }
 
 .error-message {

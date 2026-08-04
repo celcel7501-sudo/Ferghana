@@ -41,7 +41,19 @@
 
   <footer id="player-bar" class="player-bar hidden">
     <div id="now-playing" class="now-playing"></div>
-    <audio id="audio-player" controls></audio>
+    <div class="player-controls">
+      <button id="skip-back" type="button" title="Reculer de 15 secondes">&#8634; 15</button>
+      <audio id="audio-player" controls></audio>
+      <button id="skip-forward" type="button" title="Avancer de 15 secondes">15 &#8635;</button>
+      <select id="speed-select" title="Vitesse de lecture">
+        <option value="0.75">0.75x</option>
+        <option value="1" selected>1x</option>
+        <option value="1.25">1.25x</option>
+        <option value="1.5">1.5x</option>
+        <option value="1.75">1.75x</option>
+        <option value="2">2x</option>
+      </select>
+    </div>
   </footer>
 
   <script src="/app.js"></script>

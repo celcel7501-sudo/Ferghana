@@ -9,6 +9,13 @@ const backButton = document.getElementById('back-button');
 const playerBar = document.getElementById('player-bar');
 const audioPlayer = document.getElementById('audio-player');
 const nowPlaying = document.getElementById('now-playing');
+const skipBackButton = document.getElementById('skip-back');
+const skipForwardButton = document.getElementById('skip-forward');
+const speedSelect = document.getElementById('speed-select');
+
+const POSITION_PREFIX = 'ferghana-podcast-position:';
+const SPEED_KEY = 'ferghana-podcast-speed';
+let currentEpisodeUrl = null;
 
 function setLoading(container, message) {
   container.innerHTML = `<p class="loading">${message}</p>`;
@@ -96,6 +103,8 @@ async function openPodcast(podcast) {
     data.episodes.forEach((ep) => {
       const li = document.createElement('li');
       li.className = 'episode-item';
+      li.dataset.audioUrl = ep.audioUrl;
+      if (ep.audioUrl === currentEpisodeUrl) li.classList.add('playing');
       li.innerHTML = `
         <p class="episode-title">${escapeHtml(ep.title)}</p>
         <p class="episode-meta">${formatDate(ep.pubDate)}${ep.duration ? ' · ' + escapeHtml(ep.duration) : ''}</p>
@@ -110,11 +119,58 @@ async function openPodcast(podcast) {
 }
 
 function playEpisode(episode, podcastTitle) {
+  currentEpisodeUrl = episode.audioUrl;
   audioPlayer.src = episode.audioUrl;
+  audioPlayer.playbackRate = parseFloat(speedSelect.value) || 1;
+
+  const savedPosition = parseFloat(localStorage.getItem(POSITION_PREFIX + episode.audioUrl));
+  if (!isNaN(savedPosition) && savedPosition > 0) {
+    const resumeOnce = () => {
+      audioPlayer.currentTime = savedPosition;
+      audioPlayer.removeEventListener('loadedmetadata', resumeOnce);
+    };
+    audioPlayer.addEventListener('loadedmetadata', resumeOnce);
+  }
+
   audioPlayer.play().catch(() => {});
   nowPlaying.textContent = `${episode.title} — ${podcastTitle}`;
   playerBar.classList.remove('hidden');
+
+  document.querySelectorAll('.episode-item').forEach((li) => {
+    li.classList.toggle('playing', li.dataset.audioUrl === episode.audioUrl);
+  });
 }
+
+audioPlayer.addEventListener('timeupdate', () => {
+  if (!currentEpisodeUrl || !audioPlayer.duration) return;
+  const remaining = audioPlayer.duration - audioPlayer.currentTime;
+  if (remaining < 5) {
+    localStorage.removeItem(POSITION_PREFIX + currentEpisodeUrl);
+  } else {
+    localStorage.setItem(POSITION_PREFIX + currentEpisodeUrl, String(audioPlayer.currentTime));
+  }
+});
+
+audioPlayer.addEventListener('ended', () => {
+  if (currentEpisodeUrl) localStorage.removeItem(POSITION_PREFIX + currentEpisodeUrl);
+});
+
+skipBackButton.addEventListener('click', () => {
+  audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 15);
+});
+
+skipForwardButton.addEventListener('click', () => {
+  audioPlayer.currentTime = Math.min(audioPlayer.duration || Infinity, audioPlayer.currentTime + 15);
+});
+
+const savedSpeed = localStorage.getItem(SPEED_KEY);
+if (savedSpeed) speedSelect.value = savedSpeed;
+
+speedSelect.addEventListener('change', () => {
+  const rate = parseFloat(speedSelect.value) || 1;
+  audioPlayer.playbackRate = rate;
+  localStorage.setItem(SPEED_KEY, speedSelect.value);
+});
 
 backButton.addEventListener('click', () => {
   episodesView.classList.add('hidden');
