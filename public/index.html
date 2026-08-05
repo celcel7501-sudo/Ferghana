@@ -14,48 +14,20 @@
   </div>
   <header class="app-header">
     <h1>🎙️ Ferghana Podcasts</h1>
-    <form id="search-form" class="search-form">
-      <input
-        type="search"
-        id="search-input"
-        placeholder="Rechercher un podcast (ex. actualités, histoire, technologie...)"
-        autocomplete="off"
-        required
-      />
-      <button type="submit">Rechercher</button>
-    </form>
   </header>
 
   <main id="main-content">
-    <section id="results-view">
-      <p class="hint">Recherchez un podcast pour commencer.</p>
-      <div id="results-grid" class="results-grid"></div>
-    </section>
-
-    <section id="episodes-view" class="hidden">
-      <button id="back-button" class="back-button">&larr; Retour aux résultats</button>
-      <div id="podcast-header" class="podcast-header"></div>
-      <ul id="episodes-list" class="episodes-list"></ul>
-    </section>
+    <iframe
+      name="Ausha Podcast Player"
+      frameborder="0"
+      loading="lazy"
+      id="ausha-SyNH"
+      height="420"
+      style="border: none; width:100%; height:420px"
+      src="https://player.ausha.co/?color=%23b6823d&dark=true&multishow=true&playerId=ausha-SyNH&playlist=true&showId=QglpnHX86lM7&v=3"
+    ></iframe>
   </main>
 
-  <footer id="player-bar" class="player-bar hidden">
-    <div id="now-playing" class="now-playing"></div>
-    <div class="player-controls">
-      <button id="skip-back" type="button" title="Reculer de 15 secondes">&#8634; 15</button>
-      <audio id="audio-player" controls></audio>
-      <button id="skip-forward" type="button" title="Avancer de 15 secondes">15 &#8635;</button>
-      <select id="speed-select" title="Vitesse de lecture">
-        <option value="0.75">0.75x</option>
-        <option value="1" selected>1x</option>
-        <option value="1.25">1.25x</option>
-        <option value="1.5">1.5x</option>
-        <option value="1.75">1.75x</option>
-        <option value="2">2x</option>
-      </select>
-    </div>
-  </footer>
-
-  <script src="/app.js"></script>
+  <script src="https://player.ausha.co/ausha-player.js"></script>
 </body>
 </html>
