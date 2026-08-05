@@ -1,0 +1,16 @@
+{
+  "name": "ferghana-podcasts",
+  "version": "1.0.0",
+  "description": "Application web présentant le podcast Ferghana avec le lecteur Ausha",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
