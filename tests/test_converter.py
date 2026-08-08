@@ -10,6 +10,7 @@ from ytmp3.converter import (
     _entries,
     _final_path,
     _quality_argument,
+    hint_for,
 )
 from ytmp3.errors import FFmpegNotFoundError, InvalidOptionError
 
@@ -318,9 +319,76 @@ def test_final_path_sans_download():
     assert _final_path(None) is None
 
 
+@pytest.mark.parametrize(
+    "message,extrait_du_conseil",
+    [
+        ("ERROR: Sign in to confirm you're not a bot", "--cookies-from-browser"),
+        ("ERROR: Private video. Sign in if you've been granted access", "Vidéo privée"),
+        ("ERROR: Join this channel to get access to members-only content", "membres"),
+        ("ERROR: Sign in to confirm your age", "limite d'âge"),
+        ("ERROR: Video unavailable", "supprimée"),
+        ("ERROR: The uploader has not made this video available in your country", "pays"),
+        ("ERROR: Unable to extract player response", "pip install -U yt-dlp"),
+        ("ERROR: nsig extraction failed", "pip install -U yt-dlp"),
+        ("ERROR: HTTP Error 429: Too Many Requests", "patientez"),
+        ("ERROR: Requested format is not available", "Aucune piste audio"),
+        ("ERROR: This live event will begin in 3 hours", "diffusion n'a pas commencé"),
+        ("Unable to connect to proxy", "réseau"),
+        ("ERROR: Postprocessing: ffmpeg exited with code 1", "ffmpeg"),
+    ],
+)
+def test_conseil_pour_les_erreurs_connues(message, extrait_du_conseil):
+    conseil = hint_for(message)
+
+    assert conseil is not None, f"aucun conseil pour {message!r}"
+    assert extrait_du_conseil in conseil
+
+
+def test_aucun_conseil_pour_une_erreur_inconnue():
+    assert hint_for("ERROR: quelque chose d'inédit") is None
+
+
+def test_fail_attache_le_conseil():
+    resultat = ConversionResult(url="u").fail("ERROR: Video unavailable")
+
+    assert not resultat.ok
+    assert resultat.error == "ERROR: Video unavailable"
+    assert "supprimée" in resultat.hint
+
+
+def test_fail_sans_conseil_laisse_hint_vide():
+    assert ConversionResult(url="u").fail("panne inconnue").hint is None
+
+
+def test_conseil_remonte_jusqu_au_resultat(monkeypatch, tmp_path):
+    ydl = FakeYDL(raises=RuntimeError("ERROR: Sign in to confirm you're not a bot"))
+    converter = make_converter(monkeypatch, ydl, tmp_path)
+
+    (resultat,) = converter.convert("https://y/watch?v=1")
+
+    assert "--cookies-from-browser" in resultat.hint
+
+
 def test_clean_message_retire_le_prefixe_ytdlp():
     assert _clean_message(RuntimeError("ERROR: boum")) == "boum"
     assert _clean_message(RuntimeError("")) == "RuntimeError"
+
+
+def test_clean_message_coupe_l_appel_a_ticket_ytdlp():
+    brut = (
+        "ERROR: [youtube] abc: Unable to download API page: Tunnel connection failed"
+        "; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , "
+        "filling out the appropriate issue template. Confirm you are on the latest "
+        "version using  yt-dlp -U"
+    )
+
+    assert _clean_message(RuntimeError(brut)) == (
+        "[youtube] abc: Unable to download API page: Tunnel connection failed"
+    )
+
+
+def test_clean_message_ne_vide_jamais_le_message():
+    assert _clean_message(RuntimeError("ERROR: please report this issue")) == "RuntimeError"
 
 
 def test_resultat_en_echec_nest_pas_ok():

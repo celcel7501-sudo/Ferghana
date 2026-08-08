@@ -194,6 +194,22 @@ def test_resume_liste_les_ignores(capsys):
     assert "boum" in sortie.err
 
 
+def test_conseil_affiche_sous_l_erreur(capsys):
+    resultat = ConversionResult(url="u").fail("ERROR: Sign in to confirm you're not a bot")
+
+    cli.report([resultat], quiet=False)
+
+    erreurs = capsys.readouterr().err
+    assert "Sign in to confirm" in erreurs
+    assert "--cookies-from-browser" in erreurs
+
+
+def test_conseil_affiche_meme_en_mode_silencieux(capsys):
+    cli.report([ConversionResult(url="u").fail("ERROR: Video unavailable")], quiet=True)
+
+    assert "supprimée" in capsys.readouterr().err
+
+
 def test_mode_silencieux_garde_les_erreurs(capsys):
     cli.report([ConversionResult(url="u", error="boum")], quiet=True)
 

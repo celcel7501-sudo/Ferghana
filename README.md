@@ -88,6 +88,26 @@ ytmp3 --playlist --template "%(playlist_index)02d - %(title)s.%(ext)s" URL
   `stderr` ; les suivantes sont traitées, et le code de retour final vaut `1`.
 - Dans une playlist, les vidéos privées ou supprimées sont sautées.
 
+## Dépannage
+
+Quand une conversion échoue, le message d'erreur est suivi d'une ligne `→`
+indiquant quoi faire. Les cas reconnus :
+
+| Symptôme | Cause et remède |
+| --- | --- |
+| `Sign in to confirm you're not a bot` | YouTube réclame une session. Relancez avec `--cookies-from-browser firefox` (ou `chrome`, `edge`…) |
+| `Sign in to confirm your age` | Limite d'âge : même remède, `--cookies-from-browser` |
+| `Private video` / `members-only` | Contenu restreint, accessible seulement avec un compte autorisé |
+| `Unable to extract …`, `nsig extraction failed` | YouTube a changé et votre yt-dlp a pris du retard : `pip install -U yt-dlp` |
+| `Video unavailable`, `not available in your country` | Vidéo supprimée ou géobloquée |
+| `HTTP Error 429` | Trop de requêtes : patientez quelques minutes |
+| `ffmpeg exited with code 1` | Vérifiez l'installation : `ffmpeg -version` |
+
+**Le premier réflexe en cas de panne sur YouTube reste `pip install -U yt-dlp`.**
+La plateforme modifie régulièrement ses pages, et yt-dlp suit avec des versions
+fréquentes ; une installation vieille de quelques mois cesse simplement de
+fonctionner.
+
 ## Utilisation comme bibliothèque
 
 ```python

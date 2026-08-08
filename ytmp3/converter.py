@@ -57,11 +57,82 @@ class ConversionResult:
     duration: Optional[float] = None
     skipped: bool = False
     error: Optional[str] = None
+    hint: Optional[str] = None
 
     @property
     def ok(self) -> bool:
         """Vrai si le MP3 est disponible — qu'il vienne d'être écrit ou non."""
         return self.error is None
+
+    def fail(self, message: str) -> "ConversionResult":
+        """Marque l'échec et y attache un conseil quand la cause est connue."""
+        self.error = message
+        self.hint = hint_for(message)
+        return self
+
+
+#: Messages de yt-dlp (en anglais) et le conseil correspondant. Les motifs sont
+#: cherchés en minuscules, dans l'ordre : le plus spécifique d'abord.
+_HINTS = (
+    (
+        ("confirm your age", "age-restricted", "inappropriate for some users"),
+        "Vidéo soumise à une limite d'âge : --cookies-from-browser transmet votre session.",
+    ),
+    (
+        # Volontairement après la règle d'âge : « sign in to confirm » est un
+        # préfixe commun aux deux messages de YouTube.
+        ("confirm you're not a bot", "confirm you are not a bot", "sign in to confirm"),
+        "YouTube réclame une authentification. Relancez avec "
+        "--cookies-from-browser firefox (ou chrome, edge…).",
+    ),
+    (
+        ("private video", "this video is private"),
+        "Vidéo privée : elle n'est lisible qu'avec un compte autorisé "
+        "(--cookies-from-browser).",
+    ),
+    (
+        ("members-only", "join this channel"),
+        "Vidéo réservée aux membres de la chaîne (--cookies-from-browser).",
+    ),
+    (
+        ("live event will begin", "premieres in", "not yet available"),
+        "La diffusion n'a pas commencé : il n'y a encore rien à convertir.",
+    ),
+    (
+        ("video unavailable", "in your country", "removed by the uploader", "account associated"),
+        "Vidéo supprimée, ou indisponible depuis votre pays.",
+    ),
+    (
+        ("unable to extract", "nsig", "player response", "signature extraction"),
+        "yt-dlp ne sait plus lire cette page — YouTube a changé. "
+        "Mettez-le à jour : pip install -U yt-dlp",
+    ),
+    (
+        ("http error 429", "too many requests"),
+        "Trop de requêtes envoyées : patientez quelques minutes avant de réessayer.",
+    ),
+    (
+        ("requested format is not available", "no video formats"),
+        "Aucune piste audio téléchargeable pour cette vidéo.",
+    ),
+    (
+        ("unable to connect to proxy", "connection refused", "temporary failure in name resolution"),
+        "Connexion impossible : vérifiez votre accès réseau ou vos variables de proxy.",
+    ),
+    (
+        ("postprocessing", "ffmpeg exited", "ffprobe"),
+        "L'encodage a échoué : vérifiez votre installation de ffmpeg (ffmpeg -version).",
+    ),
+)
+
+
+def hint_for(message: str) -> Optional[str]:
+    """Traduit un message de yt-dlp en conseil actionnable, si on le reconnaît."""
+    lowered = message.lower()
+    for needles, hint in _HINTS:
+        if any(needle in lowered for needle in needles):
+            return hint
+    return None
 
 
 def ffmpeg_available() -> bool:
@@ -178,14 +249,14 @@ class Converter:
             with self._youtube_dl() as ydl:
                 info = ydl.extract_info(url, download=False)
         except Exception as exc:  # yt-dlp lève des types variés selon l'extracteur
-            return [ConversionResult(url=url, error=_clean_message(exc))]
+            return [ConversionResult(url=url).fail(_clean_message(exc))]
 
         if info is None:
-            return [ConversionResult(url=url, error="Aucune information récupérée pour cette URL.")]
+            return [ConversionResult(url=url).fail("Aucune information récupérée pour cette URL.")]
 
         entries = _entries(info)
         if not entries:
-            return [ConversionResult(url=url, error="Playlist vide ou entièrement indisponible.")]
+            return [ConversionResult(url=url).fail("Playlist vide ou entièrement indisponible.")]
 
         return [self._convert_entry(entry, fallback_url=url) for entry in entries]
 
@@ -214,7 +285,7 @@ class Converter:
         try:
             target = self.target_path(entry)
         except Exception as exc:
-            result.error = _clean_message(exc)
+            result.fail(_clean_message(exc))
             return result
 
         if target.exists() and not self.options.overwrite:
@@ -226,12 +297,12 @@ class Converter:
             with self._youtube_dl() as ydl:
                 downloaded = ydl.extract_info(url, download=True)
         except Exception as exc:
-            result.error = _clean_message(exc)
+            result.fail(_clean_message(exc))
             return result
 
         result.path = _final_path(downloaded) or target
         if not result.path.exists():
-            result.error = "La conversion s'est terminée sans produire de fichier MP3."
+            result.fail("La conversion s'est terminée sans produire de fichier MP3.")
         return result
 
 
@@ -259,10 +330,27 @@ def _final_path(info: Optional[dict]) -> Optional[Path]:
     return None
 
 
+#: Bavardage que yt-dlp ajoute à ses erreurs : il invite à ouvrir un ticket
+#: chez lui, y compris quand la panne est purement locale (réseau, ffmpeg).
+_BOILERPLATE = (
+    "; please report this issue",
+    ". please report this issue",
+    "please report this issue",
+)
+
+
 def _clean_message(exc: BaseException) -> str:
-    """Retire le préfixe « ERROR: » que yt-dlp colle à ses messages."""
+    """Réduit une erreur yt-dlp à sa cause : sans préfixe ni appel à ticket."""
     message = str(exc).strip() or exc.__class__.__name__
     for prefix in ("ERROR: ", "\033[0;31mERROR:\033[0m "):
         if message.startswith(prefix):
             message = message[len(prefix) :]
-    return message
+
+    lowered = message.lower()
+    for marker in _BOILERPLATE:
+        cut = lowered.find(marker)
+        if cut != -1:
+            message = message[:cut]
+            break
+
+    return message.strip().rstrip(";,") or exc.__class__.__name__

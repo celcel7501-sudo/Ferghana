@@ -221,6 +221,8 @@ def report(results: Sequence[ConversionResult], quiet: bool, stream=None) -> Non
 
     for result in failed:
         print(f"✗ {result.title or result.url} : {result.error}", file=sys.stderr)
+        if result.hint:
+            print(f"  → {result.hint}", file=sys.stderr)
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
