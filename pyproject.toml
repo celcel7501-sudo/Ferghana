@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ytmp3"
+version = "1.0.0"
+description = "Convertisseur de vidéos YouTube en MP3 (yt-dlp + ffmpeg)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = ["yt-dlp>=2025.1.1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+ytmp3 = "ytmp3.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ytmp3*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
