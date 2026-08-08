@@ -25,8 +25,12 @@ tierces chargées depuis `file://`.
 L'épisode est identifié par l'URL de l'iframe dans `index.html` :
 
 ```
-https://embed.podcasts.apple.com/us/podcast/<slug>/id<PODCAST_ID>?i=<EPISODE_ID>&theme=auto
+https://embed.podcasts.apple.com/fr/podcast/<slug>/id<PODCAST_ID>?i=<EPISODE_ID>&theme=auto
 ```
+
+Le segment `fr` est la boutique Apple : il détermine la langue de l'interface du
+lecteur. Le code copié depuis Apple Podcasts contient souvent `us` — pensez à le
+remplacer.
 
 Copiez le code d'intégration depuis Apple Podcasts (« Partager » → « Copier le
 code d'intégration ») et remplacez l'attribut `src`, puis mettez à jour le titre
