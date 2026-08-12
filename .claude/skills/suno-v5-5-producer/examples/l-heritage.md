@@ -4,6 +4,9 @@ Transmission entre les générations du quartier. Couplets techniques (plume
 Scred Connexion), refrain RnB ultra-catchy (Ninho × Brandy). Sert de calibrage
 pour tout morceau de format « banger ».
 
+**Conforme aux limites Suno** : style **911 / 1000**, paroles **4854 / 5000**
+(balises comprises). Vérifiable par `python3 tools/count.py`.
+
 ---
 
 ## 🧪 ANALYSE DU MIX
@@ -35,171 +38,121 @@ hook ; sans Cut Killer, il sonne comme une pub.
 
 ---
 
-## 🎛️ V5.5 STYLE PROMPT
+## 🎛️ V5.5 STYLE PROMPT — 911 / 1000 caractères
+
+Sans étiquettes de couches : elles coûtaient 120 caractères pour rien. L'ordre
+porte la hiérarchie — genre, rythmique, instrumentation, texture, voix,
+turntablism, mastering.
 
 ```
-CORE GENRE: French street rap anthem, club-ready Raï'n'B fusion with a full
-R&B chorus
-RHYTHMIC DNA: 96 BPM half-time feel, MPC-style swung drums, tight punchy kick,
-layered claps and finger snaps stacked on the backbeat, darbuka and karkabou
-percussion fills, double-time hi-hat rolls with triplet stutters, rhythmic
-turntable cuts used as percussion
-SONIC TEXTURE: wide stereo field, warm analog saturation, filtered soul-loop
-haze, dusty sampler grit, cassette-tape glue, cinematic night reverb
-INSTRUMENTATION: round analog Moog-style bassline with portamento glides,
-filtered soul vocal-chop loop, plucked mandole motif, orchestral string stabs,
-gated Rhodes pad, low brass swell before the chorus
-VOCALS: male tenor, gritty authentic verse delivery close-miked and unpolished,
-melodic rap-singing on the hook, lush stacked R&B harmonies, call-and-response
-backing vocals answering every line, octave-down doubles, whispered ad-lib tails
-TURNTABLISM: mixtape-style scratch drops, transformer cuts, crab scratches,
-backspin rewind on the beat switch
-MASTERING: commercial radio master, punchy compression, controlled tight low
-end, club loudness with preserved dynamics
+French street rap anthem, club Raï'n'B fusion, full R&B chorus. 96 BPM half-time, MPC-style swung drums, punchy kick, layered claps and snaps on the backbeat, darbuka and karkabou fills, double-time hi-hat triplet stutters, turntable cuts used as percussion. Round analog Moog-style bassline with portamento glides, filtered soul-chop loop, plucked mandole motif, string stabs, gated Rhodes, low brass swell into the chorus. Wide stereo field, warm analog saturation, dusty sampler grit, cassette-tape glue, cinematic night reverb. Male tenor: conscious street storytelling, gritty unpolished close-mic verses, melodic rap-singing hook, lush stacked R&B harmonies, call-and-response backing vocals, octave-down doubles, whispered ad-libs. Mixtape scratch drops, transformer cuts, crab scratches, backspin rewind. Commercial radio master, punchy compression, tight low end, club loudness with preserved dynamics.
 ```
 
 ---
 
-## 📝 SCRIPT & PAROLES
+## 📝 SCRIPT & PAROLES — 4854 / 5000 caractères
 
-**[Intro: Turntablism — vinyl crackle, low brass swell, two transformer cuts on
-the word "héritage", crab scratch burst, then the bass slides in alone]**
+À coller tel quel : pas de markdown, balises de 60 à 80 caractères, réponses de
+Call & Response en parenthèses simples.
 
-*(voix pitchée grave, comme un vieux vinyle)*
-Ce qu'on t'donne, tu l'gardes pas...
-Tu l'passes.
+```
+[Intro: Turntablism, vinyl crackle, brass swell, transformer cuts]
+(voix pitchée grave)
+Ce qu'on t'donne, tu l'gardes pas... tu l'passes.
 
-*(scratch : « l'hé-ri-ta-ge », haché, quatre fois)*
-
-**[Verse 1: Gritty authentic flow, dense internal rhymes, close-mic and
-unpolished, drums drop to hats and bass for the last four bars]**
-
+[Verse 1: Gritty authentic flow, dense internal rhymes, unpolished]
 Pas d'testament chez nous, juste des principes en dot,
 Mon vieux parlait jamais fort, mais chaque phrase avait des bottes.
 Y'a pas d'or dans l'armoire, y'a des factures et des photos,
 Et l'odeur du café froid quand il partait au boulot.
-
 On m'a appris à dire bonjour avant de dire « j'ai faim »,
 À r'garder les gens en face même les jours où j'avais rien.
 La parole, c'est l'contrat, la poignée d'main, c'est l'notaire,
 On signe avec les yeux, on plaide pas au tribunal des frères.
-
 Le bâtiment, c'était l'école, la cage d'escalier l'amphi,
 Les anciens sur le banc : chaque ride, un chapitre écrit.
 J'ai vu des rois sans couronne pousser des chariots d'usine,
 Rentrer les mains gercées et sourire en passant la cuisine.
-
-Alors quand tu m'parles de réussite, attends, j'te r'cadre le zoom :
+Quand tu m'parles de réussite, attends, j'te r'cadre le zoom :
 C'est pas l'montant sur le compte, c'est qui pleure encore dans la room.
 J'ai pas hérité d'un empire, moi j'ai hérité d'un devoir,
 J'le porte comme un manteau trop grand qu'je remplirai un soir.
 
-**[Pre-Chorus: Energy ramp — low-pass filter opening on the soul loop, snare
-roll building, brass swell, vocal doubling appears on the last line]**
-
-Et si demain j'y suis plus, dis-leur d'où j'venais — *(d'où j'venais)*
-J'ai jamais vendu la cage pour un titre de journal — *(jamais)*
+[Pre-Chorus: Energy ramp, filter opening, snare roll, vocal doubling]
+Et si demain j'y suis plus, dis-leur d'où j'venais (d'où j'venais)
+J'ai jamais vendu la cage pour un titre de journal (jamais)
 C'qu'on m'a donné dans l'ombre, j'le remets dans la lumière,
 Ça s'achète pas, ça s'mérite... et ça s'transmet, mon frère.
 
-**[Chorus: Anthemic hook — melodic tenor rap-singing, lush stacked R&B
-harmonies, call-and-response backing vocals on every line, full drums, claps
-wide, octave-down double on the lead]**
+[Chorus: Anthemic hook, tenor, stacked R&B harmonies, call and response]
+C'est l'héritage (l'héritage)
+Tout c'qu'on m'a donné, j'le rends au quartier (j'le rends)
+C'est l'héritage (l'héritage)
+Le nom, la parole, la fierté, le sang (ouais, le sang)
+Si j'tombe, y'a les p'tits qui reprennent le flambeau (le flambeau)
+Rien ne s'achète ici, tout se transmet (tout se transmet)
+C'est l'héritage (l'héritage)
+On meurt jamais vraiment tant que quelqu'un s'souvient (s'souvient)
 
-C'est l'héritage — *(l'héritage)*
-Tout c'qu'on m'a donné, j'le rends au quartier — *(j'le rends)*
-C'est l'héritage — *(l'héritage)*
-Le nom, la parole, la fierté, le sang — *(ouais, le sang)*
-Si j'tombe, y'a les p'tits qui reprennent le flambeau — *(le flambeau)*
-Rien ne s'achète ici, tout se transmet — *(tout se transmet)*
-C'est l'héritage — *(l'héritage)*
-On meurt jamais vraiment tant que quelqu'un s'souvient — *(s'souvient)*
-
-**[Verse 2: same gritty flow, slightly more melodic phrasing, bass walks up on
-bars 5 and 13, one backspin at the end]**
-
+[Verse 2: Same grit, more melodic, bass walks up, backspin at end]
 Maintenant c'est moi l'ancien, y'a des p'tits qui m'appellent « grand »,
 Même banc, même béton, même café dans l'même gobelet blanc.
 Y'en a un qui m'ressemble : même colère, même regard oblique,
-J'lui dis « viens, pose-toi » — il répond « j'ai pas l'temps, j'gère la clique ».
-
+J'lui dis « viens, pose-toi », il répond « j'ai pas l'temps, j'gère la clique ».
 J'ai souri, j'me suis vu : j'étais lui y'a dix hivers,
 On croit courir vers l'avenir, on court surtout vers l'envers.
 J'lui parle pas d'morale, on m'a jamais fait d'sermon,
 J'lui parle de sa mère qui compte les heures dans l'salon.
-
-J'lui dis : « la rue, ça prête, ça donne rien, et les intérêts s'ramassent,
+La rue, ça prête, ça donne rien, et les intérêts s'ramassent,
 Tu crois tenir l'volant, mais c'est la route qui trace.
-Ce que j'sais, j'l'ai payé cash — pas en euros, en années,
-Si j'te l'donne aujourd'hui, c'est pour pas qu'tu les repayes. »
-
-Prends le meilleur, laisse le reste, fais mieux qu'nous, c'est ça l'contrat,
+Ce que j'sais, j'l'ai payé cash, pas en euros, en années,
+Si j'te l'donne aujourd'hui, c'est pour pas qu'tu les repayes.
+Prends le meilleur, laisse le reste, fais mieux qu'nous, c'est l'contrat,
 Un père a vraiment gagné le jour où son fils va plus loin qu'lui.
-Moi j'serai le pont, pas le mur — marche dessus, t'inquiète,
+Moi j'serai le pont, pas le mur, marche dessus, t'inquiète,
 L'héritage c'est pas c'qu'on garde... c'est c'qu'on remet.
 
-**[Pre-Chorus: Energy ramp — same as before, add tambourine, darbuka fill on
-the last two bars, harmonies stacking underneath]**
-
-Et si demain j'y suis plus, dis-leur d'où j'venais — *(d'où j'venais)*
-J'ai jamais vendu la cage pour un titre de journal — *(jamais)*
+[Pre-Chorus: Energy ramp, tambourine, darbuka fill, harmonies]
+Et si demain j'y suis plus, dis-leur d'où j'venais (d'où j'venais)
+J'ai jamais vendu la cage pour un titre de journal (jamais)
 C'qu'on m'a donné dans l'ombre, j'le remets dans la lumière,
 Ça s'achète pas, ça s'mérite... et ça s'transmet, mon frère.
 
-**[Chorus: Anthemic hook — identical melody and lyrics, wider harmony stack,
-extra whispered ad-libs panned hard left and right]**
+[Chorus: Anthemic hook, wider stack, whispered ad-libs panned wide]
+C'est l'héritage (l'héritage)
+Tout c'qu'on m'a donné, j'le rends au quartier (j'le rends)
+C'est l'héritage (l'héritage)
+Le nom, la parole, la fierté, le sang (ouais, le sang)
+Si j'tombe, y'a les p'tits qui reprennent le flambeau (le flambeau)
+Rien ne s'achète ici, tout se transmet (tout se transmet)
+C'est l'héritage (l'héritage)
+On meurt jamais vraiment tant que quelqu'un s'souvient (s'souvient)
 
-C'est l'héritage — *(l'héritage)*
-Tout c'qu'on m'a donné, j'le rends au quartier — *(j'le rends)*
-C'est l'héritage — *(l'héritage)*
-Le nom, la parole, la fierté, le sang — *(ouais, le sang)*
-Si j'tombe, y'a les p'tits qui reprennent le flambeau — *(le flambeau)*
-Rien ne s'achète ici, tout se transmet — *(tout se transmet)*
-C'est l'héritage — *(l'héritage)*
-On meurt jamais vraiment tant que quelqu'un s'souvient — *(s'souvient)*
-
-**[Bridge: Beat switch — half-time, drums cut to kick and rimshot, bass muted,
-Rhodes drenched in reverb, Voice pitch variation: verse spoken pitched-down
-like an elder, answered by the natural voice in echo]**
-
-*(voix pitchée grave — l'ancien)*
+[Bridge: Beat switch, half-time, kick and rimshot only, voice pitch variation]
+(voix pitchée grave)
 Petit... on m'a rien donné non plus.
 J'ai ramassé c'qui restait, et j'en ai fait une maison.
-
-*(voix naturelle, en écho, presque chuchotée)*
+(voix naturelle, en écho)
 Et la maison tient encore...
+Elle tient encore, elle tient encore...
 
-*(chœur empilé, montée)*
-Elle tient encore... elle tient encore... elle tient encore...
+[DMC Routine: crab scratches, transformer cuts, backspin rewind]
 
-**[DMC Routine: 8 bars — crab scratches on the stab "l'héritage", two orbits,
-transformer cuts over the kick, ending on a full backspin rewind that drops
-straight into the final chorus]**
+[Chorus: Final, full band, gospel harmony stacking, tenor up one tone]
+C'est l'héritage (l'héritage)
+Tout c'qu'on m'a donné, j'le rends au quartier (j'le rends)
+C'est l'héritage (l'héritage)
+Le nom, la parole, la fierté, le sang (ouais, le sang)
+Si j'tombe, y'a les p'tits qui reprennent le flambeau (le flambeau)
+Rien ne s'achète ici, tout se transmet (tout se transmet)
+C'est l'héritage (l'héritage)
+On meurt jamais vraiment tant que quelqu'un s'souvient (s'souvient)
 
-**[Chorus: Anthemic hook — final chorus, full band on the downbeat, gospel-style
-harmony stacking, lead tenor one full tone up, ad-libs answering across the
-stereo field]**
-
-C'est l'héritage — *(l'héritage)*
-Tout c'qu'on m'a donné, j'le rends au quartier — *(j'le rends)*
-C'est l'héritage — *(l'héritage)*
-Le nom, la parole, la fierté, le sang — *(ouais, le sang)*
-Si j'tombe, y'a les p'tits qui reprennent le flambeau — *(le flambeau)*
-Rien ne s'achète ici, tout se transmet — *(tout se transmet)*
-C'est l'héritage — *(l'héritage)*
-On meurt jamais vraiment tant que quelqu'un s'souvient — *(s'souvient)*
-
-**[Outro: Smooth exit — hook hummed by the harmony stack, instruments peeling
-off one by one, bass last, street ambience returns, one final scratch on
-"héritage", tape stop]**
-
-*(fredonné)*
-Mmh... c'est l'héritage...
-Mmh... tout se transmet...
-
-*(parlé, voix pitchée grave, sur le silence)*
-Un jour, c'est toi qui parleras sur le banc.
-Prépare tes phrases.
+[Outro: Hummed hook, instruments peeling off, tape stop]
+Mmh... c'est l'héritage... mmh... tout se transmet...
+(parlé, voix grave)
+Un jour, c'est toi qui parleras sur le banc. Prépare tes phrases.
+```
 
 ---
 
@@ -232,14 +185,13 @@ doit avoir la place de répondre.
 de soul, laisser basse + drums) pour que le refrain final paraisse énorme sans
 gagner un dB. La basse doit être la dernière chose à disparaître à l'outro.
 
-**Leviers de re-génération.**
-- Refrain pas assez gros → ajouter `anthemic`, `gospel-style harmony stacking`,
-  `wide chorus` à la couche VOCALS.
-- Couplets trop propres → `unpolished close-mic vocal`, `cassette-tape
-  saturation on vocals`.
-- Drums trop droites → renforcer RHYTHMIC DNA avec `off-grid percussion`,
-  `swung MPC groove`.
-- Scratch ignoré → raccourcir la balise en `[Scratch: crab scratches,
-  transformer cuts, backspin]` et le redéclarer dans TURNTABLISM.
-- Beat switch avalé → allonger le pont à 8 mesures minimum et ajouter
-  `[Silence: one bar]` juste avant.
+**Leviers de re-génération — et leur coût en caractères.** Le style a 89
+caractères de marge, les paroles 146 : chaque ajout doit être payé par une
+coupe ailleurs.
+- Refrain pas assez gros → `gospel harmony stacking` dans le style (+24).
+- Couplets trop propres → `cassette-tape saturation on vocals` (+35).
+- Drums trop droites → `off-grid percussion` (+21).
+- Scratch ignoré → il est déjà déclaré deux fois (style + balise) ; si Suno
+  l'avale encore, allonger la balise `[DMC Routine]` en compensant sur l'outro.
+- Beat switch avalé → allonger le pont et ajouter `[Silence: one bar]` juste
+  avant, en payant sur l'outro parlé.

@@ -63,6 +63,28 @@ traduit l'ADN en tags techniques (voir `references/producer-tag-translation.md`)
 4. **🎹 NOTES DE STUDIO** — BPM conseillé, tonalité, conseils de delivery,
    leviers de re-génération.
 
+## Contraintes de champ — DURES
+
+| Champ | Limite | Cible de rédaction |
+|---|---|---|
+| Style of Music | **1000 caractères** | ≈ 900 |
+| Lyrics (balises comprises) | **5000 caractères** | ≈ 4850 |
+
+Suno **tronque en silence** ce qui dépasse : on perd le mastering sur le style,
+l'outro et parfois le dernier refrain sur les paroles. Donc :
+
+- Dans le style, **pas d'étiquettes de couches** (`CORE GENRE:`, `SONIC
+  TEXTURE:`…) : elles coûtent ~120 caractères et n'apportent rien au modèle. On
+  garde l'**ordre** des couches, séparées par des points.
+- Balises de paroles : **60 à 80 caractères**, 3 ou 4 directives maximum.
+- **Zéro markdown** dans les deux champs (ni `**`, ni `*`) : ça compte dans la
+  limite et ça peut être lu comme du texte.
+- **Mesurer, jamais estimer** : `python3 tools/count.py --style style.txt
+  --lyrics paroles.txt` avant toute livraison. Méthode complète de compression
+  dans `references/field-limits.md`.
+- Si ça déborde, l'ordre de sacrifice est : balises verbeuses → didascalies →
+  outro parlé → longueur du pont. **Jamais les couplets en premier.**
+
 ## Règles non négociables
 
 - **Style en anglais, paroles en français.** Suno lit les tags anglais bien plus
@@ -77,6 +99,7 @@ traduit l'ADN en tags techniques (voir `references/producer-tag-translation.md`)
 
 ## Références
 
+- `references/field-limits.md` — limites 1000 / 5000 et méthode de compression.
 - `references/producer-tag-translation.md` — traduire un ADN de producteur en
   tags furtifs.
 - `references/style-prompt-layers.md` — la grammaire du champ Style of Music.

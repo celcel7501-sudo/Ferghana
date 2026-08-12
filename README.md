@@ -49,6 +49,22 @@ Chaque réponse suit le même format en quatre temps :
     └── neons-sur-le-bitume.md            # mid-tempo nonchalant
 ```
 
+## Limites Suno (contraintes dures)
+
+| Champ | Limite | Cible |
+|---|---|---|
+| Style of Music | 1000 caractères | ≈ 900 |
+| Lyrics (balises comprises) | 5000 caractères | ≈ 4850 |
+
+Suno tronque en silence ce qui dépasse. On mesure avant de livrer :
+
+```
+python3 tools/count.py --style style.txt --lyrics paroles.txt
+```
+
+Le script sort en code 1 si un champ déborde. Méthode de compression :
+`references/field-limits.md`.
+
 ## Structure « banger » imposée
 
 `[Intro: Turntablism]` → `[Verse]` → `[Pre-Chorus: Energy ramp]` →

@@ -3,6 +3,12 @@
 Exemple complet au format de sortie obligatoire. Sert de calibrage : densité de
 la direction artistique, longueur du prompt de style, granularité des balises.
 
+**Limites Suno** : ce morceau passe, mais de justesse — style **978 / 1000**
+(les étiquettes de couches `CORE GENRE:` etc. coûtent à elles seules ~120
+caractères, les supprimer rendrait la marge), paroles **≈ 4500 / 5000** une
+fois le markdown retiré. Voir `references/field-limits.md`, et
+`examples/l-heritage.md` pour la mise en forme compacte à privilégier.
+
 ---
 
 ## 🧪 DIRECTION ARTISTIQUE
