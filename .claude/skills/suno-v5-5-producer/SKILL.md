@@ -160,4 +160,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/one-last-song.md` | Club anthem French house 123 BPM, paroles en anglais |
 | `examples/l-architecte-du-groove.md` | G-Funk smooth 94 BPM, texte fourni par le client |
 | `examples/respire.md` | R&B foley Timbaland 92 BPM, exclusions systématiques |
+| `examples/le-prix.md` | Trap FR sombre 140 BPM half-time, rap conscient |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
