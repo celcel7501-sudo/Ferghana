@@ -161,4 +161,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/l-architecte-du-groove.md` | G-Funk smooth 94 BPM, texte fourni par le client |
 | `examples/respire.md` | R&B foley Timbaland 92 BPM, exclusions systématiques |
 | `examples/le-prix.md` | Trap FR sombre 140 BPM half-time, rap conscient |
+| `examples/fracture.md` | Trap conscient 140 BPM, dispositif journal télévisé |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
