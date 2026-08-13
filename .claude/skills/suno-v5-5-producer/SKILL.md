@@ -61,6 +61,23 @@ Squelette minimum : `[Intro: Turntablism]` → `[Verse]` →
 `[Pre-Chorus]` → `[Chorus]` → `[Bridge / DMC Routine]` → `[Chorus final]` →
 `[Outro]`.
 
+## IV. Morceaux longs — workflow Extend
+
+Au-delà de ~3 minutes, un morceau ne se compresse pas : il se **scinde en deux
+clips**, chacun avec son propre champ de paroles, donc son propre budget de
+5000 caractères.
+
+- Le clip 1 porte intro, couplets 1-2 et refrain. Le clip 2 **ouvre sur le beat
+  switch** — jamais sur un couplet : couper sur une rupture déjà attendue par
+  l'oreille cache le raccord technique.
+- Le style du clip 2 **dérive** de celui du clip 1 (même genre, même BPM, même
+  rythmique, même persistance) ; on n'ajoute que les tags de la nouvelle section.
+  S'en écarter fait entendre la couture.
+- Assemblage et vérification automatiques : `python3 tools/suno_producer.py`.
+  L'outil refuse un nom d'artiste inconnu au lieu de le recopier dans le style.
+
+Morceau de démonstration : `examples/l-elite.md`.
+
 ## Contraintes de champ — DURES
 
 | Champ | Limite | Cible de rédaction |
@@ -125,4 +142,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/il-est-a-moi.md` | Duo R&B fin 90s, deux voix rivales, 94 BPM |
 | `examples/laisse-tourner.md` | R&B français dansant, énergie mixtape, 102 BPM |
 | `examples/automatique.md` | Talkbox funk × French house, 121 BPM, protocole Platinum |
+| `examples/l-elite.md` | House rap 124 BPM, morceau long en deux clips (Extend) |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
