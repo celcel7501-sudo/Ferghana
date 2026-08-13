@@ -12,7 +12,10 @@ ou aseptiser la génération. On ne cite jamais. On **décrit le geste sonore**.
 | **Cut Killer** — mixage, scratch, énergie mixtape | `rhythmic turntable cuts`, `mixtape-style scratch drops`, `transformer cuts`, `crab scratches`, `backspin rewind`, `cassette-tape saturation`, `DJ drop ad-libs` |
 | **Plume Scred Connexion** | `gritty authentic flow`, `conscious street storytelling`, `dense internal rhyme delivery`, `unpolished close-mic vocal` |
 | **Mélodie Ninho** | `melodic male tenor rap-singing`, `catchy sung hook`, `melodic ad-lib tails` |
-| **Structure RnB Brandy** | `lush stacked R&B harmonies`, `layered vocal arrangement`, `call-and-response backing vocals`, `whispered harmony bed` |
+| **Timbaland** | `syncopated foley percussion`, `organic mouth-percussion accents`, `heavy sidechain`, `stuttering hi-hat rolls`, `off-grid swing` |
+| **Daft Punk / French Touch** | `filtered French house`, `heavy sidechain pumping`, `rhythmic talkbox vocals`, `crystalline vocoder lead`, `resonant low-pass filter sweeps` |
+| **Doc Gynéco** | `nonchalant poetic urban delivery`, `melodic slacker flow`, `spoken-sung close-mic vocal` |
+| **Structure RnB Brandy** | `lush stacked R&B harmonies`, `layered vocal arrangement`, `call-and-response backing vocals`, `whispered harmony bed`, `complex R&B vocal runs`, `panoramic vocal layering` |
 
 ## Méthode
 
