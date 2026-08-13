@@ -7,9 +7,9 @@ Deux clips, deux champs de paroles, donc **deux budgets de 5000 caractères**.
 | Clip | Style | Paroles |
 |---|---|---|
 | Clip 1 — fondation | 732 / 1000 | 3205 / 5000 |
-| Clip 2 — extension | 668 / 1000 | 1933 / 5000 |
+| Clip 2 — extension | 726 / 1000 | 2322 / 5000 |
 
-Total paroles : **5138 / 10000**. Reproduire : `python3 tools/suno_producer.py`
+Total paroles : **5527 / 10000**. Reproduire : `python3 tools/suno_producer.py`
 
 ---
 
@@ -42,6 +42,15 @@ le couplet 3.
 nonchalante garde encore de la place entre les syllabes. Le sidechain creuse à
 chaque kick, les claps empilés remplissent les trous — même principe
 d'arrangement que sur `automatique.md`, appliqué à un morceau rappé.
+
+**La routine de scratch est découpée en passes.** Une routine décrite dans une
+seule balise est jouée comme un effet unique et se termine en deux secondes.
+Découpée en cinq passes — deux baby scratches, transformer, crab, orbits,
+scribble puis backspin — Suno lui accorde ses mesures. Le mot scratché est pris
+**dans le refrain** (« élite », « Ghetto Star ») : c'est ce qui rattache la
+routine au morceau au lieu d'en faire une démonstration posée par-dessus. La
+mesure de silence qui suit le backspin est ce qui rend le retour du pré-refrain
+énorme, sans ajouter un seul dB.
 
 **Le pré-refrain porte du texte, pas seulement une montée.** Une balise de
 pré-refrain vide ne produit qu'une ouverture de filtre ; c'est gâcher la marche
@@ -128,15 +137,17 @@ Et le filtre s'ouvre... vas-y, ouvre tout.
 
 ---
 
-## 🎛️ V5.5 STYLE PROMPT — CLIP 2 (668 / 1000)
+## 🎛️ V5.5 STYLE PROMPT — CLIP 2 (726 / 1000)
 
-Identique au clip 1, plus les tags de solo. Rien d'autre ne change.
+Identique au clip 1, plus les tags de solo et de turntablism. Les tags de
+scratch viennent de la table d'ADN (`Cut Killer`), pas d'un texte en dur :
+c'est la même source que la routine écrite dans les paroles.
 
 ```
-French club rap over filtered French house, 124 BPM. four-on-the-floor, heavy sidechain pumping on every kick, crisp offbeat hats, layered claps. filtered French house, sidechain pumping, rhythmic vocoder, resonant filter sweeps. lush multi-layered vocal harmonies, complex R&B vocal runs, panoramic vocal layering. Persistent filtered string riff throughout. virtuoso analog synth solo, Moog-style lead, high resonance. chopped disco-string sample, round analog bassline, Rhodes stabs. male tenor, explosive anthemic hook, anthemic group vocal responses. ultra-wide stereo field, panoramic vocal layering. polished club master, punchy compression, deep round low end.
+French club rap over filtered French house, 124 BPM. four-on-the-floor, heavy sidechain pumping on every kick, crisp offbeat hats, layered claps. filtered French house, sidechain pumping, rhythmic vocoder, resonant filter sweeps. lush multi-layered vocal harmonies, complex R&B vocal runs, panoramic vocal layering. mixtape scratch drops, transformer cuts, backspin rewind. Persistent filtered string riff throughout. virtuoso analog synth solo, Moog-style lead, high resonance. chopped disco-string sample, round analog bassline, Rhodes stabs. male tenor, explosive anthemic hook, anthemic group vocal responses. ultra-wide stereo field, panoramic vocal layering. polished club master, punchy compression, deep round low end.
 ```
 
-## 📝 PAROLES — CLIP 2 (1933 / 5000)
+## 📝 PAROLES — CLIP 2 (2322 / 5000)
 
 ```
 [Bridge: Beat switch, filter sweep opening, heavy sidechain pump]
@@ -160,6 +171,13 @@ Alors quand la basse tape et qu'la salle décolle,
 C'est pas d'la fête, c'est une revanche polie.
 On brille dans le noir parce qu'on connaît le noir,
 Et le noir, c'est lui qui nous a appris à viser.
+
+[DMC Routine: 16 bars, drums to kick and rimshot, bass muted, filter half closed]
+[Scratch: two baby scratches on the word "élite", then four transformer cuts]
+[Scratch: crab scratch burst on "Ghetto Star", double time over the kick]
+[Scratch: two orbits trading bar for bar with the rimshot]
+[Scratch: fast scribble, then a full backspin rewind]
+[Silence: one bar, everything drops out]
 
 [Pre-Chorus: Energy ramp, filter opening, snare roll, harmonies appear]
 Lève la tête, la nuit nous connaît (nous connaît)
@@ -205,6 +223,11 @@ l'auditeur attend le retour de la voix.
 c'est d'avoir tenu quand y'avait rien à tenir. » C'est la thèse du morceau :
 poser la voix, laisser un demi-temps de silence après, ne pas doubler.
 
+**La routine.** Batterie réduite au kick et au rimshot, basse coupée, filtre à
+moitié fermé : la routine a besoin de place dans le spectre, sinon les cuts
+disparaissent sous la house. Elle tombe après le couplet 3 et relance le
+pré-refrain — un scratch qui ne relance pas une section ne sert à rien.
+
 **Mode opératoire dans Suno.**
 1. Générer le clip 1 avec son style et ses paroles.
 2. Choisir la prise, puis « Extend » à partir de la **fin** du clip 1.
@@ -212,5 +235,6 @@ poser la voix, laisser un demi-temps de silence après, ne pas doubler.
 4. « Get Whole Song » pour recoller les deux et masteriser d'un bloc.
 
 **Marge disponible.** Clip 1 : 268 caractères de style, 1795 de paroles.
-Clip 2 : 332 et 3067. De quoi ajouter un quatrième couplet ou une
-routine de scratch complète au clip 2 sans rien sacrifier.
+Clip 2 : 274 et 2678. La routine consomme 391 caractères sur le clip 2 ;
+il reste de quoi ajouter un quatrième couplet.
+

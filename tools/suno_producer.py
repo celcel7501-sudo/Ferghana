@@ -136,7 +136,7 @@ class Clip:
 
 def build_track(title, verses, chorus_pairs, style_base, trans_type="hiphop",
                 solo_style=None, intro=None, outro=None,
-                pre_chorus=None, post_chorus_pairs=None):
+                pre_chorus=None, post_chorus_pairs=None, dmc_routine=None):
     """Construit les deux clips du workflow Extend.
 
     Chaque clip a son propre champ de paroles, donc son propre budget de 5000
@@ -176,6 +176,8 @@ def build_track(title, verses, chorus_pairs, style_base, trans_type="hiphop",
     if len(verses) > 2:
         tail.append(f"[Verse 3: Intense flow, denser rhymes, drums stripped back]\n"
                     f"{verses[2].strip()}")
+    if dmc_routine:
+        tail.append(dmc_routine.strip())
     if ramp:
         tail.append(ramp)
     tail.append(f"[Final Chorus: Maximum intensity, 3D vocal wall, tenor up a tone]\n{chorus}")
@@ -255,6 +257,18 @@ DEMO_POST_CHORUS = [
     ("Élite, élite", "Ceux qui restent"),
 ]
 
+# Routine complète : chaque passe est une balise séparée. Une routine décrite en
+# un seul bloc est jouée comme un effet unique et se termine en deux secondes ;
+# découpée en passes, Suno lui accorde ses mesures. Le mot scratché est pris
+# dans le refrain — c'est ce qui rattache la routine au morceau au lieu d'en
+# faire une démonstration posée par-dessus.
+DEMO_DMC = """[DMC Routine: 16 bars, drums to kick and rimshot, bass muted, filter half closed]
+[Scratch: two baby scratches on the word "élite", then four transformer cuts]
+[Scratch: crab scratch burst on "Ghetto Star", double time over the kick]
+[Scratch: two orbits trading bar for bar with the rimshot]
+[Scratch: fast scribble, then a full backspin rewind]
+[Silence: one bar, everything drops out]"""
+
 
 def demo():
     base = build_style(
@@ -274,7 +288,7 @@ def demo():
         bpm=124,
         rhythm="four-on-the-floor, heavy sidechain pumping on every kick, "
                "crisp offbeat hats, layered claps",
-        artists=["Daft Punk", "Brandy"],
+        artists=["Daft Punk", "Brandy", "Cut Killer"],
         persistent="filtered string riff",
         instrumentation="chopped disco-string sample, round analog bassline, Rhodes stabs",
         vocals="male tenor, explosive anthemic hook, anthemic group vocal responses",
@@ -289,6 +303,7 @@ def demo():
         solo_style=solo,
         pre_chorus=DEMO_PRE_CHORUS,
         post_chorus_pairs=DEMO_POST_CHORUS,
+        dmc_routine=DEMO_DMC,
     )
 
     problems = []
