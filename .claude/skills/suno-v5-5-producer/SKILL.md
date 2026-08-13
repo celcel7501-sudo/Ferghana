@@ -162,4 +162,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/respire.md` | R&B foley Timbaland 92 BPM, exclusions systématiques |
 | `examples/le-prix.md` | Trap FR sombre 140 BPM half-time, rap conscient |
 | `examples/fracture.md` | Trap conscient 140 BPM, dispositif journal télévisé |
+| `examples/fractures-ii.md` | Piano-driven rap conscient 84 BPM, version alternative |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
