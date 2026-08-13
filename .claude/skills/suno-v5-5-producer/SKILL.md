@@ -166,4 +166,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/fractures-constat.md` | Même production que Fractures II, texte sans résolution |
 | `examples/douniya.md` | Raï-pop dansant 104 BPM, hook de foule, sept textures vocales |
 | `examples/dima.md` | Raï-pop × Afro-house 120 BPM, hook d'un seul mot |
+| `examples/layali.md` | Raï'n'B duo 98 BPM, groove R&B, breakdown vocal |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
