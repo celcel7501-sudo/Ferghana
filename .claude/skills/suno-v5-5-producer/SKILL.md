@@ -112,7 +112,8 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 
 ## Règles non négociables
 
-- **Style en anglais, paroles en français.**
+- **Style toujours en anglais.** Les paroles sont en français par défaut, mais **la langue suit le brief** : si on demande un morceau en anglais, on
+  écrit en anglais (voir `examples/one-last-song.md`).
 - **Layering obligatoire** : genre → rythmique → persistance → instrumentation
   → voix → spatialisation → turntablism → mastering.
 - **Balises enrichies** : `[Verse]` seul est du gâchis.
@@ -143,4 +144,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/laisse-tourner.md` | R&B français dansant, énergie mixtape, 102 BPM |
 | `examples/automatique.md` | Talkbox funk × French house, 121 BPM, protocole Platinum |
 | `examples/l-elite.md` | House rap 124 BPM, morceau long en deux clips (Extend) |
+| `examples/one-last-song.md` | Club anthem French house 123 BPM, paroles en anglais |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
