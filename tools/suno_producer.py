@@ -135,32 +135,52 @@ class Clip:
 
 
 def build_track(title, verses, chorus_pairs, style_base, trans_type="hiphop",
-                solo_style=None, intro=None, outro=None):
+                solo_style=None, intro=None, outro=None,
+                pre_chorus=None, post_chorus_pairs=None):
     """Construit les deux clips du workflow Extend.
 
     Chaque clip a son propre champ de paroles, donc son propre budget de 5000
     caractères — c'est tout l'intérêt de découper un morceau long en deux.
     Le style du clip 2 dérive de celui du clip 1 : s'en écarter fait entendre
     la couture au raccord.
+
+    `pre_chorus` et `post_chorus_pairs` sont optionnels mais fortement
+    conseillés : une balise de pré-refrain sans texte ne produit qu'une montée
+    instrumentale, ce qui gâche la marche la plus efficace vers le hook.
     """
     if len(verses) < 2:
         raise ValueError("Il faut au moins deux couplets pour le clip 1.")
 
     chorus = call_response(chorus_pairs)
+    ramp = ("[Pre-Chorus: Energy ramp, filter opening, snare roll, harmonies appear]\n"
+            + pre_chorus.strip()) if pre_chorus else None
+    post = ("[Post-Chorus: Chanted club hook, group unison, claps, filter wide open]\n"
+            + call_response(post_chorus_pairs)) if post_chorus_pairs else None
 
     body = [intro or "[Intro: Turntablism routine, vinyl crackle, atmospheric build]"]
-    for i, verse in enumerate(verses[:2], start=1):
-        body.append(f"[Verse {i}: Nonchalant flow, melodic slacker delivery]\n{verse.strip()}")
-        if i == 1:
-            body.append("[Pre-Chorus: Energy ramp, filter opening, snare roll]")
-    body.append(f"[Chorus: Anthemic Hook, Tenor rise, call and response]\n{chorus}")
+    body.append(f"[Verse 1: Nonchalant flow, melodic slacker delivery, dry close-mic]\n"
+                f"{verses[0].strip()}")
+    if ramp:
+        body.append(ramp)
+    body.append(f"[Chorus: Anthemic Hook, Tenor rise, call and response, full sidechain]\n{chorus}")
+    if post:
+        body.append(post)
+    body.append(f"[Verse 2: Same flow, warmer, bass glides, claps doubled]\n{verses[1].strip()}")
+    if ramp:
+        body.append(ramp)
+    body.append(f"[Chorus: Same hook, wider panoramic stack, ad-libs hard panned]\n{chorus}")
     clip1 = Clip(f"{title} — CLIP 1", style_base, "\n\n".join(body))
 
     tail = [TRANSITIONS.get(trans_type, "[Bridge: Beat switch]"),
-            "[Solo: Analog synthesizer solo, melodic and complex]"]
+            "[Solo: Analog synthesizer solo, melodic and complex, filter rising]"]
     if len(verses) > 2:
-        tail.append(f"[Verse 3: Intense flow, denser rhymes]\n{verses[2].strip()}")
-    tail.append(f"[Final Chorus: Maximum intensity, 3D vocal wall]\n{chorus}")
+        tail.append(f"[Verse 3: Intense flow, denser rhymes, drums stripped back]\n"
+                    f"{verses[2].strip()}")
+    if ramp:
+        tail.append(ramp)
+    tail.append(f"[Final Chorus: Maximum intensity, 3D vocal wall, tenor up a tone]\n{chorus}")
+    if post:
+        tail.append(post)
     tail.append(outro or "[Outro: Smooth filter sweep, final vinyl scratch, fading atmosphere]")
     clip2 = Clip(f"{title} — CLIP 2 (Extend)", solo_style or style_base, "\n\n".join(tail))
 
@@ -172,26 +192,50 @@ DEMO_VERSES = [
 C'est pas d'la poésie, c'est un plan.
 Ma mère pliait des draps d'hôtel,
 Moi j'pliais mes rêves dans un cartable.
-On m'a dit « reste à ta place »,
+Sept heures moins l'quart, la porte qui claque,
+Le café froid, la même veste, le même vent.
+Elle disait « travaille », elle disait pas « brille »,
+J'ai fait les deux, et j'lui dois les deux.
+On m'a dit « reste à ta place » —
 J'ai demandé laquelle, personne a su répondre.
-Alors j'ai pris celle du fond,
-Et j'ai avancé d'une rangée chaque année.""",
+Alors j'ai pris celle du fond, près d'la fenêtre,
+Et j'ai gagné une rangée chaque année.
+La cité clignote la nuit comme un tableau d'bord,
+Chaque fenêtre allumée, c'est quelqu'un qui tient.
+On n'est pas des chiffres au bas d'une étude,
+On est les veilleurs, et ce soir on descend.""",
     """Le bitume est froid, nos cœurs sont en feu,
 Le contraste, c'est notre climat.
-On a appris à danser sur des mauvaises nouvelles,
+On a appris à danser sur des mauvaises nouvelles :
 C'est une technique, pas de l'insouciance.
+Y'a ceux qui parlent de nous au journal de vingt heures,
+Et y'a nous, qui parlons entre nous, moins fort, plus vrai.
+J'ai pas besoin qu'on m'résume ma propre vie,
+J'étais là, j'ai signé la présence.
 Costume ou survêt', même colonne vertébrale,
 On change la coupe, on garde la mesure.
+Le respect, ça s'télécharge pas, ça s'use,
+Ça s'entretient comme une vieille bagnole.
 Si l'ascenseur est en panne depuis vingt ans,
-On montera par la musique.""",
+On montera par la cage, par la voix, par la musique.
+Et le jour où on arrive en haut, on bloque la porte :
+On laisse passer ceux d'en bas, c'est la règle.""",
     """L'héritage est lourd, on porte le flambeau,
 Et un flambeau, ça brûle aussi les mains.
+J'ai vu des frères s'éteindre avant vingt-cinq ans,
+J'écris pour qu'il reste au moins la lumière.
 On m'a pas donné d'élite, j'en ai fabriqué une :
-C'est ceux qui se lèvent quand personne regarde.
-Pas de couronne, pas de photo,
+C'est ceux qui s'lèvent quand personne les regarde.
+Pas de couronne, pas de photo, pas d'annonce,
 Juste des gens qui tiennent parole en silence.
+La vraie noblesse ici, c'est pas d'être arrivé,
+C'est d'avoir tenu quand y'avait rien à tenir.
+Y'a des palais qui valent moins qu'un salon de mère,
+Y'a des noms connus qui pèsent moins qu'un prénom.
+Alors quand la basse tape et qu'la salle décolle,
+C'est pas d'la fête, c'est une revanche polie.
 On brille dans le noir parce qu'on connaît le noir,
-Et le noir, il nous a appris à viser.""",
+Et le noir, c'est lui qui nous a appris à viser.""",
 ]
 
 DEMO_CHORUS = [
@@ -199,6 +243,16 @@ DEMO_CHORUS = [
     ("On vient d'en bas, on vise plus haut", "Plus haut"),
     ("On brille dans le noir", "Dans le noir"),
     ("Si tu connais le prix, lève les mains", "Lève les mains"),
+]
+
+DEMO_PRE_CHORUS = """Lève la tête, la nuit nous connaît (nous connaît)
+On a fait le tour du bas, on remonte (on remonte)
+Y'a la basse qui compte tous les pas qu'on a faits,
+Et le filtre s'ouvre... vas-y, ouvre tout."""
+
+DEMO_POST_CHORUS = [
+    ("Élite, élite", "Ceux qui tiennent"),
+    ("Élite, élite", "Ceux qui restent"),
 ]
 
 
@@ -233,6 +287,8 @@ def demo():
         style_base=base,
         trans_type="electro",
         solo_style=solo,
+        pre_chorus=DEMO_PRE_CHORUS,
+        post_chorus_pairs=DEMO_POST_CHORUS,
     )
 
     problems = []
