@@ -167,4 +167,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/douniya.md` | Raï-pop dansant 104 BPM, hook de foule, sept textures vocales |
 | `examples/dima.md` | Raï-pop × Afro-house 120 BPM, hook d'un seul mot |
 | `examples/layali.md` | Raï'n'B duo 98 BPM, groove R&B, breakdown vocal |
+| `examples/tant-pis.md` | R&B français banger 98 BPM, voix féminine, sans raï |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
