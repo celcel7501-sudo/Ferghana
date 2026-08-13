@@ -42,9 +42,21 @@ Table complète (Kore, Mehdi, Cut Killer, Scred, Ninho) :
   `formant-shifted harmonies`.
 - **Syntaxe Call & Response dans les paroles** :
   `(Call: ...) Response: [Panoramic Group Vocals: ...]`
+- **Exclusions (negative prompting)** — bloc ajouté **systématiquement** en fin
+  de champ de style :
+  `Exclude: no mumble rap, no low-quality recording, no distorted vocals,
+  avoid messy mix, ensure no audio artifacts, no generic EDM, avoid
+  over-saturated bass.`
+  Coût **157 caractères** : la partie positive doit donc tenir en ~740, pas 900.
+  Adapter la liste au morceau — ne jamais exclure ce que le style demande par
+  ailleurs (`no low-quality recording` contredit `cassette-tape saturation`).
+  Suno expose un champ dédié **Exclude Styles** où ces termes sont plus fiables
+  et **gratuits en budget** : l'y coller quand l'interface le permet, et garder
+  le bloc en fin de prompt comme solution de repli.
 
 Détail du placement, du coût en caractères et des pièges :
-`references/spatialization-and-persistence.md`.
+`references/spatialization-and-persistence.md` et
+`references/negative-prompting.md`.
 
 ## III. Persistance et structure
 
@@ -127,6 +139,7 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 ## Références
 
 - `references/field-limits.md` — limites 1000 / 5000 et méthode de compression.
+- `references/negative-prompting.md` — bloc d'exclusions, coût et placement.
 - `references/spatialization-and-persistence.md` — stéréo, sidechain, talkbox,
   persistance, syntaxe Call & Response.
 - `references/producer-tag-translation.md` — ADN producteur → tags furtifs.
@@ -146,4 +159,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/l-elite.md` | House rap 124 BPM, morceau long en deux clips (Extend) |
 | `examples/one-last-song.md` | Club anthem French house 123 BPM, paroles en anglais |
 | `examples/l-architecte-du-groove.md` | G-Funk smooth 94 BPM, texte fourni par le client |
+| `examples/respire.md` | R&B foley Timbaland 92 BPM, exclusions systématiques |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
