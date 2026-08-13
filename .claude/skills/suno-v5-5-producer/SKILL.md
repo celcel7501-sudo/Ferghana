@@ -164,4 +164,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/fracture.md` | Trap conscient 140 BPM, dispositif journal télévisé |
 | `examples/fractures-ii.md` | Piano-driven rap conscient 84 BPM, version alternative |
 | `examples/fractures-constat.md` | Même production que Fractures II, texte sans résolution |
+| `examples/douniya.md` | Raï-pop dansant 104 BPM, hook de foule, sept textures vocales |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
