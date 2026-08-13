@@ -145,4 +145,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/automatique.md` | Talkbox funk × French house, 121 BPM, protocole Platinum |
 | `examples/l-elite.md` | House rap 124 BPM, morceau long en deux clips (Extend) |
 | `examples/one-last-song.md` | Club anthem French house 123 BPM, paroles en anglais |
+| `examples/l-architecte-du-groove.md` | G-Funk smooth 94 BPM, texte fourni par le client |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
