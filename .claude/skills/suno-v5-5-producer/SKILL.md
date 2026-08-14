@@ -173,4 +173,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/titane.md` | Banger rap FR 92 BPM half-time, trap orchestrale, gang vocals |
 | `examples/cendres.md` | Boom bap cinématographique 95 BPM, prompt de style fourni |
 | `examples/trois-portes.md` | Golden Era 93 BPM, récit à trois destins, basse jazz-fusion |
+| `examples/ca-resonne.md` | Golden Era club 100 BPM, refrain de salle, pont a cappella |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
