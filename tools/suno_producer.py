@@ -38,6 +38,10 @@ ARTIST_DNA = {
     "djimi_finger": "dark melancholic piano-driven, hard-hitting MPC drums, cinematic minor-key strings, deep melodic jazz-fusion bass",
     "secteur_a": "dark melancholic piano-driven, hard-hitting MPC drums, cinematic minor-key strings, deep melodic jazz-fusion bass",
     "scred": "gritty authentic flow, conscious street storytelling, unpolished close-mic vocal",
+    "booba": "dark French trap, deep distorted 808 bass with long pitch glides, melodic autotune vocals, cold cavernous reverb",
+    "le_duc": "dark French trap, deep distorted 808 bass with long pitch glides, melodic autotune vocals, cold cavernous reverb",
+    "rohff": "conscious French rap, dramatic minor-key piano, soulful orchestral strings, raw unpolished delivery",
+    "le_padre": "conscious French rap, dramatic minor-key piano, soulful orchestral strings, raw unpolished delivery",
 }
 
 TRANSITIONS = {

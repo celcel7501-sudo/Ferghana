@@ -56,3 +56,32 @@ n'est pas disponible (API, certaines vues mobiles, presets partagés).
    un morceau boom bap volontairement poussiéreux, retirer
    `no low-quality recording` — sinon on demande au modèle d'être sale et propre
    en même temps.
+
+---
+
+## Conflits connus par ADN
+
+Le bloc standard a été écrit pour du club propre. Certains ADN le contredisent
+frontalement : la contradiction doit être résolue **avant** la génération, pas
+constatée après.
+
+| ADN | Tag du bloc en conflit | Ce qu'il contredit | Remplacement |
+|---|---|---|---|
+| **Booba / Le Duc** | `avoid over-saturated bass` | `deep distorted 808 bass` | `no cluttered low end` |
+| **Booba / Le Duc** | `no distorted vocals` | `melodic autotune vocals` | `no mumble rap, crisp diction` |
+| **Rohff / Le Padre** | `no low-quality recording` | `raw unpolished delivery` | `polished cinematic master` |
+| **Cut Killer** | `no low-quality recording` | `cassette-tape saturation`, `vinyl crackle` | `polished radio master` |
+| **Djimi Finger** | *(aucun)* | — | ajouter `no autotune`, possible seulement sans hook chanté |
+| **Brandy / New Jack** | `no autotune` (si ajouté) | `stacked R&B harmonies` | ne jamais l'ajouter ici |
+
+**Cas Booba, en détail.** Deux des sept tags du bloc standard sont inutilisables
+sur cet ADN. La 808 saturée **est** le morceau : lui opposer
+`avoid over-saturated bass` revient à demander au modèle de produire et
+d'annuler le même son. Bloc corrigé pour un morceau trap sombre :
+
+```
+Exclude: no mumble rap, no cluttered low end, avoid messy mix, no audio artifacts, no generic EDM, avoid thin sounds, no boom bap.
+```
+
+128 caractères au lieu de 157, et zéro contradiction. Le nombre d'exclusions
+reste le même — on ne réduit pas la liste, on la rend cohérente.

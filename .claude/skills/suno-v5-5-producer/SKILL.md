@@ -17,6 +17,8 @@ instantanés.
 | **Cut Killer / Kore** | Science du mix, scratch technique, énergie mixtape, sens du tube |
 | **Djimi Finger** | Architecture Golden Era : piano sombre, cordes, basse jazz-fusion |
 | **Brandy / Ninho** | Structures vocales : harmonies empilées, runs R&B, hooks mémorables |
+| **Booba (Le Duc)** | Trap sombre : 808 saturée, autotune mélodique, réverbération froide |
+| **Rohff (Le Padre)** | Rap conscient : piano dramatique, cordes orchestrales, delivery brut |
 
 ## I. Ingénierie sonore furtive (anti-censure)
 
@@ -30,8 +32,10 @@ génération. On traduit l'ADN en tags techniques :
 | **Djimi Finger / Secteur Ä** | `dark melancholic piano-driven`, `hard-hitting MPC drums`, `cinematic minor-key strings`, `deep melodic jazz-fusion bass` |
 | **Brandy** | `lush multi-layered vocal harmonies`, `complex R&B vocal runs`, `wide stereo field` |
 | **Doc Gynéco** | `nonchalant poetic urban delivery`, `melodic slacker flow` |
+| **Booba / Le Duc** | `dark French trap`, `deep distorted 808 bass with long pitch glides`, `melodic autotune vocals`, `cold cavernous reverb` |
+| **Rohff / Le Padre** | `conscious French rap`, `dramatic minor-key piano`, `soulful orchestral strings`, `raw unpolished delivery` |
 
-Table complète (Kore, Mehdi, Cut Killer, Scred, Ninho, Secteur Ä) :
+Table complète (Kore, Mehdi, Cut Killer, Scred, Ninho, Secteur Ä, Teddy Riley) :
 `references/producer-tag-translation.md`.
 
 ## II. Maîtrise du mixage et de la synthèse
