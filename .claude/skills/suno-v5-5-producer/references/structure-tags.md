@@ -54,6 +54,7 @@ caractères occupée par le refrain** face aux couplets. Mesuré sur le catalogu
 
 | Morceau | Registre | Hook | Couplets | Ratio |
 |---|---|---|---|---|
+| `chacun-son-tour.md` | posse cut, trois MC | 1516 | 2342 | **0,65** |
 | `le-prix.md` | rap conscient | 1844 | 2009 | **0,92** |
 | `trois-portes.md` | récit | 2253 | 1714 | **1,31** |
 | `doucement.md` | groove chaud | 2515 | 1541 | **1,63** |
@@ -62,6 +63,8 @@ caractères occupée par le refrain** face aux couplets. Mesuré sur le catalogu
 **Comment s'en servir.** Le ratio se décide au moment du brief, pas à la
 relecture :
 
+- **Sous 0,8** — format collectif ou récit long : trois couplets pour un seul
+  refrain. Le hook n'est plus l'argument du morceau, c'est sa respiration.
 - **Autour de 1** — le texte porte le morceau. Couplets de seize mesures,
   refrain de quatre lignes, deux occurrences plus une finale. Registre
   conscient, récit, morceau d'album.

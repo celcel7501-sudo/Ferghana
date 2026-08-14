@@ -177,4 +177,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/doucement.md` | Amapiano/afrobeats FR 112 BPM, log drum persistant |
 | `examples/chaleur.md` | Club commercial dembow 96 BPM, ratio hook 2,82 |
 | `examples/plus-fort.md` | French house dur 128 BPM, riff saturé persistant |
+| `examples/chacun-son-tour.md` | Posse cut Golden Era 96 BPM, trois MC, ratio 0,65 |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
