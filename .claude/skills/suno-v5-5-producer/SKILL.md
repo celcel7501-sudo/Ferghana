@@ -187,3 +187,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/elle-assure-grave.md` | Duo rap/R&B old school 93 BPM, texte fourni, ratio hook 2,89 |
 | `examples/ca-repart.md` | Duo rap/R&B old school 104 BPM, refrain interrogatif, pont half-time |
 | `examples/cage-d-escalier.md` | Golden Era sombre 90 BPM droit, refrain scandé à l'unisson, ratio 1,11 |
+| `examples/sang-froid.md` | 88 BPM, deux ADN opposés en un clip, refrain rejoué à froid |
