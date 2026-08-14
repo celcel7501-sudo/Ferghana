@@ -180,3 +180,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/chacun-son-tour.md` | Posse cut Golden Era 96 BPM, trois MC, ratio 0,65 |
 | `examples/ca-swingue.md` | New Jack Swing 116 BPM, shuffle dur, hit d'orchestre |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
+| `examples/elle-assure-grave.md` | Duo rap/R&B old school 93 BPM, texte fourni, ratio hook 2,89 |
