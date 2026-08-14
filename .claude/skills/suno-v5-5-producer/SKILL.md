@@ -181,3 +181,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/ca-swingue.md` | New Jack Swing 116 BPM, shuffle dur, hit d'orchestre |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
 | `examples/elle-assure-grave.md` | Duo rap/R&B old school 93 BPM, texte fourni, ratio hook 2,89 |
+| `examples/ca-repart.md` | Duo rap/R&B old school 104 BPM, refrain interrogatif, pont half-time |
