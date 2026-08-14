@@ -176,4 +176,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/ca-resonne.md` | Golden Era club 100 BPM, refrain de salle, pont a cappella |
 | `examples/doucement.md` | Amapiano/afrobeats FR 112 BPM, log drum persistant |
 | `examples/chaleur.md` | Club commercial dembow 96 BPM, ratio hook 2,82 |
+| `examples/plus-fort.md` | French house dur 128 BPM, riff saturé persistant |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |

@@ -75,3 +75,23 @@ Corollaire utile : un morceau club qui déborde des 5000 caractères est presque
 toujours un morceau dont les couplets sont trop longs pour son registre. Avant
 de couper dans les balises, vérifier le ratio — s'il est sous 2, le problème
 n'est pas la mise en forme, c'est la structure.
+
+### Limite de la mesure
+
+**Au-delà d'environ 4, le ratio sature et ne dit plus rien.** Sur
+`plus-fort.md`, il sort à 15,8 — non parce que le refrain est énorme, mais
+parce que les couplets ont presque disparu : **134 caractères au total**, deux
+blocs de quatre lignes scandées au vocoder. Une division par un nombre proche
+de zéro produit un grand nombre, pas une information.
+
+Passé ce seuil, la grandeur utile est le **volume absolu de couplet** :
+
+| Volume de couplet | Ce que c'est |
+|---|---|
+| 1500 à 2000 caractères | Le texte porte le morceau |
+| 900 à 1500 | Registre club, couplets courts mais écrits |
+| Moins de 300 | Le couplet n'est plus un couplet : c'est un interlude scandé |
+
+Sous 300 caractères, on n'écrit plus des couplets, on écrit des **slogans entre
+deux drops** — c'est un choix légitime pour l'électro dure, et il faut l'assumer
+comme tel plutôt que de croire qu'on a écrit un morceau très efficace.
