@@ -43,3 +43,35 @@ d'arrangement]`.
 - **Le refrain doit être identique à l'écrit** entre les occurrences : c'est ce
   qui déclenche la mémoire mélodique du modèle. Les variations passent par les
   ad-libs, pas par le texte.
+
+
+---
+
+## L'indice commercial : le ratio hook / couplets
+
+Ce qui rend un morceau « commercial » n'est pas son sujet, c'est la **part de
+caractères occupée par le refrain** face aux couplets. Mesuré sur le catalogue :
+
+| Morceau | Registre | Hook | Couplets | Ratio |
+|---|---|---|---|---|
+| `le-prix.md` | rap conscient | 1844 | 2009 | **0,92** |
+| `trois-portes.md` | récit | 2253 | 1714 | **1,31** |
+| `doucement.md` | groove chaud | 2515 | 1541 | **1,63** |
+| `chaleur.md` | club commercial | 2676 | 950 | **2,82** |
+
+**Comment s'en servir.** Le ratio se décide au moment du brief, pas à la
+relecture :
+
+- **Autour de 1** — le texte porte le morceau. Couplets de seize mesures,
+  refrain de quatre lignes, deux occurrences plus une finale. Registre
+  conscient, récit, morceau d'album.
+- **Autour de 1,5** — équilibre. Le refrain se retient, les couplets tiennent
+  encore un propos. La plupart des morceaux du dossier.
+- **Au-delà de 2,5** — club et radio. Couplets de huit à dix lignes, refrain de
+  quatre lignes répété trois fois, post-refrain répété quatre fois ou plus. Le
+  texte n'a pas besoin d'être pauvre : il doit être **court**.
+
+Corollaire utile : un morceau club qui déborde des 5000 caractères est presque
+toujours un morceau dont les couplets sont trop longs pour son registre. Avant
+de couper dans les balises, vérifier le ratio — s'il est sous 2, le problème
+n'est pas la mise en forme, c'est la structure.
