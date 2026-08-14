@@ -49,6 +49,19 @@ Chaque réponse suit le même format en quatre temps :
     └── neons-sur-le-bitume.md            # mid-tempo nonchalant
 ```
 
+## Procédure imprimable
+
+La procédure complète du studio — les huit étapes, de la lecture du brief au
+collage dans Suno, plus la checklist de livraison — est générée en PDF :
+
+```
+python3 tools/make_procedure_pdf.py     # → docs/procedure-suno-v5-5.pdf
+```
+
+Le PDF est la version imprimable du protocole ; en cas de divergence, le
+contenu de `.claude/skills/suno-v5-5-producer/` fait foi. Régénérer après toute
+modification du protocole.
+
 ## Limites Suno (contraintes dures)
 
 | Champ | Limite | Cible |
