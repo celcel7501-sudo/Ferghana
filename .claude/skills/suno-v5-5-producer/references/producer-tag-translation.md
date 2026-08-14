@@ -16,6 +16,7 @@ ou aseptiser la génération. On ne cite jamais. On **décrit le geste sonore**.
 | **Daft Punk / French Touch** | `filtered French house`, `heavy sidechain pumping`, `rhythmic talkbox vocals`, `crystalline vocoder lead`, `resonant low-pass filter sweeps` |
 | **Doc Gynéco** | `nonchalant poetic urban delivery`, `melodic slacker flow`, `spoken-sung close-mic vocal` |
 | **Djimi Finger / Secteur Ä** — architecture Golden Era | `dark melancholic piano-driven`, `hard-hitting MPC drums`, `cinematic minor-key strings`, `deep melodic jazz-fusion bass with fretless slides`, `dark brass stabs` |
+| **Teddy Riley / New Jack Swing** | `hard swung 16th shuffle`, `big gated reverb snare`, `orchestral hit stabs`, `slap bass line`, `stabby brass hits`, `stacked gospel-tinged R&B harmonies` |
 | **Structure RnB Brandy** | `lush stacked R&B harmonies`, `layered vocal arrangement`, `call-and-response backing vocals`, `whispered harmony bed`, `complex R&B vocal runs`, `panoramic vocal layering` |
 
 ## Méthode
