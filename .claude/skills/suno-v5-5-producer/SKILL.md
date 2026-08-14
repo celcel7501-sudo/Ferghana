@@ -174,4 +174,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/cendres.md` | Boom bap cinématographique 95 BPM, prompt de style fourni |
 | `examples/trois-portes.md` | Golden Era 93 BPM, récit à trois destins, basse jazz-fusion |
 | `examples/ca-resonne.md` | Golden Era club 100 BPM, refrain de salle, pont a cappella |
+| `examples/doucement.md` | Amapiano/afrobeats FR 112 BPM, log drum persistant |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |
