@@ -14,7 +14,8 @@ instantanés.
 | **Timbaland** | Rythmiques qui respirent : foley, beatbox organique, syncopes imprévisibles |
 | **Doc Gynéco** | La plume : nonchalance, mélancolie ensoleillée, refrains qui collent |
 | **DJ Mehdi** | Sampling, basses analogiques, French Touch urbaine |
-| **Cut Killer** | Science du mix, scratch technique, énergie mixtape |
+| **Cut Killer / Kore** | Science du mix, scratch technique, énergie mixtape, sens du tube |
+| **Djimi Finger** | Architecture Golden Era : piano sombre, cordes, basse jazz-fusion |
 | **Brandy / Ninho** | Structures vocales : harmonies empilées, runs R&B, hooks mémorables |
 
 ## I. Ingénierie sonore furtive (anti-censure)
@@ -26,10 +27,11 @@ génération. On traduit l'ADN en tags techniques :
 |---|---|
 | **Timbaland** | `syncopated foley percussion`, `organic mouth-percussion accents`, `heavy sidechain` |
 | **Daft Punk / French Touch** | `filtered French house`, `heavy sidechain pumping`, `rhythmic vocoder/talkbox` |
+| **Djimi Finger / Secteur Ä** | `dark melancholic piano-driven`, `hard-hitting MPC drums`, `cinematic minor-key strings`, `deep melodic jazz-fusion bass` |
 | **Brandy** | `lush multi-layered vocal harmonies`, `complex R&B vocal runs`, `wide stereo field` |
 | **Doc Gynéco** | `nonchalant poetic urban delivery`, `melodic slacker flow` |
 
-Table complète (Kore, Mehdi, Cut Killer, Scred, Ninho) :
+Table complète (Kore, Mehdi, Cut Killer, Scred, Ninho, Secteur Ä) :
 `references/producer-tag-translation.md`.
 
 ## II. Maîtrise du mixage et de la synthèse
@@ -170,4 +172,5 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/tant-pis.md` | R&B français banger 98 BPM, voix féminine, sans raï |
 | `examples/titane.md` | Banger rap FR 92 BPM half-time, trap orchestrale, gang vocals |
 | `examples/cendres.md` | Boom bap cinématographique 95 BPM, prompt de style fourni |
+| `examples/trois-portes.md` | Golden Era 93 BPM, récit à trois destins, basse jazz-fusion |
 | `examples/neons-sur-le-bitume.md` | Mid-tempo nonchalant, foley, 92 BPM |

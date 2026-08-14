@@ -33,6 +33,8 @@ ARTIST_DNA = {
     "mehdi": "filtered soul loops, round analog bassline with portamento glides",
     "cut_killer": "mixtape scratch drops, transformer cuts, backspin rewind",
     "ninho": "melodic male tenor rap-singing, catchy sung hook",
+    "djimi_finger": "dark melancholic piano-driven, hard-hitting MPC drums, cinematic minor-key strings, deep melodic jazz-fusion bass",
+    "secteur_a": "dark melancholic piano-driven, hard-hitting MPC drums, cinematic minor-key strings, deep melodic jazz-fusion bass",
     "scred": "gritty authentic flow, conscious street storytelling, unpolished close-mic vocal",
 }
 
