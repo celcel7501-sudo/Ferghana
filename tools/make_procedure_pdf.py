@@ -471,6 +471,10 @@ def main(argv):
         leftMargin=20 * mm, rightMargin=20 * mm,
         topMargin=18 * mm, bottomMargin=22 * mm,
         title=TITRE, author="Studio Ferghana", subject=SOUS_TITRE,
+        # Build reproductible : sans cela ReportLab tamponne un horodatage et un
+        # identifiant uniques a chaque execution, et le PDF apparait modifie
+        # dans git alors que son contenu est identique au caractere pres.
+        invariant=1,
     )
     doc.build(contenu(), onFirstPage=pied_de_page, onLaterPages=pied_de_page)
     print("PDF écrit :", sortie)
