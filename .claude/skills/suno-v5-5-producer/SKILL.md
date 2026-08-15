@@ -192,3 +192,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/les-racines-du-ciel.md` | 92 BPM, couplets Secteur Ä, refrain Brandy en relative majeure |
 | `examples/jusqu-au-jour.md` | Club commercial 126 BPM en deux clips, clip 2 = section DJ |
 | `examples/la-machine.md` | Afro-club rapide 130 BPM, guitares sebene, climax sans drop |
+| `examples/a-contretemps.md` | Club R&B 2-step 134 BPM, topline en half-time, pas de four-on-the-floor |
