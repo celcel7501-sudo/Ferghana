@@ -189,3 +189,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/cage-d-escalier.md` | Golden Era sombre 90 BPM droit, refrain scandé à l'unisson, ratio 1,11 |
 | `examples/sang-froid.md` | 88 BPM, deux ADN opposés en un clip, refrain rejoué à froid |
 | `examples/marbre.md` | Trap froide 74 BPM, morceau construit sur le vide, marge assumée |
+| `examples/les-racines-du-ciel.md` | 92 BPM, couplets Secteur Ä, refrain Brandy en relative majeure |
