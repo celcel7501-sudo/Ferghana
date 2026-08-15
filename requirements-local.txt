@@ -1,0 +1,9 @@
+# Local backend (MUSIC3_BACKEND=local): runs the weights in-process on a CUDA GPU.
+# The MiniMax-Music3 modular pipeline is not in a tagged diffusers release yet,
+# so diffusers has to come from main.
+torch
+transformers
+soundfile
+accelerate
+git+https://github.com/huggingface/diffusers
+requests>=2.31.0

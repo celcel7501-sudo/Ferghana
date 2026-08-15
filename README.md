@@ -13,57 +13,95 @@ short_description: Generate complete songs with MiniMax-Music3
 # MiniMax-Music3 demo
 
 A Gradio demo for [MiniMaxAI/MiniMax-Music3](https://huggingface.co/MiniMaxAI/MiniMax-Music3),
-an open-weights text-to-music model that generates complete songs — vocals, arrangement and
-production — in a single pass. Output is 32 kHz stereo, up to about five minutes.
+an open-weights model that generates complete songs — vocals, arrangement and production —
+from lyrics plus a music description.
 
-You give it two things:
+An 8B Qwen3 autoregressive stage predicts one semantic audio token per frame while a depth
+decoder fills seven residual RVQ codebooks; their fused hidden states condition a 2.4B
+flow-matching transformer that produces Flow-VAE latents in overlapping chunks, and a
+DAC-style vocoder decodes them to 44.1 kHz stereo.
 
-- **Lyrics**, optionally with section tags (`[Verse]`, `[Chorus]`, `[Bridge]`, `[Intro]`)
-  that shape the song's structure.
-- **Style instructions**, a free-text description like
-  `A warm acoustic pop song, brushed drums, close female vocal, 92 BPM`.
+## Writing good input
 
-## Architecture
+Two rules carry most of the quality:
 
-This Space is a **client**, not a host. MiniMax-Music3 is ~11B parameters, the repo is
-around 57 GB, and the reference implementation splits inference across two CUDA GPUs, so
-running the weights inside a small Space is not realistic. Instead the app talks to an
-SGLang-Omni server over its OpenAI-compatible `/v1/audio/speech` endpoint:
+- **Structure tags each need their own line.** `[intro]`, `[verse]`, `[pre-chorus]`,
+  `[chorus]`, `[bridge]`, `[instrumental]`, `[solo]`, `[outro]`. Text on the same line as a
+  leading tag is dropped by the model's input contract.
+- **Name the vocal explicitly** in the description (e.g. "warm female vocal") or the model
+  may drift instrumental.
+
+For fine-grained control, structure the description as global metadata (genre, BPM, key,
+emotional progression), then vocal details, then arrangement:
 
 ```
-Gradio (this Space)  ──POST /v1/audio/speech──▶  sgl-omni serving MiniMax-Music3
-                     ◀────── 32 kHz WAV ───────
+Genre: acoustic pop. BPM: 92. Key: G major. Warm and intimate, blooming into the chorus.
+Vocals: soft female lead, close and breathy, light harmonies in the chorus.
+Arrangement: fingerpicked guitar and upright bass; brushed drums enter at the chorus.
 ```
 
-That keeps the Space on CPU-basic hardware and lets the weights live wherever you have the
-GPUs — your own machine, a dedicated server, or an HF Inference Endpoint.
+## Two backends
 
-## Running the backend
+Select with `MUSIC3_BACKEND`.
+
+### `server` (default)
+
+Posts to an SGLang-Omni server over its OpenAI-compatible `/v1/audio/speech` endpoint. The
+Space stays on CPU hardware and the weights live wherever you have GPUs.
 
 ```bash
 hf download MiniMaxAI/MiniMax-Music3 --local-dir ./minimax_ttm
 sgl-omni serve --model-path MiniMaxAI/MiniMax-Music3 --port 8000
 ```
 
-GPU 0 runs Qwen3 and the eight-codebook RVQ autoregressive generation; GPU 1 runs Flow
-Matching and DAV waveform decoding. The model card lists 24 GB+ of VRAM at full precision,
-about 22 GB with CPU offloading, and a path down to 8 GB with layer-by-layer streaming.
+GPU 0 runs Qwen3 and the RVQ generation; GPU 1 runs flow matching and waveform decoding.
+This path returns **32 kHz** — the reference server resamples the vocoder output.
 
-Verify it directly before pointing the Space at it:
+### `local`
 
-```bash
-curl http://127.0.0.1:8000/v1/audio/speech \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "model": "minimax_ttm",
-    "input": "[Verse]\nMorning light...\n[Chorus]\nSoftly the world...",
-    "instructions": "A warm acoustic pop song...",
-    "response_format": "wav",
-    "seed": 7,
-    "max_new_tokens": 9000,
-    "stream": false
-  }' --output song.wav
+Loads the weights in-process through the diffusers modular pipeline and returns the
+vocoder's native **44.1 kHz** stereo. Needs a CUDA GPU and
+`pip install -r requirements-local.txt`.
+
+The pipeline is not in a tagged diffusers release yet, so diffusers must come from `main`.
+
+| | VRAM |
+| --- | --- |
+| Full pipeline, bfloat16 | ~23 GB |
+| With automatic CPU offloading | ~22 GB |
+| Additionally group-offloading the language model | ~8 GB |
+
+The reference usage, for running it outside this Space:
+
+```py
+import soundfile as sf
+import torch
+from diffusers import ModularPipeline
+
+pipe = ModularPipeline.from_pretrained("MiniMaxAI/MiniMax-Music3")
+pipe.load_components(dtype=torch.bfloat16)
+pipe.to("cuda")
+
+lyrics = """[verse]
+Morning light filtering through the pine
+[chorus]
+Softly the world begins to breathe"""
+
+audio = pipe(
+    prompt="Genre: acoustic pop. BPM: 96. Vocals: soft female lead, close and breathy.",
+    lyrics=lyrics,
+    audio_duration=60.0,
+    generator=torch.Generator("cuda").manual_seed(7),
+    output="audios",
+)[0]
+
+sf.write("minimax_music3.wav", audio.T, pipe.sampling_rate)
 ```
+
+Note the shape of this API: it is `ModularPipeline`, not `DiffusionPipeline`; the output is
+selected with `output="audios"` and is a waveform of shape `(channels, samples)`, not
+`.images[0]`; and `prompt` is the *music description* while the words to sing go in the
+separate `lyrics` argument.
 
 ## Configuration
 
@@ -71,21 +109,27 @@ Set these as Space variables (or secrets, for the key):
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `MUSIC3_BASE_URL` | `http://127.0.0.1:8000/v1` | Base URL of the SGLang-Omni server |
+| `MUSIC3_BACKEND` | `server` | `server` or `local` |
+| `MUSIC3_BASE_URL` | `http://127.0.0.1:8000/v1` | SGLang-Omni base URL (server backend) |
 | `MUSIC3_API_KEY` | *(empty)* | Sent as `Authorization: Bearer …` if set |
 | `MUSIC3_MODEL` | `minimax_ttm` | Model name the server serves |
 | `MUSIC3_TIMEOUT` | `900` | Request timeout in seconds |
+| `MUSIC3_REPO` | `MiniMaxAI/MiniMax-Music3` | Repo id (local backend) |
 
-The app shows a connection banner at the top and has a **Test connection** button under
-the *Backend* accordion, so a misconfigured URL is obvious rather than silent.
+The app shows a status banner at the top and a **Test connection** button under the
+*Backend* accordion, so a misconfigured setup is obvious rather than silent.
 
 ## Generation parameters
 
-- **Length** — the slider maps to `max_new_tokens` at roughly 30 acoustic frames per
-  second. The documented ceiling is 9000 frames, about five minutes.
-- **Seed** — fixed for reproducible results, or randomized per run.
-- The server caps the tokenized prompt at 5000 tokens; the app guards against
-  obviously oversized prompts before sending.
+- **Length** is an upper bound, not a target — the language model may end the song earlier
+  with a stop token. The autoregressive stage runs at **25 frames per second** and is capped
+  at 9000 frames, so the slider tops out at 360 s. On the server backend the slider maps to
+  `max_new_tokens`; on the local backend it maps to `audio_duration`.
+- **Seed** is fixed for reproducible results, or randomized per run.
+- **Flow-matching steps** (default 30) and **guidance scale** (reference value 1.7) apply to
+  the local backend only; the server exposes neither.
+- The tokenized prompt is capped at 5000 tokens; the app guards against obviously oversized
+  input before sending.
 
 ## Local development
 
