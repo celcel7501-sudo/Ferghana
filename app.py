@@ -209,32 +209,109 @@ def generate(lyrics, instructions, duration, seed, randomize_seed, steps, guidan
     return path, seed, f"Generated **{_describe(path)}** — seed `{seed}`."
 
 
+CAPTION_SKELETON = """Global Metadata
+Basic Attributes: bpm is 92. key is G, and scale is major. Acoustic Pop.
+Global Emotional Progression:
+Sonics & Production Profile:
+Vocal Details
+Vocal Gender & Timbre:
+Vocal Style:
+Harmony/Backing Vocals:
+Arrangement
+Instrument Lifecycle Description (Primary/Secondary Layering):
+Primary:
+Secondary:
+Groove & Foundation Progression:
+Embellishments, Textures & Spatial FX:"""
+
 EXAMPLES = [
     [
         "[verse]\nMorning light on the kitchen floor\nCoffee going cold beside the door\n"
         "I keep the radio low\nSo the quiet has somewhere to go\n"
         "[chorus]\nSoftly the world wakes up without me\nSoftly, and I let it be",
-        "Genre: acoustic pop. BPM: 92. Key: G major. Warm and intimate, opening sparse and blooming into "
-        "the chorus. Vocals: soft female lead, close and breathy, light harmonies in the chorus. "
-        "Arrangement: fingerpicked guitar and upright bass; brushed drums enter at the chorus.",
+        "Global Metadata\n"
+        "Basic Attributes: bpm is 92. key is G, and scale is major. Acoustic Pop / Singer-Songwriter.\n"
+        "Global Emotional Progression: Opens hushed and unhurried, a private morning stillness. The chorus "
+        "widens into warm resignation rather than release, and the final chorus settles back down into "
+        "acceptance without ever raising its voice.\n"
+        "Sonics & Production Profile: Clean and organic, favouring the natural timbre of wood and string. "
+        "Moderately wide soundstage with the vocal centred and close; warm mid-focused balance, gentle "
+        "dynamics, no aggressive compression.\n"
+        "Vocal Details\n"
+        "Vocal Gender & Timbre: Female lead, soft and breathy, with a light rasp on sustained notes.\n"
+        "Vocal Style: Conversational and near-spoken in the verses, phrasing just behind the beat. The "
+        "chorus lifts into sustained legato lines without added force.\n"
+        "Harmony/Backing Vocals: Quiet thirds double the lead through the chorus only, mixed well under "
+        "the lead to thicken rather than announce themselves.\n"
+        "Arrangement\n"
+        "Instrument Lifecycle Description (Primary/Secondary Layering):\n"
+        "Primary: Fingerpicked steel-string acoustic guitar carries harmony and pulse from intro to outro, "
+        "opening into loose strums at the chorus.\n"
+        "Secondary: Upright bass enters at the end of the first verse; brushed drums join at the chorus and "
+        "drop out for the final verse.\n"
+        "Groove & Foundation Progression: Laid-back and lightly swung, driven by the guitar's picking hand. "
+        "Energy lifts once at the chorus through bass movement and brushwork, then recedes.\n"
+        "Embellishments, Textures & Spatial FX: Occasional guitar fills answer the vocal between phrases. "
+        "A faint pad warms the second chorus without becoming audible as a synth.",
         45,
     ],
     [
         "[intro]\n[verse]\nNeon on the overpass, engine running low\n"
         "Every exit looks the same at four in the morning glow\n"
         "[chorus]\nDrive until the signal drops\nDrive until the city stops",
-        "Genre: synthwave. BPM: 110. Key: A minor. Driving and cinematic, relentless forward motion. "
-        "Vocals: male lead, breathy and reverb-soaked, doubled in the chorus. "
-        "Arrangement: analog bass arpeggio, gated reverb drums, wide pad layers, tape delay on the vocal.",
+        "Global Metadata\n"
+        "Basic Attributes: bpm is 110. key is A, and scale is minor. Synthwave / Cinematic Electronic.\n"
+        "Global Emotional Progression: Begins suspended and weightless, then locks into relentless forward "
+        "motion at the first verse. The chorus opens the horizon wide; the outro thins back to the opening "
+        "pulse, unresolved.\n"
+        "Sonics & Production Profile: Analog-leaning and deliberately hazy, with saturated tape colour on "
+        "the top end. Very wide stereo field, deep reverb tails, strong low-mid weight.\n"
+        "Vocal Details\n"
+        "Vocal Gender & Timbre: Male lead, breathy and mid-register, sitting slightly back in the mix.\n"
+        "Vocal Style: Restrained and steady in the verses, almost deadpan. The chorus doubles the line an "
+        "octave up and lets it stretch across the bar.\n"
+        "Harmony/Backing Vocals: Wide unison doubles in the chorus only, panned hard and drenched in the "
+        "same plate as the lead.\n"
+        "Arrangement\n"
+        "Instrument Lifecycle Description (Primary/Secondary Layering):\n"
+        "Primary: Analog bass arpeggio runs unbroken from the intro, driving the whole track and dropping "
+        "only for the final bar.\n"
+        "Secondary: Gated-reverb drums enter at the verse; wide pad layers bloom at the chorus; a single "
+        "lead synth line answers the vocal from the second chorus onward.\n"
+        "Groove & Foundation Progression: Straight, machine-locked and insistent, with the arpeggio "
+        "supplying all forward motion. The chorus adds weight rather than speed.\n"
+        "Embellishments, Textures & Spatial FX: Tape delay throws on the ends of vocal phrases. Filtered "
+        "noise sweeps mark each section transition.",
         60,
     ],
     [
         "[verse]\nI counted every stair up to your door\nSaid I wouldn't come back anymore\n"
         "[bridge]\nBut the lock still knows my hand\n"
         "[chorus]\nSome doors don't forget you\nSome doors never do",
-        "Genre: soul ballad. BPM: 68. Key: E-flat major. Aching and patient, swelling in the final chorus. "
-        "Vocals: rich female lead with gospel phrasing, stacked backing vocals in the chorus. "
-        "Arrangement: Rhodes piano, upright bass, soft kit with rimshots, restrained string pad.",
+        "Global Metadata\n"
+        "Basic Attributes: bpm is 68. key is E-flat, and scale is major. Soul Ballad / Gospel-Inflected.\n"
+        "Global Emotional Progression: Aching and patient from the first bar, holding back deliberately "
+        "through the verses. The bridge cracks the restraint open and the final chorus arrives full and "
+        "unguarded.\n"
+        "Sonics & Production Profile: Warm, roomy and analog, with audible air around the kit. Natural "
+        "dynamics preserved so the final chorus genuinely lands louder than the first.\n"
+        "Vocal Details\n"
+        "Vocal Gender & Timbre: Female lead, rich and full-bodied, with gospel phrasing and a controlled "
+        "break at the top of the register.\n"
+        "Vocal Style: Restrained and behind the beat in the verses, opening into melisma and sustained "
+        "belted lines by the final chorus.\n"
+        "Harmony/Backing Vocals: Stacked four-part backing vocals answer the lead in the chorus and carry "
+        "the bridge almost alone.\n"
+        "Arrangement\n"
+        "Instrument Lifecycle Description (Primary/Secondary Layering):\n"
+        "Primary: Rhodes piano holds the harmony throughout, sparse in the verses and fuller in the "
+        "choruses.\n"
+        "Secondary: Upright bass and a soft kit with rimshots enter at the first chorus; a restrained "
+        "string pad joins for the bridge and stays to the end.\n"
+        "Groove & Foundation Progression: Slow, deep and unhurried, with the kit playing well behind the "
+        "beat. Energy builds by accumulation rather than tempo.\n"
+        "Embellishments, Textures & Spatial FX: Rhodes fills answer vocal phrases in the verses. Plate "
+        "reverb on the backing stack widens the chorus against the dry, close lead.",
         50,
     ],
 ]
@@ -249,9 +326,11 @@ with gr.Blocks(title="MiniMax-Music3") as demo:
         an open-weights model that pairs an 8B Qwen3 autoregressive stage with a 2.4B
         flow-matching transformer and a DAC-style vocoder.
 
-        Write the **lyrics** and describe the **music**. Two rules carry most of the quality:
-        structure tags (`[verse]`, `[chorus]`, `[bridge]`) each need their own line, and the
-        description should name the vocal explicitly or the model may drift instrumental.
+        Write the **lyrics** and describe the **music**. Three rules carry most of the quality:
+        structure tags (`[verse]`, `[chorus]`, `[bridge]`) each need their own line; the
+        description should name the vocal explicitly or the model may drift instrumental; and
+        the description works best as a **structured caption** — `Global Metadata`,
+        `Vocal Details`, `Arrangement`, roughly 250–450 words. Load an example to see the shape.
         """
     )
 
@@ -265,14 +344,11 @@ with gr.Blocks(title="MiniMax-Music3") as demo:
                 lines=12,
             )
             instructions = gr.Textbox(
-                label="Music description",
-                placeholder=(
-                    "Genre: acoustic pop. BPM: 92. Key: G major. Warm and intimate. "
-                    "Vocals: soft female lead, close and breathy. "
-                    "Arrangement: fingerpicked guitar, upright bass, brushed drums."
-                ),
-                lines=4,
+                label="Music description (structured caption)",
+                placeholder=CAPTION_SKELETON,
+                lines=14,
             )
+            skeleton_button = gr.Button("Insert caption skeleton", size="sm")
 
         with gr.Column(scale=2):
             duration = gr.Slider(
@@ -327,6 +403,8 @@ with gr.Blocks(title="MiniMax-Music3") as demo:
         )
         refresh = gr.Button("Test connection")
         refresh.click(fn=backend_status, outputs=status)
+
+    skeleton_button.click(fn=lambda: CAPTION_SKELETON, outputs=instructions)
 
     generate_button.click(
         fn=generate,

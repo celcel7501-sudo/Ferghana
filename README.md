@@ -31,14 +31,40 @@ Two rules carry most of the quality:
 - **Name the vocal explicitly** in the description (e.g. "warm female vocal") or the model
   may drift instrumental.
 
-For fine-grained control, structure the description as global metadata (genre, BPM, key,
-emotional progression), then vocal details, then arrangement:
+### The structured caption
+
+The description is not a one-liner. MiniMax ships a `music-caption-rewriter` agent skill in
+[its GitHub repo](https://github.com/MiniMax-AI/MiniMax-Music3/tree/main/skills), whose output
+contract is the format the model was built around: exactly three top-level sections, roughly
+250–450 words, no title and no lyric text.
 
 ```
-Genre: acoustic pop. BPM: 92. Key: G major. Warm and intimate, blooming into the chorus.
-Vocals: soft female lead, close and breathy, light harmonies in the chorus.
-Arrangement: fingerpicked guitar and upright bass; brushed drums enter at the chorus.
+Global Metadata
+Basic Attributes: bpm is 92. key is G, and scale is major. Acoustic Pop.
+Global Emotional Progression: …
+Sonics & Production Profile: …
+Vocal Details
+Vocal Gender & Timbre: …
+Vocal Style: …
+Harmony/Backing Vocals: …
+Arrangement
+Instrument Lifecycle Description (Primary/Secondary Layering):
+Primary: …
+Secondary: …
+Groove & Foundation Progression: …
+Embellishments, Textures & Spatial FX: …
 ```
+
+The **Insert caption skeleton** button in the app fills this in, and each bundled example is a
+complete caption in the format. Guidance worth knowing from the skill's contract:
+
+- Describe concrete musical changes over sections — what enters, exits, and intensifies —
+  rather than listing gear or stacking production adjectives.
+- Give an exact BPM or key only when you actually mean it; a range or a qualitative tempo is
+  better than a fabricated number.
+- Don't put lyric text, a song title, or a track ID in the caption.
+- The skill ships 1000 reference captions across 20 genre families if you want worked examples
+  of the format.
 
 ## Two backends
 
