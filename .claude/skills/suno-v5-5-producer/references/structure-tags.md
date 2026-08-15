@@ -146,3 +146,31 @@ pas le BPM :
 
 Le BPM dit seulement combien de temps tiennent dans une seconde. C'est
 l'arrangement qui décide de la place laissée à la foule.
+
+---
+
+## Le pull up : un climax fait d'arrêt
+
+`[Pull Up: Everything stops dead, siren alone, tape rewind, crowd shouting]`
+
+Geste de sound system : au sommet du morceau, tout se coupe, il ne reste qu'une
+sirène, le selecta rembobine et relance le riddim plus dur. Voir
+`examples/plus-bas.md`.
+
+C'est le seul climax du catalogue qui **retire** au lieu d'ajouter :
+
+| Genre | Climax | Mécanique |
+|---|---|---|
+| House / club occidental | `[Drop]` | la basse rentre, tout revient d'un coup |
+| Ndombolo / coupé-décalé | `[Sebene]` | les guitares doublent, la batterie accélère |
+| Shatta / dancehall | `[Pull Up]` | tout s'arrête, sirène, rewind, relance |
+
+Trois conditions pour que ça marche :
+
+1. **Le placer après un refrain déjà entendu deux fois.** Un pull up sur un
+   refrain neuf ne relance rien — le public doit déjà attendre la suite.
+2. **Le faire suivre du refrain à l'identique.** C'est la troisième occurrence
+   du même texte ; c'est l'attente créée par l'arrêt qui la transforme, pas une
+   réécriture.
+3. **Écrire le vide.** `everything stops dead`, `siren alone`, et une didascalie
+   parlée sans musique. Sans mention explicite du silence, Suno enchaîne.

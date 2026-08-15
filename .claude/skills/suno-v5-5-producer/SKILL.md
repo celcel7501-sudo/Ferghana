@@ -193,3 +193,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/jusqu-au-jour.md` | Club commercial 126 BPM en deux clips, clip 2 = section DJ |
 | `examples/la-machine.md` | Afro-club rapide 130 BPM, guitares sebene, climax sans drop |
 | `examples/a-contretemps.md` | Club R&B 2-step 134 BPM, topline en half-time, pas de four-on-the-floor |
+| `examples/plus-bas.md` | Shatta antillais 105 BPM, pull up de sound system, hook impératif |
