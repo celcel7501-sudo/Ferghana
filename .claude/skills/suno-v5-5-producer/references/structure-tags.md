@@ -112,3 +112,37 @@ Règle pratique : **compter les sections, pas seulement les caractères.** Un
 morceau dont la moitié des sections sont des drops, post-refrains ou breakdowns
 est un morceau club, quel que soit le ratio. La mesure reste utile pour arbitrer
 la longueur des couplets ; elle ne décide pas du registre à elle seule.
+
+---
+
+## Le sebene : un climax qui n'est pas un drop
+
+`[Sebene: Guitars doubled and faster, drums double-time, animateur over the top]`
+
+Sur un morceau afro-club (ndombolo, coupé-décalé), le sommet n'est pas un drop
+de basse mais une **accélération** : les guitares doublent leur motif, la
+batterie passe en double-time, un animateur lance la salle en appels courts.
+Voir `examples/la-machine.md`.
+
+Deux conséquences pratiques :
+
+- **Déclarer les deux guitares.** `second guitar answering` est obligatoire,
+  sinon Suno en joue une seule et le motif perd l'entrelacement qui fait tout le
+  groove.
+- **Les appels d'animateur ne sont pas du chant.** `shouted animateur calls` —
+  criés, courts, secs, sans mélodie. Sans cette précision, Suno les chante et la
+  section devient un deuxième refrain.
+
+### Correctif à la règle du tempo
+
+La règle « au-dessus de 110 BPM, la réponse tombe à deux syllabes » est trop
+grossière. La contrainte réelle est le **nombre de temps alloués à la réponse**,
+pas le BPM :
+
+| Section | Cadence des appels | Réponse tenable |
+|---|---|---|
+| Refrain à 130 BPM, appel sur une demi-mesure | tous les 2 temps | 3 syllabes (« La machine ! ») |
+| Sebene à 130 BPM, appel sur chaque temps | tous les temps | 1 syllabe (« Hé ! ») |
+
+Le BPM dit seulement combien de temps tiennent dans une seconde. C'est
+l'arrangement qui décide de la place laissée à la foule.

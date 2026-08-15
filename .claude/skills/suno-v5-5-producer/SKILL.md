@@ -191,3 +191,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/marbre.md` | Trap froide 74 BPM, morceau construit sur le vide, marge assumée |
 | `examples/les-racines-du-ciel.md` | 92 BPM, couplets Secteur Ä, refrain Brandy en relative majeure |
 | `examples/jusqu-au-jour.md` | Club commercial 126 BPM en deux clips, clip 2 = section DJ |
+| `examples/la-machine.md` | Afro-club rapide 130 BPM, guitares sebene, climax sans drop |
