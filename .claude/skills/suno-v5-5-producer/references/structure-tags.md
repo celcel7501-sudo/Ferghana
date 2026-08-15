@@ -98,3 +98,17 @@ Passé ce seuil, la grandeur utile est le **volume absolu de couplet** :
 Sous 300 caractères, on n'écrit plus des couplets, on écrit des **slogans entre
 deux drops** — c'est un choix légitime pour l'électro dure, et il faut l'assumer
 comme tel plutôt que de croire qu'on a écrit un morceau très efficace.
+
+### L'autre biais : le ratio mesure du texte, pas du temps
+
+Le hook à **vocal chop** casse la mesure dans l'autre sens. Sur
+`jusqu-au-jour.md`, le ratio sort à **1,92** — apparemment loin du régime club,
+alors que le morceau est un club pur. La raison : le drop occupe seize mesures
+de disque et coûte **84 caractères** de champ de paroles
+(`(Jus-qu'au-jour... jus-qu'au-jour...)` deux fois). Un refrain chanté aurait
+occupé la même durée pour quatre à cinq fois plus de caractères.
+
+Règle pratique : **compter les sections, pas seulement les caractères.** Un
+morceau dont la moitié des sections sont des drops, post-refrains ou breakdowns
+est un morceau club, quel que soit le ratio. La mesure reste utile pour arbitrer
+la longueur des couplets ; elle ne décide pas du registre à elle seule.
