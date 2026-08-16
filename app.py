@@ -65,6 +65,9 @@ SEED_MAX = 2**31 - 1
 # so this is a generous character-level guard that only warns.
 SOFT_PROMPT_CHAR_LIMIT = 12000
 
+# Sent as the lyrics when the box is left empty. One of the model's own structure tags.
+INSTRUMENTAL_TAG = "[instrumental]"
+
 _pipe = None
 
 
@@ -360,8 +363,10 @@ def generate(lyrics, instructions, duration, seed, randomize_seed, steps, guidan
     lyrics = (lyrics or "").strip()
     instructions = (instructions or "").strip()
 
+    # An empty lyrics box means an instrumental track: [instrumental] is one of the
+    # model's own structure tags, so say so explicitly rather than sending nothing.
     if not lyrics:
-        raise gr.Error("Write some lyrics. Structure tags like [verse] and [chorus] each need their own line.")
+        lyrics = INSTRUMENTAL_TAG
     if not instructions:
         raise gr.Error(
             "Describe the music. Name the vocal explicitly (e.g. 'warm female vocal') "
@@ -386,7 +391,8 @@ def generate(lyrics, instructions, duration, seed, randomize_seed, steps, guidan
         path = _generate_server(lyrics, instructions, duration, seed)
 
     progress(0.95, desc="Writing audio…")
-    return path, seed, f"Generated **{_describe(path)}** — seed `{seed}`."
+    note = f" · instrumental (`{INSTRUMENTAL_TAG}`)" if lyrics == INSTRUMENTAL_TAG else ""
+    return path, seed, f"Generated **{_describe(path)}** — seed `{seed}`{note}."
 
 
 CAPTION_SKELETON = """Global Metadata
@@ -522,6 +528,7 @@ with gr.Blocks(title="MiniMax-Music3") as demo:
                 label="Lyrics",
                 placeholder="[verse]\nYour opening line here…\n\n[chorus]\nThe hook…",
                 lines=12,
+                info=f"Leave empty for an instrumental track — `{INSTRUMENTAL_TAG}` is sent instead.",
             )
             instructions = gr.Textbox(
                 label="Music description (structured caption)",
