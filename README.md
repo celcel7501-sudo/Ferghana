@@ -180,6 +180,20 @@ visible but the meanings are not. Open the Space in a browser and read its form 
 bottom — the parameters are in the order the components are declared. The template above
 is a plausible shape, not a verified mapping.
 
+The template's **shape selects the calling convention**, because Gradio's two styles
+disagree on more than the request body:
+
+| Template | Request |
+|---|---|
+| JSON **object** | `POST /gradio_api/call/v2/<endpoint>`, named parameters |
+| JSON **array** | `POST /gradio_api/call/<endpoint>` as `{"data": [...]}`, token in the body as `oauth_token` |
+
+Both are real Gradio conventions, and different Spaces document different ones — the same
+`/output_song` endpoint has been published both ways. Pick whichever your target answers;
+the error message names the URL and the style it tried, so a mismatch is easy to spot.
+`MUSIC3_SPACE_TOKEN_FIELD` renames the body token field, or omits it when set empty. The
+bearer header is sent either way.
+
 `MUSIC3_SPACE_PAYLOAD` takes precedence over `MUSIC3_SPACE_PARAMS` when both are set.
 
 The protocol implemented is the standard

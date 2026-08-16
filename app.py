@@ -55,7 +55,14 @@ SPACE_PARAMS = os.environ.get(
 # this app has no field for, give the whole payload as a JSON template instead.
 # {lyrics}, {caption}, {duration} and {seed} are substituted; a value that is exactly
 # one placeholder keeps its type, so "{seed}" sends a number, not a string.
+#
+# The template's shape picks the calling convention, because the two Gradio styles
+# disagree on more than the body:
+#   JSON object -> named parameters, POST /gradio_api/call/v2/<endpoint>
+#   JSON array  -> positional data,  POST /gradio_api/call/<endpoint> as {"data": [...]}
+# The positional form also carries the token in the body as oauth_token.
 SPACE_PAYLOAD = os.environ.get("MUSIC3_SPACE_PAYLOAD", "").strip()
+SPACE_TOKEN_FIELD = os.environ.get("MUSIC3_SPACE_TOKEN_FIELD", "oauth_token").strip()
 
 # The autoregressive stage generates 25 frames per second of audio and the
 # checkpoint caps generation at 9000 frames.
@@ -318,14 +325,22 @@ def _generate_space(lyrics, instructions, duration, seed):
 
     values = {"lyrics": lyrics, "caption": instructions, "duration": duration, "seed": seed}
 
+    positional = False
     if SPACE_PAYLOAD:
         try:
             template = json.loads(SPACE_PAYLOAD)
         except json.JSONDecodeError as exc:
             raise gr.Error(f"MUSIC3_SPACE_PAYLOAD is not valid JSON: {exc}")
-        payload = _fill_template(template, values)
-        if not isinstance(payload, dict):
-            raise gr.Error("MUSIC3_SPACE_PAYLOAD must be a JSON object of parameter names.")
+        filled = _fill_template(template, values)
+        if isinstance(filled, list):
+            positional = True
+            payload = {"data": filled}
+            if HF_TOKEN and SPACE_TOKEN_FIELD:
+                payload[SPACE_TOKEN_FIELD] = HF_TOKEN
+        elif isinstance(filled, dict):
+            payload = filled
+        else:
+            raise gr.Error("MUSIC3_SPACE_PAYLOAD must be a JSON object or a JSON array.")
     else:
         try:
             mapping = json.loads(SPACE_PARAMS)
@@ -333,9 +348,14 @@ def _generate_space(lyrics, instructions, duration, seed):
             raise gr.Error(f"MUSIC3_SPACE_PARAMS is not valid JSON: {exc}")
         payload = {mapping[key]: value for key, value in values.items() if mapping.get(key)}
 
+    call_url = (
+        f"{SPACE_URL}/gradio_api/call/{SPACE_ENDPOINT}"
+        if positional
+        else f"{SPACE_URL}/gradio_api/call/v2/{SPACE_ENDPOINT}"
+    )
     try:
         started = requests.post(
-            f"{SPACE_URL}/gradio_api/call/v2/{SPACE_ENDPOINT}",
+            call_url,
             headers=_space_headers(),
             json=payload,
             timeout=60,
@@ -343,7 +363,11 @@ def _generate_space(lyrics, instructions, duration, seed):
     except requests.exceptions.RequestException as exc:
         raise gr.Error(f"Could not reach {SPACE_URL}: {exc}")
     if started.status_code != 200:
-        raise gr.Error(f"Space returned HTTP {started.status_code}: {started.text[:400]}")
+        style = "positional" if positional else "named"
+        raise gr.Error(
+            f"Space returned HTTP {started.status_code} to the {style} call at "
+            f"{call_url}: {started.text[:300]}"
+        )
 
     try:
         event_id = started.json()["event_id"]
