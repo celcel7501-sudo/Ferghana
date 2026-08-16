@@ -42,7 +42,7 @@ REQUEST_TIMEOUT = int(os.environ.get("MUSIC3_TIMEOUT", "900"))
 SPACE_URL = os.environ.get(
     "MUSIC3_SPACE_URL", "https://minimaxai-minimax-music3-workflow.hf.space"
 ).rstrip("/")
-SPACE_ENDPOINT = os.environ.get("MUSIC3_SPACE_ENDPOINT", "").strip().lstrip("/")
+SPACE_ENDPOINT = os.environ.get("MUSIC3_SPACE_ENDPOINT", "output_song").strip().lstrip("/")
 HF_TOKEN = os.environ.get("HF_TOKEN", "")
 # Maps this app's fields onto the target endpoint's parameter names. Discover
 # them from the status banner, then set this to a JSON object. A field mapped
@@ -51,6 +51,11 @@ SPACE_PARAMS = os.environ.get(
     "MUSIC3_SPACE_PARAMS",
     '{"lyrics": "lyrics", "caption": "prompt", "duration": "audio_duration", "seed": "seed"}',
 )
+# For endpoints whose parameters are opaque (in_0, in_1, …) or that require values
+# this app has no field for, give the whole payload as a JSON template instead.
+# {lyrics}, {caption}, {duration} and {seed} are substituted; a value that is exactly
+# one placeholder keeps its type, so "{seed}" sends a number, not a string.
+SPACE_PAYLOAD = os.environ.get("MUSIC3_SPACE_PAYLOAD", "").strip()
 
 # The autoregressive stage generates 25 frames per second of audio and the
 # checkpoint caps generation at 9000 frames.
@@ -287,19 +292,46 @@ def _parse_events(text):
     return events
 
 
+def _fill_template(node, values):
+    """Substitute {lyrics}/{caption}/{duration}/{seed}, preserving type where possible."""
+    if isinstance(node, str):
+        key = node.strip()
+        if key.startswith("{") and key.endswith("}") and key[1:-1] in values:
+            return values[key[1:-1]]
+        filled = node
+        for name, value in values.items():
+            filled = filled.replace("{%s}" % name, str(value))
+        return filled
+    if isinstance(node, list):
+        return [_fill_template(item, values) for item in node]
+    if isinstance(node, dict):
+        return {name: _fill_template(item, values) for name, item in node.items()}
+    return node
+
+
 def _generate_space(lyrics, instructions, duration, seed):
     if not SPACE_ENDPOINT:
         raise gr.Error(
             "No endpoint configured. Set MUSIC3_SPACE_ENDPOINT to one of the endpoints "
             "listed in the status banner, and MUSIC3_SPACE_PARAMS to its parameter names."
         )
-    try:
-        mapping = json.loads(SPACE_PARAMS)
-    except json.JSONDecodeError as exc:
-        raise gr.Error(f"MUSIC3_SPACE_PARAMS is not valid JSON: {exc}")
 
     values = {"lyrics": lyrics, "caption": instructions, "duration": duration, "seed": seed}
-    payload = {mapping[key]: value for key, value in values.items() if mapping.get(key)}
+
+    if SPACE_PAYLOAD:
+        try:
+            template = json.loads(SPACE_PAYLOAD)
+        except json.JSONDecodeError as exc:
+            raise gr.Error(f"MUSIC3_SPACE_PAYLOAD is not valid JSON: {exc}")
+        payload = _fill_template(template, values)
+        if not isinstance(payload, dict):
+            raise gr.Error("MUSIC3_SPACE_PAYLOAD must be a JSON object of parameter names.")
+    else:
+        try:
+            mapping = json.loads(SPACE_PARAMS)
+        except json.JSONDecodeError as exc:
+            raise gr.Error(f"MUSIC3_SPACE_PARAMS is not valid JSON: {exc}")
+        payload = {mapping[key]: value for key, value in values.items() if mapping.get(key)}
 
     try:
         started = requests.post(

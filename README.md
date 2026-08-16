@@ -154,7 +154,35 @@ MUSIC3_SPACE_ENDPOINT=generate_music
 MUSIC3_SPACE_PARAMS='{"lyrics":"lyrics","caption":"prompt","duration":"audio_duration","seed":"seed"}'
 ```
 
-A field mapped to an empty name is not sent. The protocol implemented is the standard
+A field mapped to an empty name is not sent.
+
+Some Spaces expose neither friendly names nor a short signature. The MiniMax workflow
+Space's `/output_song` takes ten parameters called `in_0` … `in_9`, so a four-field
+mapping is rejected outright:
+
+```
+Space returned HTTP 422: {"error": "missing parameters: ['in_0', 'in_1', …]"}
+```
+
+For those, give the whole payload as a template with `MUSIC3_SPACE_PAYLOAD`. The
+placeholders `{lyrics}`, `{caption}`, `{duration}` and `{seed}` are substituted, and a
+value that is *exactly* one placeholder keeps its type — `"{seed}"` sends the number `7`,
+not the string `"7"`. Everything else is passed through literally:
+
+```bash
+MUSIC3_SPACE_PAYLOAD='{"in_0":"{caption}","in_1":"{lyrics}","in_2":"","in_3":"",
+  "in_4":"{duration}","in_5":30,"in_6":true,"in_7":"{seed}","in_8":3,"in_9":"wav"}'
+```
+
+**Which `in_N` is which is not discoverable from the API.** The generated client snippet
+fills every parameter with a placeholder (`"Hello!!"`, `3`, `True`), so the types are
+visible but the meanings are not. Open the Space in a browser and read its form top to
+bottom — the parameters are in the order the components are declared. The template above
+is a plausible shape, not a verified mapping.
+
+`MUSIC3_SPACE_PAYLOAD` takes precedence over `MUSIC3_SPACE_PARAMS` when both are set.
+
+The protocol implemented is the standard
 Gradio one: `POST /gradio_api/call/v2/{endpoint}` with named parameters returns an
 `event_id`; `GET /gradio_api/call/{endpoint}/{event_id}` streams server-sent events until
 `complete`; the audio is downloaded from the `FileData` in the result. `HF_TOKEN` is sent
@@ -176,8 +204,9 @@ Set these as Space variables (or secrets, for the key):
 | `MUSIC3_TIMEOUT` | `900` | Request timeout in seconds |
 | `MUSIC3_REPO` | `MiniMaxAI/MiniMax-Music3` | Repo id (local backend) |
 | `MUSIC3_SPACE_URL` | `https://minimaxai-minimax-music3-workflow.hf.space` | Target Space (space backend) |
-| `MUSIC3_SPACE_ENDPOINT` | *(empty)* | Named endpoint to call; unset lists the options |
+| `MUSIC3_SPACE_ENDPOINT` | `output_song` | Named endpoint to call; unset lists the options |
 | `MUSIC3_SPACE_PARAMS` | *(see above)* | JSON mapping our fields to its parameter names |
+| `MUSIC3_SPACE_PAYLOAD` | *(empty)* | Full JSON payload template; wins over `_PARAMS` |
 | `HF_TOKEN` | *(empty)* | Bearer token for gated or rate-limited Spaces |
 
 The app shows a status banner at the top and a **Test connection** button under the
