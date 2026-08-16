@@ -69,3 +69,23 @@ Si le total déborde, le premier réflexe est de raccourcir les balises. Le
 second est de passer le refrain final à 4 lignes — musicalement défendable, ça
 fait une sortie plus rapide. Le dernier, jamais le premier, est de couper des
 mesures de couplet.
+
+---
+
+## Clip 2 : ce qui est mort dans un prompt d'extension
+
+Suno **n'entend pas le clip 1** quand il génère le clip 2 : la continuité de
+voix, de timbre et de mix vient de l'audio prolongé, pas du texte du prompt.
+Toute formule qui référence « avant » est donc du poids mort :
+
+| À supprimer d'un style de clip 2 | Pourquoi |
+|---|---|
+| `the same voice as before` | aucun référent, la voix vient de l'audio |
+| `the same motif as the previous section` | le motif se redécrit à l'identique, pas par renvoi |
+| `continuing from the first part` | ne veut rien dire pour le modèle |
+| `as established earlier` | idem |
+
+Sur `examples/deuxieme-salle.md`, la coupe de ces deux formules a rendu
+**67 caractères** sans rien changer au rendu. Le réflexe : après avoir écrit un
+clip 2, relire en cherchant les mots *same*, *before*, *previous*, *again*, et
+remplacer chaque renvoi par la description complète — ou le supprimer.

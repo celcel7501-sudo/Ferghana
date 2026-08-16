@@ -197,3 +197,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/ne-raccroche-pas.md` | Chanson française 72 BPM, une voix, silences écrits, ratio 0,54 |
 | `examples/impeccable.md` | Boogie / electro-funk 12" 108 BPM, deux clips, talkbox en doublage |
 | `examples/ne-raccroche-pas-secteur-a.md` | Même texte que la chanson, Secteur Ä 90 BPM, refrain confié à une voix féminine |
+| `examples/deuxieme-salle.md` | Club en deux clips, 108 → 128 BPM, seule exception à la règle de raccord |
