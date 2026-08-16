@@ -213,3 +213,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/deuxieme-salle.md` | Club en deux clips, 108 → 128 BPM, seule exception à la règle de raccord |
 | `examples/youyous.md` | Club oriental ADN Rim'K 100 BPM, deux clips, cercle de derbouka |
 | `examples/generique-prestige.md` | Générique de podcast 92 BPM, ~55 s, marge vide comme instruction |
+| `examples/face-b.md` | Club R&B commercial 122 BPM, identité Prestige, scratch persistant |

@@ -42,3 +42,33 @@ drums reduced to kick and rimshot, bass muted]
 La routine sert la **transition**, pas l'ego. Si elle ne relance pas une
 section, elle ne sert à rien : on la coupe. Un scratch bien placé sur quatre
 mesures vaut mieux que seize mesures de démonstration.
+
+---
+
+## Le scratch comme motif persistant
+
+Dans tout le dossier, le turntablism est un **événement** : une routine DMC au
+pont, un drop de mixtape, une passe de transformer avant le dernier refrain. Il
+peut aussi être le **moteur** du morceau — l'échantillon gratté joue le riff, à
+chaque mesure, du début à la fin. Voir `examples/face-b.md`.
+
+```
+Persistent scratched vocal sample stab throughout, used as the hook riff, not as a solo
+```
+
+Trois conditions :
+
+1. **Écrire `not as a solo`.** Sans cette mention, Suno place un scratch
+   spectaculaire à un endroit et l'oublie partout ailleurs — le comportement par
+   défaut, puisque c'est ce qu'un scratch est dans 99 % des disques.
+2. **Pitcher l'échantillon dans la tonalité.** Un scratch hors tonalité
+   s'entend comme un bruit, pas comme un riff. C'est toute la différence entre
+   un motif et un effet.
+3. **Prévoir la rupture à l'envers.** Quand le scratch est le moteur, le pont ne
+   consiste plus à en ajouter un mais à **l'arrêter** :
+   `[Bridge: Turntable stops dead, drums out]`. C'est le seul geste qui
+   s'entende sur un disque déjà saturé de platine.
+
+Densité de placement : sur le contretemps de chaque mesure, en retrait sous les
+couplets, au-dessus de la voix au refrain, seul avec les claps au post-refrain.
+Même courbe qu'un stab de synthé — avec le grain d'une platine.
