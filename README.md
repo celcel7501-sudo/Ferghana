@@ -6,8 +6,27 @@ production), suivi du lecteur de l'émission complète.
 
 ## Contenu
 
-- `index.html` — la page et l'iframe du lecteur Apple Podcasts
+- `index.html` — la page et les deux iframes Apple Podcasts
 - `styles.css` — mise en page, thèmes clair et sombre
+- `app.js` — révèle chaque lecteur une fois chargé, sinon laisse le repli
+
+## Message de repli
+
+Chaque lecteur est doublé d'un `.player__fallback` — une phrase et un lien vers
+Apple Podcasts — posé sous l'iframe. `app.js` marque le bloc `is-loaded` à
+l'événement `load` de l'iframe, ce qui révèle le lecteur et masque le repli.
+
+Deux garde-fous :
+
+- **Sans JavaScript**, l'iframe est visible d'emblée et le repli reste masqué
+  dessous : la page ne dépend pas du script.
+- **Au `load` de la fenêtre**, tous les lecteurs sont révélés, au cas où une
+  iframe aurait fini de charger avant que le script n'attache son écouteur.
+
+Limite : une iframe tierce est opaque au JavaScript de la page. Si Apple répond
+une page d'erreur, le navigateur déclenche quand même `load` et affiche sa
+propre erreur. Le repli couvre les cas où rien n'arrive — hors ligne, réseau
+filtré, requête sans réponse.
 
 ## Lancer en local
 

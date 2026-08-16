@@ -66,6 +66,7 @@ body {
 }
 
 .player {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -75,6 +76,7 @@ body {
 
 .player iframe {
   display: block;
+  position: relative;
   width: 100%;
   max-width: 660px;
   height: 175px;
@@ -85,6 +87,51 @@ body {
 
 .player--show iframe {
   height: 450px;
+}
+
+/* Message de repli : posé sous l'iframe, que le lecteur recouvre une fois
+   chargé. Sans JavaScript, l'iframe est visible d'emblée et le repli reste
+   masqué dessous. */
+.player__fallback {
+  position: absolute;
+  inset: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.player__fallback p {
+  margin: 0;
+  max-width: 34ch;
+}
+
+.js .player iframe {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in;
+}
+
+.js .player.is-loaded iframe {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.js .player.is-loaded .player__fallback {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .player iframe {
+    transition: none;
+  }
 }
 
 .show {
