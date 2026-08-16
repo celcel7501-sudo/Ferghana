@@ -1,8 +1,11 @@
 # Ferghana
 
-Page statique autour de l'émission Apple Podcasts **Prestige Old School** : le
-lecteur de l'épisode **« Au Boulot »** (Dj Rim'K production, feat. Prestige Old
-production), suivi du lecteur de l'émission complète.
+Page statique autour de l'émission **Prestige Old School** : le lecteur de
+l'épisode **« Au boulot »** (DJ Rim K | Prestige Old School Production), suivi
+du lecteur de l'émission complète.
+
+Les lecteurs viennent d'Apple Podcasts ; le pied de page renvoie aussi vers
+Amazon Music.
 
 ## Contenu
 
