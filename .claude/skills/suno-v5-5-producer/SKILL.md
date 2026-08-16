@@ -195,3 +195,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/a-contretemps.md` | Club R&B 2-step 134 BPM, topline en half-time, pas de four-on-the-floor |
 | `examples/plus-bas.md` | Shatta antillais 105 BPM, pull up de sound system, hook impératif |
 | `examples/ne-raccroche-pas.md` | Chanson française 72 BPM, une voix, silences écrits, ratio 0,54 |
+| `examples/impeccable.md` | Boogie / electro-funk 12" 108 BPM, deux clips, talkbox en doublage |
