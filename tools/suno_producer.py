@@ -38,6 +38,8 @@ ARTIST_DNA = {
     "djimi_finger": "dark melancholic piano-driven, hard-hitting MPC drums, cinematic minor-key strings, deep melodic jazz-fusion bass",
     "secteur_a": "dark melancholic piano-driven, hard-hitting MPC drums, cinematic minor-key strings, deep melodic jazz-fusion bass",
     "scred": "gritty authentic flow, conscious street storytelling, unpolished close-mic vocal",
+    "prestige": "Golden Era hip-hop podcast vibe, radio broadcast atmosphere, radio tuner sweep, vinyl crackle, hard-hitting MPC-60 drums, cinematic minor-key strings",
+    "dj_rim_k": "Golden Era hip-hop podcast vibe, radio broadcast atmosphere, radio tuner sweep, vinyl crackle, hard-hitting MPC-60 drums, cinematic minor-key strings",
     # "Rim'K", "Rim K" et "RIMK" ne se normalisent pas pareil (l'apostrophe et
     # l'espace deviennent un underscore) : les deux clés sont nécessaires.
     "rim_k": "Maghrebi-tinged French club rap, fast darbuka and derbouka rolls, mandole and synth-oud lead melody, hijaz scale strings, deep 808 sub bass with long pitch glides",

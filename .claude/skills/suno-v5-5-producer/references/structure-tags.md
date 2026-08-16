@@ -203,3 +203,26 @@ Trois conditions, toutes nécessaires :
 
 Réservé aux registres où la fin est le sujet : chanson, récit, morceau
 conscient. Sur un disque de club, garder les quatre passages identiques.
+
+---
+
+## L'intro podcast (identité Prestige)
+
+`[Intro: Radio tuner sound, vinyl crackle, DJ Rim-K voice-over]`
+
+Ouverture signature du **Prestige Old School Podcast**. Trois éléments dans cet
+ordre, et l'ordre compte : le balayage de tuner installe le média (on écoute une
+radio), le crépitement installe l'époque, la voix-off installe l'hôte.
+
+- **Pas de batterie sous l'intro.** La voix-off doit passer sur le crépitement
+  et la boucle seule ; le kick n'entre qu'à la première mesure du couplet ou du
+  teaser de refrain. Une intro parlée sur une batterie complète perd sa nature
+  de générique.
+- **Deux phrases maximum.** Une pour situer, une pour lancer. Au-delà, Suno se
+  met à chanter la voix-off au lieu de la parler.
+- **Compression AM sur la voix d'intro seulement** :
+  `warm AM radio compression on the intro voice` dans le style. C'est ce qui
+  sépare l'hôte du rappeur — même personne, deux traitements.
+- **La reprendre à l'outro** referme le générique et transforme le morceau en
+  épisode. Voir `examples/cage-d-escalier.md` et `examples/impeccable.md` pour
+  le principe intro/outro symétriques.

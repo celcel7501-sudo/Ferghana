@@ -85,3 +85,36 @@ Exclude: no mumble rap, no cluttered low end, avoid messy mix, no audio artifact
 
 128 caractères au lieu de 157, et zéro contradiction. Le nombre d'exclusions
 reste le même — on ne réduit pas la liste, on la rend cohérente.
+
+---
+
+## Le bloc par défaut de l'identité Prestige
+
+L'identité **DJ Rim-K / Prestige Old School Podcast** réclame par signature
+`vinyl crackle`, `radio broadcast atmosphere` et `radio tuner sweep`. Le bloc
+d'exclusions standard contient `no low-quality recording`. **Les deux ne peuvent
+pas coexister** : on demande au modèle un grain de vinyle et une propreté de
+studio dans le même prompt, il arbitre, et on perd le grain — c'est-à-dire
+exactement la signature.
+
+Ce n'est plus un conflit ponctuel, c'est un conflit **structurel** avec
+l'identité. Bloc par défaut à utiliser sur tout morceau Prestige :
+
+```
+Exclude: no mumble rap, no distorted vocals, avoid messy mix, no audio artifacts, no generic EDM, no cluttered low end, avoid thin sounds.
+```
+
+135 caractères, sept exclusions comme le bloc standard, zéro contradiction. Le
+positif équivalent de `no low-quality recording` est déplacé dans la couche
+mastering, où il ne se bat avec rien : `polished master under the vinyl grain`.
+
+## Nom d'artiste : la règle ne vise que le champ de style
+
+`[Intro: Radio tuner sound, vinyl crackle, DJ Rim-K voice-over]` est une balise
+**de paroles**, et elle est parfaitement valide. La règle anti-censure porte sur
+le champ *Style of Music*, qui est filtré ; le champ *Lyrics* accepte les noms
+propres — c'est là que vivent les DJ drops, les crédits et les signatures de fin
+(`DJ Rim'K... Jalane... Prestige Old School`).
+
+En clair : **on ne nomme jamais dans le style, on nomme librement dans les
+paroles.**
