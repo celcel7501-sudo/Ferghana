@@ -174,3 +174,32 @@ Trois conditions pour que ça marche :
    réécriture.
 3. **Écrire le vide.** `everything stops dead`, `siren alone`, et une didascalie
    parlée sans musique. Sans mention explicite du silence, Suno enchaîne.
+
+---
+
+## Quand le refrain a le droit de bouger
+
+Règle générale du protocole : **le refrain est identique à l'écrit entre les
+occurrences**, parce que c'est la répétition littérale qui déclenche la mémoire
+mélodique du modèle. Elle vaut pour tout disque à hook, et elle n'a jamais été
+enfreinte sur les trente-sept premiers morceaux du dossier.
+
+Elle admet une exception, et une seule, démontrée sur
+`examples/ne-raccroche-pas.md` :
+
+> **Trois passages identiques achètent la mémoire ; le quatrième peut déplacer
+> exactement une ligne — et ce doit être la première.**
+
+Trois conditions, toutes nécessaires :
+
+1. **La première ligne, pas une autre.** C'est celle que l'auditeur chante déjà
+   d'avance. Déplacer une ligne du milieu ne produit rien : personne ne
+   l'attendait assez pour sentir le décalage.
+2. **Tout le reste identique, à la virgule près.** Un deuxième changement et le
+   modèle traite la section comme un couplet — on perd la mélodie du refrain.
+3. **Le sens doit se retourner, pas se prolonger.** « Ne raccroche pas. » →
+   « Tu peux raccrocher. » Si le remplacement dit la même chose autrement, on a
+   payé le prix sans acheter la chute.
+
+Réservé aux registres où la fin est le sujet : chanson, récit, morceau
+conscient. Sur un disque de club, garder les quatre passages identiques.
