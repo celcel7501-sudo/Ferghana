@@ -89,3 +89,32 @@ Sur `examples/deuxieme-salle.md`, la coupe de ces deux formules a rendu
 **67 caractères** sans rien changer au rendu. Le réflexe : après avoir écrit un
 clip 2, relire en cherchant les mots *same*, *before*, *previous*, *again*, et
 remplacer chaque renvoi par la description complète — ou le supprimer.
+
+---
+
+## Cas particulier : le jingle
+
+Suno n'a **pas de réglage de durée**. Sur un objet court — générique, jingle,
+transition d'épisode — le seul levier est la quantité de contenu, et le risque
+s'inverse : ce n'est plus la troncature qu'on craint, c'est le **remplissage**.
+Avec un champ de paroles à moitié vide et une structure qui s'arrête vite, Suno
+invente un couplet pour meubler.
+
+Trois garde-fous, tous nécessaires ensemble (voir
+`examples/generique-prestige.md`) :
+
+1. **L'écrire dans le style** : `under one minute, no verses, no long
+   instrumental`. Une durée en toutes lettres est mieux comprise qu'un nombre de
+   mesures.
+2. **Fermer les paroles explicitement** : la dernière balise dit l'arrêt —
+   `[End: Everything stops dead, one last vinyl crackle, spoken, hard stop]`.
+3. **Laisser la marge vide.** Remplir les 5000 caractères d'un jingle revient à
+   lui donner de quoi durer trois minutes. Ici, **la marge inutilisée est
+   l'instruction principale** — c'est le seul cas du dossier où viser 4850
+   caractères serait une faute.
+
+Corollaire : sur un objet court, une routine de scratch décrite dans une seule
+balise coûte proportionnellement beaucoup plus cher qu'ailleurs. Elle dure deux
+secondes ; sur cinquante-cinq secondes, c'est la moitié du contenu qui
+disparaît. La découper en passes séparées n'est plus une optimisation, c'est une
+condition.
