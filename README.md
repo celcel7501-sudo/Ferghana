@@ -66,7 +66,7 @@ complete caption in the format. Guidance worth knowing from the skill's contract
 - The skill ships 1000 reference captions across 20 genre families if you want worked examples
   of the format.
 
-## Two backends
+## Three backends
 
 Select with `MUSIC3_BACKEND`.
 
@@ -129,18 +129,56 @@ selected with `output="audios"` and is a waveform of shape `(channels, samples)`
 `.images[0]`; and `prompt` is the *music description* while the words to sing go in the
 separate `lyrics` argument.
 
+### `space`
+
+Calls another Gradio Space over its `/gradio_api`. No GPU, no weights, no server of
+your own — but you are a guest on someone else's hardware, subject to their queue and
+their uptime.
+
+The endpoint and its parameter names are **configured, not guessed**. Leave
+`MUSIC3_SPACE_ENDPOINT` unset and the status banner lists what the target Space actually
+exposes, with each endpoint's real parameter names:
+
+```
+⚠️ Connected to https://…hf.space, but no endpoint selected. Set MUSIC3_SPACE_ENDPOINT
+   to one of these and map its parameters with MUSIC3_SPACE_PARAMS:
+
+   - /generate_music (prompt, lyrics, audio_duration, seed)
+   - /rewrite_caption (text)
+```
+
+Then set the endpoint and map this app's four fields onto its parameters:
+
+```bash
+MUSIC3_SPACE_ENDPOINT=generate_music
+MUSIC3_SPACE_PARAMS='{"lyrics":"lyrics","caption":"prompt","duration":"audio_duration","seed":"seed"}'
+```
+
+A field mapped to an empty name is not sent. The protocol implemented is the standard
+Gradio one: `POST /gradio_api/call/v2/{endpoint}` with named parameters returns an
+`event_id`; `GET /gradio_api/call/{endpoint}/{event_id}` streams server-sent events until
+`complete`; the audio is downloaded from the `FileData` in the result. `HF_TOKEN` is sent
+as a bearer token when set.
+
+File *inputs* are not implemented — this demo sends only text, so it never needs
+`POST /gradio_api/upload`.
+
 ## Configuration
 
 Set these as Space variables (or secrets, for the key):
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `MUSIC3_BACKEND` | `server` | `server` or `local` |
+| `MUSIC3_BACKEND` | `server` | `server`, `local` or `space` |
 | `MUSIC3_BASE_URL` | `http://127.0.0.1:8000/v1` | SGLang-Omni base URL (server backend) |
 | `MUSIC3_API_KEY` | *(empty)* | Sent as `Authorization: Bearer …` if set |
 | `MUSIC3_MODEL` | `minimax_ttm` | Model name the server serves |
 | `MUSIC3_TIMEOUT` | `900` | Request timeout in seconds |
 | `MUSIC3_REPO` | `MiniMaxAI/MiniMax-Music3` | Repo id (local backend) |
+| `MUSIC3_SPACE_URL` | `https://minimaxai-minimax-music3-workflow.hf.space` | Target Space (space backend) |
+| `MUSIC3_SPACE_ENDPOINT` | *(empty)* | Named endpoint to call; unset lists the options |
+| `MUSIC3_SPACE_PARAMS` | *(see above)* | JSON mapping our fields to its parameter names |
+| `HF_TOKEN` | *(empty)* | Bearer token for gated or rate-limited Spaces |
 
 The app shows a status banner at the top and a **Test connection** button under the
 *Backend* accordion, so a misconfigured setup is obvious rather than silent.

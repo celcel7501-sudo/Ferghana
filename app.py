@@ -1,6 +1,6 @@
 """Gradio demo for MiniMax-Music3.
 
-Two backends, selected with MUSIC3_BACKEND:
+Three backends, selected with MUSIC3_BACKEND:
 
   "server" (default) — post to an SGLang-Omni server's OpenAI-compatible
       /v1/audio/speech endpoint. Keeps the Space on CPU hardware; the server
@@ -12,9 +12,15 @@ Two backends, selected with MUSIC3_BACKEND:
       which returns the vocoder's native 44.1 kHz stereo. Needs a CUDA GPU
       (~23 GB VRAM in bfloat16) and diffusers from main.
 
+  "space" — call another Gradio Space over its /gradio_api. No GPU and no
+      weights needed, but you are a guest on someone else's hardware. The
+      endpoint and parameter names are configured rather than guessed; the
+      status banner lists what the target Space actually exposes.
+
 See README.md for configuration.
 """
 
+import json
 import os
 import random
 import tempfile
@@ -31,6 +37,20 @@ BASE_URL = os.environ.get("MUSIC3_BASE_URL", "http://127.0.0.1:8000/v1").rstrip(
 API_KEY = os.environ.get("MUSIC3_API_KEY", "")
 MODEL = os.environ.get("MUSIC3_MODEL", "minimax_ttm")
 REQUEST_TIMEOUT = int(os.environ.get("MUSIC3_TIMEOUT", "900"))
+
+# space backend
+SPACE_URL = os.environ.get(
+    "MUSIC3_SPACE_URL", "https://minimaxai-minimax-music3-workflow.hf.space"
+).rstrip("/")
+SPACE_ENDPOINT = os.environ.get("MUSIC3_SPACE_ENDPOINT", "").strip().lstrip("/")
+HF_TOKEN = os.environ.get("HF_TOKEN", "")
+# Maps this app's fields onto the target endpoint's parameter names. Discover
+# them from the status banner, then set this to a JSON object. A field mapped
+# to an empty name is not sent.
+SPACE_PARAMS = os.environ.get(
+    "MUSIC3_SPACE_PARAMS",
+    '{"lyrics": "lyrics", "caption": "prompt", "duration": "audio_duration", "seed": "seed"}',
+)
 
 # The autoregressive stage generates 25 frames per second of audio and the
 # checkpoint caps generation at 9000 frames.
@@ -81,6 +101,39 @@ def backend_status() -> str:
         loaded = "loaded" if _pipe is not None else "loads on first generation (several minutes)"
         name = torch.cuda.get_device_name(0)
         return f"✅ **Local backend** on `{name}` — `{MODEL_REPO}` {loaded}."
+
+    if BACKEND == "space":
+        try:
+            info = _space_info()
+        except requests.exceptions.RequestException as exc:
+            return (
+                f"⚠️ **Cannot reach `{SPACE_URL}`** ({type(exc).__name__}). Check "
+                "`MUSIC3_SPACE_URL`, and set `HF_TOKEN` if the Space is gated."
+            )
+        except ValueError:
+            return f"⚠️ `{SPACE_URL}/gradio_api/info` did not return JSON."
+
+        named = info.get("named_endpoints") or {}
+        if not named:
+            return f"⚠️ `{SPACE_URL}` reports no named endpoints to call."
+
+        lines = []
+        for name, spec in list(named.items())[:12]:
+            params = ", ".join(
+                f"`{p.get('parameter_name') or p.get('label') or '?'}`"
+                for p in (spec.get("parameters") or [])
+            )
+            marker = " ← selected" if name.lstrip("/") == SPACE_ENDPOINT else ""
+            lines.append(f"- `{name}` ({params or 'no parameters'}){marker}")
+
+        listing = "\n".join(lines)
+        if not SPACE_ENDPOINT:
+            return (
+                f"⚠️ **Connected to `{SPACE_URL}`, but no endpoint selected.** Set "
+                f"`MUSIC3_SPACE_ENDPOINT` to one of these and map its parameters with "
+                f"`MUSIC3_SPACE_PARAMS`:\n\n{listing}"
+            )
+        return f"✅ **Space backend** — `{SPACE_URL}`, calling `{SPACE_ENDPOINT}`.\n\n{listing}"
 
     try:
         response = requests.get(f"{BASE_URL}/models", headers=_headers(), timeout=10)
@@ -137,6 +190,131 @@ def _generate_local(lyrics, instructions, duration, seed, steps, guidance):
     # audio is (channels, samples); soundfile writes (samples, channels).
     sf.write(path, audio.T, pipe.sampling_rate)
     return path
+
+
+def _space_headers():
+    headers = {"Content-Type": "application/json"}
+    if HF_TOKEN:
+        headers["Authorization"] = f"Bearer {HF_TOKEN}"
+    return headers
+
+
+def _space_info():
+    response = requests.get(
+        f"{SPACE_URL}/gradio_api/info", headers=_space_headers(), timeout=30
+    )
+    response.raise_for_status()
+    return response.json()
+
+
+def _find_audio(payload):
+    """Walk a Gradio result for the first thing that looks like returned audio."""
+    if isinstance(payload, dict):
+        for key in ("url", "path"):
+            value = payload.get(key)
+            if isinstance(value, str) and value:
+                return value
+        for value in payload.values():
+            found = _find_audio(value)
+            if found:
+                return found
+    elif isinstance(payload, (list, tuple)):
+        for value in payload:
+            found = _find_audio(value)
+            if found:
+                return found
+    elif isinstance(payload, str) and payload.startswith(("http://", "https://", "/file=")):
+        return payload
+    return None
+
+
+def _parse_events(text):
+    """Pull (event, data) pairs out of an SSE stream."""
+    events, name, data = [], None, []
+    for line in text.splitlines():
+        if line.startswith("event:"):
+            name = line[6:].strip()
+        elif line.startswith("data:"):
+            data.append(line[5:].strip())
+        elif not line.strip():
+            if name or data:
+                events.append((name, "\n".join(data)))
+            name, data = None, []
+    if name or data:
+        events.append((name, "\n".join(data)))
+    return events
+
+
+def _generate_space(lyrics, instructions, duration, seed):
+    if not SPACE_ENDPOINT:
+        raise gr.Error(
+            "No endpoint configured. Set MUSIC3_SPACE_ENDPOINT to one of the endpoints "
+            "listed in the status banner, and MUSIC3_SPACE_PARAMS to its parameter names."
+        )
+    try:
+        mapping = json.loads(SPACE_PARAMS)
+    except json.JSONDecodeError as exc:
+        raise gr.Error(f"MUSIC3_SPACE_PARAMS is not valid JSON: {exc}")
+
+    values = {"lyrics": lyrics, "caption": instructions, "duration": duration, "seed": seed}
+    payload = {mapping[key]: value for key, value in values.items() if mapping.get(key)}
+
+    try:
+        started = requests.post(
+            f"{SPACE_URL}/gradio_api/call/v2/{SPACE_ENDPOINT}",
+            headers=_space_headers(),
+            json=payload,
+            timeout=60,
+        )
+    except requests.exceptions.RequestException as exc:
+        raise gr.Error(f"Could not reach {SPACE_URL}: {exc}")
+    if started.status_code != 200:
+        raise gr.Error(f"Space returned HTTP {started.status_code}: {started.text[:400]}")
+
+    try:
+        event_id = started.json()["event_id"]
+    except (ValueError, KeyError, TypeError):
+        raise gr.Error(f"Space did not return an event_id: {started.text[:400]}")
+
+    try:
+        polled = requests.get(
+            f"{SPACE_URL}/gradio_api/call/{SPACE_ENDPOINT}/{event_id}",
+            headers=_space_headers(),
+            timeout=REQUEST_TIMEOUT,
+        )
+    except requests.exceptions.Timeout:
+        raise gr.Error(f"The Space did not finish within {REQUEST_TIMEOUT}s.")
+    except requests.exceptions.RequestException as exc:
+        raise gr.Error(f"Lost the connection while waiting on {SPACE_URL}: {exc}")
+    if polled.status_code != 200:
+        raise gr.Error(f"Polling returned HTTP {polled.status_code}: {polled.text[:400]}")
+
+    result = None
+    for name, data in _parse_events(polled.text):
+        if name == "error":
+            raise gr.Error(f"The Space reported an error: {data[:400] or 'no detail given'}")
+        if name in ("complete", "generating") and data:
+            try:
+                result = json.loads(data)
+            except json.JSONDecodeError:
+                continue
+    if result is None:
+        raise gr.Error(f"No usable result in the Space's response: {polled.text[:400]}")
+
+    location = _find_audio(result)
+    if not location:
+        raise gr.Error(f"No audio in the Space's result: {str(result)[:400]}")
+    if location.startswith("/"):
+        location = f"{SPACE_URL}/gradio_api/file={location.lstrip('/').removeprefix('file=')}"
+
+    audio = requests.get(location, headers=_space_headers(), timeout=REQUEST_TIMEOUT)
+    if audio.status_code != 200 or not audio.content:
+        raise gr.Error(f"Could not download the generated audio from {location}")
+
+    suffix = ".wav" if location.lower().endswith(".wav") else ".mp3"
+    with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as handle:
+        handle.write(audio.content)
+        return handle.name
 
 
 def _generate_server(lyrics, instructions, duration, seed):
@@ -202,6 +380,8 @@ def generate(lyrics, instructions, duration, seed, randomize_seed, steps, guidan
     progress(0.1, desc=f"Generating up to {int(duration)}s of audio…")
     if BACKEND == "local":
         path = _generate_local(lyrics, instructions, duration, seed, steps, guidance)
+    elif BACKEND == "space":
+        path = _generate_space(lyrics, instructions, duration, seed)
     else:
         path = _generate_server(lyrics, instructions, duration, seed)
 
