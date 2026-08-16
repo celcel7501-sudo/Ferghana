@@ -190,6 +190,13 @@ The app shows a status banner at the top and a **Test connection** button under 
   at 9000 frames, so the slider tops out at 360 s. On the server backend the slider maps to
   `max_new_tokens`; on the local backend it maps to `audio_duration`.
 - **Seed** is fixed for reproducible results, or randomized per run.
+- **Output format** is WAV or MP3. MP3 is encoded in-process with `lameenc` from
+  whatever WAV the backend returned, rather than requested from the backend: every
+  backend is known to return WAV, while `response_format: "mp3"` is undocumented for the
+  reference server. That also makes the format work identically on all three backends.
+  `MUSIC3_MP3_BITRATE` sets the rate, default 192 kbps. Expect roughly a 5x size
+  reduction; the result line reports the source audio's real rate and duration, read
+  from the WAV header before encoding.
 - **Flow-matching steps** (default 30) and **guidance scale** (reference value 1.7) apply to
   the local backend only; the server exposes neither.
 - The tokenized prompt is capped at 5000 tokens; the app guards against obviously oversized

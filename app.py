@@ -68,6 +68,10 @@ SOFT_PROMPT_CHAR_LIMIT = 12000
 # Sent as the lyrics when the box is left empty. One of the model's own structure tags.
 INSTRUMENTAL_TAG = "[instrumental]"
 
+# MP3 is produced here rather than asked of the backend: every backend is known to
+# return WAV, while mp3 support in the reference server is undocumented.
+MP3_BITRATE = int(os.environ.get("MUSIC3_MP3_BITRATE", "192"))
+
 _pipe = None
 
 
@@ -87,6 +91,41 @@ def _describe(path):
         return "audio"
     layout = {1: "mono", 2: "stereo"}.get(channels, f"{channels} ch")
     return f"{rate / 1000:g} kHz {layout}, {frames / rate:.1f}s"
+
+
+def _to_mp3(path):
+    """Transcode a 16-bit PCM WAV to MP3, keeping its rate and channel count."""
+    if path.lower().endswith(".mp3"):
+        return path
+    try:
+        import lameenc
+    except ImportError:
+        raise gr.Error(
+            "MP3 output needs the `lameenc` package. Install it (`pip install lameenc`) "
+            "or choose WAV."
+        )
+    try:
+        with wave.open(path) as handle:
+            channels = handle.getnchannels()
+            rate = handle.getframerate()
+            width = handle.getsampwidth()
+            pcm = handle.readframes(handle.getnframes())
+    except wave.Error as exc:
+        raise gr.Error(f"Could not read the generated audio as WAV, so it cannot be encoded: {exc}")
+    if width != 2:
+        raise gr.Error(f"Expected 16-bit audio for MP3 encoding, got {width * 8}-bit.")
+
+    encoder = lameenc.Encoder()
+    encoder.set_bit_rate(MP3_BITRATE)
+    encoder.set_in_sample_rate(rate)
+    encoder.set_channels(channels)
+    encoder.set_quality(2)
+    data = bytes(encoder.encode(pcm)) + bytes(encoder.flush())
+
+    mp3_path = tempfile.NamedTemporaryFile(suffix=".mp3", delete=False).name
+    with open(mp3_path, "wb") as handle:
+        handle.write(data)
+    return mp3_path
 
 
 def backend_status() -> str:
@@ -359,7 +398,17 @@ def _generate_server(lyrics, instructions, duration, seed):
         return handle.name
 
 
-def generate(lyrics, instructions, duration, seed, randomize_seed, steps, guidance, progress=gr.Progress()):
+def generate(
+    lyrics,
+    instructions,
+    duration,
+    seed,
+    randomize_seed,
+    steps,
+    guidance,
+    output_format="WAV",
+    progress=gr.Progress(),
+):
     lyrics = (lyrics or "").strip()
     instructions = (instructions or "").strip()
 
@@ -391,8 +440,16 @@ def generate(lyrics, instructions, duration, seed, randomize_seed, steps, guidan
         path = _generate_server(lyrics, instructions, duration, seed)
 
     progress(0.95, desc="Writing audio…")
+    # Describe the source audio before transcoding: the WAV header carries the real
+    # rate, channel count and duration, which an MP3 no longer reports the same way.
+    described = _describe(path)
+    if str(output_format).upper() == "MP3":
+        progress(0.97, desc="Encoding MP3…")
+        path = _to_mp3(path)
+        described = f"{described} → MP3 {MP3_BITRATE} kbps"
+
     note = f" · instrumental (`{INSTRUMENTAL_TAG}`)" if lyrics == INSTRUMENTAL_TAG else ""
-    return path, seed, f"Generated **{_describe(path)}** — seed `{seed}`{note}."
+    return path, seed, f"Generated **{described}** — seed `{seed}`{note}."
 
 
 CAPTION_SKELETON = """Global Metadata
@@ -549,6 +606,12 @@ with gr.Blocks(title="MiniMax-Music3") as demo:
             with gr.Row():
                 seed = gr.Number(label="Seed", value=7, precision=0, minimum=0, maximum=SEED_MAX)
                 randomize_seed = gr.Checkbox(label="Randomize", value=True)
+            output_format = gr.Radio(
+                label="Output format",
+                choices=["WAV", "MP3"],
+                value="WAV",
+                info=f"MP3 is encoded here at {MP3_BITRATE} kbps from the backend's WAV.",
+            )
             generate_button = gr.Button("Generate", variant="primary", size="lg")
 
             with gr.Accordion("Advanced", open=False):
@@ -595,7 +658,7 @@ with gr.Blocks(title="MiniMax-Music3") as demo:
 
     generate_button.click(
         fn=generate,
-        inputs=[lyrics, instructions, duration, seed, randomize_seed, steps, guidance],
+        inputs=[lyrics, instructions, duration, seed, randomize_seed, steps, guidance, output_format],
         outputs=[audio, seed, result_info],
     )
 
