@@ -83,7 +83,25 @@ body {
   overflow: hidden;
 }
 
+.player--show iframe {
+  height: 450px;
+}
+
+.show {
+  margin-top: 2.25rem;
+}
+
+.show-heading {
+  margin: 0 0 0.85rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
 .footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
   margin-top: 1.5rem;
 }
 

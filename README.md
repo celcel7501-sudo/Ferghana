@@ -1,8 +1,8 @@
 # Ferghana
 
-Page statique qui intègre l'épisode Apple Podcasts **« Au Boulot »** (Dj Rim'K
-production, feat. Prestige Old production), de l'émission **Dj Rim K & Dj Nut
-( Podcast Official )**.
+Page statique autour de l'émission Apple Podcasts **Prestige Old School** : le
+lecteur de l'épisode **« Au Boulot »** (Dj Rim'K production, feat. Prestige Old
+production), suivi du lecteur de l'émission complète.
 
 ## Contenu
 
@@ -23,11 +23,17 @@ tierces chargées depuis `file://`.
 
 ## Remplacer l'épisode
 
-L'épisode est identifié par l'URL de l'iframe dans `index.html` :
+`index.html` contient deux iframes, qui ne diffèrent que par leur `src` et leur
+hauteur :
 
 ```
-https://embed.podcasts.apple.com/fr/podcast/<slug>/id<PODCAST_ID>?i=<EPISODE_ID>&theme=auto
+épisode  (175px)  .../fr/podcast/<slug>/id<PODCAST_ID>?i=<EPISODE_ID>&theme=auto
+émission (450px)  .../fr/podcast/<slug>/id<PODCAST_ID>?theme=auto
 ```
+
+Le préfixe est `https://embed.podcasts.apple.com`. C'est le paramètre `i` qui
+distingue un épisode de l'émission entière ; les hauteurs correspondantes sont
+fixées dans `styles.css` (`.player` et `.player--show`).
 
 Le segment `fr` est la boutique Apple : il détermine la langue de l'interface du
 lecteur. Le code copié depuis Apple Podcasts contient souvent `us` — pensez à le
