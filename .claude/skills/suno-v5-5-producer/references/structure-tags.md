@@ -300,3 +300,20 @@ Deux conséquences sur l'écriture, non négociables :
 
 Registre : club, radio, anthem. À éviter sur un morceau conscient ou narratif —
 là, l'attente créée par le couplet est ce qui donne sa force au premier refrain.
+
+### Le ratio se décide en partie dans le champ de style
+
+`examples/face-b.md` et `examples/sur-la-frequence.md` partagent le **même
+prompt de style au caractère près** et ont deux textes écrits indépendamment.
+Leurs ratios : **2,18** et **2,22**. Quatre centièmes d'écart.
+
+Ce n'est pas le prompt qui fixe le ratio — c'est le **squelette qu'il suggère**.
+Un champ de style qui déclare `panoramic group vocal responses` et
+`used as the hook riff` rend une seule structure naturelle : teaser, deux
+couplets, trois refrains, trois post-refrains. Et ce squelette produit
+mécaniquement un ratio autour de 2,2.
+
+**Conséquence pratique** : viser un ratio bas sur un prompt à réponses de groupe
+ne se joue pas à l'écriture, ça se joue en retirant les réponses de groupe du
+prompt. Le ratio se décide au brief, en même temps que la couche vocale — pas à
+la relecture.

@@ -220,3 +220,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/ta-version.md` | R&B ADN Kore 110 BPM, deux clips = deux voix lead |
 | `examples/un-ton-au-dessus.md` | Club pop 124 BPM sans raï, deux clips = modulation d'un ton |
 | `examples/la-deuxieme-fois.md` | Secteur Ä à 112 BPM, deux clips = studio puis live |
+| `examples/sur-la-frequence.md` | Même prompt de style que `face-b.md`, autre texte |
