@@ -140,3 +140,34 @@ Trois morceaux longs du dossier changent une seule chose entre les clips :
 **Jamais deux à la fois.** Le raccord se cache derrière une rupture attendue ;
 deux ruptures simultanées ne se cachent plus, elles s'additionnent et on entend
 deux morceaux.
+
+### Précision : « une variable » veut dire un changement perçu
+
+La règle « une seule variable change entre deux clips » se lit mal si on compte
+les tags. Sur `examples/la-deuxieme-fois.md`, le clip 2 modifie six tags —
+microphones de salle, réverbération commune, foule, compression, précision
+rythmique, absence de vernis. Ce n'est pas six variables : c'est **une**.
+
+> Une variable, c'est un **fait perçu**, pas un tag. Ces six tags servent la même
+> information — on est passé de la cabine à la salle — et l'oreille les lit comme
+> une seule.
+
+**Test pratique** : si tout ce qui change se résume en une phrase de six mots
+(« on est passé en concert », « on a monté d'un ton », « c'est elle qui chante »),
+c'est une variable. Si la phrase a besoin d'un « et », c'en est deux — et le
+raccord s'entendra.
+
+### Trois vides pour trois ruptures
+
+Le raccord se cache toujours dans un manque de repère, mais pas le même selon ce
+qui change :
+
+| Ce qui change | Vide nécessaire | Outil |
+|---|---|---|
+| Le tempo | rythmique | batterie coupée, bruit de pièce |
+| La tonalité | harmonique | montée de bruit blanc, sans hauteur |
+| La voix lead | vocal | instrument seul, aucune voix |
+| Le lieu | acoustique | arrêt de bande, puis air d'une autre pièce |
+
+Dans les quatre cas, une seconde suffit — mais elle doit être vide **de la chose
+qui va changer**.

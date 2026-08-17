@@ -219,3 +219,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/yalla.md` | Raï'n'B club ADN Kore 114 BPM, refrain en ouverture à froid |
 | `examples/ta-version.md` | R&B ADN Kore 110 BPM, deux clips = deux voix lead |
 | `examples/un-ton-au-dessus.md` | Club pop 124 BPM sans raï, deux clips = modulation d'un ton |
+| `examples/la-deuxieme-fois.md` | Secteur Ä à 112 BPM, deux clips = studio puis live |
