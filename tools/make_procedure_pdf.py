@@ -148,7 +148,7 @@ def contenu():
         ["Ce document répond à", "Réponse courte"],
         [["Comment écrire un morceau pour Suno V5.5 sans perdre la moitié du "
           "prompt en cours de route",
-          "Huit étapes, deux champs, deux limites dures"],
+          "Huit étapes, deux champs, deux limites dures, un exemple déroulé"],
          ["Pourquoi une génération part en vrille",
           "Champs tronqués en silence, motifs abandonnés, noms d'artistes filtrés"],
          ["Ce qu'on vérifie avant de coller dans Suno",
@@ -156,7 +156,7 @@ def contenu():
           "<font face='Courier'>tools/count.py</font>"]],
         [L * 0.46, L * 0.54]))
     f.append(Spacer(1, 16 * mm))
-    f.append(p("Le protocole complet, ses références et vingt morceaux de "
+    f.append(p("Le protocole complet, ses références et cinquante entrées de "
                "référence sont dans le dépôt, sous "
                "<font face='Courier'>.claude/skills/suno-v5-5-producer/</font>. "
                "Ce PDF en est la version imprimable : en cas de divergence, le "
@@ -362,6 +362,36 @@ def contenu():
          ["no mumble rap", "crisp diction, articulate delivery"]],
         [L * 0.42, L * 0.58]))
 
+    f.append(p("Conflits connus, à résoudre avant la génération", "Section"))
+    f.append(tableau(
+        ["ADN ou registre", "Tag en conflit", "Remplacement"],
+        [["Booba / trap saturée", "avoid over-saturated bass", "no cluttered low end"],
+         ["Booba / autotune", "no distorted vocals", "no mumble rap, crisp diction"],
+         ["Rohff / delivery brut", "no low-quality recording", "polished cinematic master"],
+         ["Cut Killer / vinyle", "no low-quality recording", "polished radio master"],
+         ["Brandy, New Jack", "no autotune (si ajouté)", "ne jamais l'ajouter ici"],
+         ["Chanson acoustique", "avoid thin sounds, club loudness", "avoid over-compression"],
+         ["Instrumental", "—", "ajouter no lead vocals, no rapping, no singing"]],
+        [L * 0.28, L * 0.36, L * 0.36]))
+
+    f.append(p("Le bloc par défaut de l'identité Prestige", "Section"))
+    f.append(p("La signature maison réclame <font face='Courier'>vinyl crackle"
+               "</font> et <font face='Courier'>radio broadcast atmosphere"
+               "</font>. Le bloc standard contient <font face='Courier'>no "
+               "low-quality recording</font> : les deux ne peuvent pas "
+               "coexister. Ce n'est pas un conflit ponctuel, c'est un conflit "
+               "avec l'identité — donc il se règle une fois pour toutes."))
+    f.append(Paragraph(
+        "Exclude: no mumble rap, no distorted vocals, avoid messy mix, no audio "
+        "artifacts, no generic EDM, no cluttered low end, avoid thin sounds.",
+        S["Bloc"]))
+    f.append(p("135 caractères, sept exclusions comme le bloc standard, zéro "
+               "contradiction. Le jumeau positif de "
+               "<font face='Courier'>no low-quality recording</font> part dans "
+               "la couche mastering, où il ne se bat contre rien : "
+               "<font face='Courier'>polished master under the vinyl grain"
+               "</font>.", "Note"))
+
     # ---------- 7 ----------
     f.append(p("7. Étape 6 — Vérifier les limites", "Chapitre"))
     f.append(tableau(
@@ -414,6 +444,57 @@ def contenu():
                "recopier dans le champ de style, vérifie les deux limites par "
                "clip, et garde les séparateurs hors de la charge utile.", "Note"))
 
+    f.append(p("Huit raisons de scinder, et une seule à la fois", "Section"))
+    f.append(p("La longueur n'est que la première. Chaque morceau long du "
+               "dossier scinde pour une raison différente, et cette raison "
+               "décide de tout le reste."))
+    f.append(tableau(
+        ["Raison de la scission", "Ce que porte le clip 2"],
+        [["Le texte ne rentre pas", "la suite du morceau"],
+         ["Version radio puis version DJ", "breakdown, montée, section instrumentale"],
+         ["Maxi 12 pouces", "breakdown et workout basse-batterie de 32 mesures"],
+         ["Changement de tempo", "la même chanson à un autre BPM"],
+         ["Changement d'instrumentation", "machines sorties, percussions à mains"],
+         ["Deux voix lead", "l'autre chanteur, seul dans son prompt"],
+         ["Modulation", "la même chanson un ton au-dessus"],
+         ["Changement de lieu", "la version live, salle et foule"]],
+        [L * 0.42, L * 0.58]))
+    f.append(Spacer(1, 6))
+    f.append(p("<b>Une seule variable change entre les deux clips</b> — et "
+               "« une variable » veut dire un <b>changement perçu</b>, pas un "
+               "tag. Une version live modifie six tags (micros de salle, "
+               "réverbération commune, foule, compression, flottement, absence "
+               "de vernis) mais l'oreille les lit comme une seule information : "
+               "on est passé en concert."))
+    f.append(p("<b>Test</b> : si tout ce qui change se résume en une phrase de "
+               "six mots, c'est une variable. Si la phrase a besoin d'un "
+               "« et », c'en est deux — et le raccord s'entendra.", "Note"))
+
+    f.append(p("Le raccord se cache dans un vide", "Section"))
+    f.append(p("Toujours un manque de repère, mais pas le même selon ce qui "
+               "change. Une seconde suffit — vide <b>de la chose qui va "
+               "changer</b>."))
+    f.append(tableau(
+        ["Ce qui change", "Vide nécessaire", "Outil"],
+        [["Le tempo", "rythmique", "batterie coupée, bruit de pièce"],
+         ["La tonalité", "harmonique", "montée de bruit blanc, sans hauteur"],
+         ["La voix lead", "vocal", "instrument seul, aucune voix"],
+         ["Le lieu", "acoustique", "arrêt de bande, puis l'air d'une autre pièce"]],
+        [L * 0.22, L * 0.24, L * 0.54]))
+
+    f.append(p("Ce qui est mort dans un prompt de clip 2", "Section"))
+    f.append(p("Suno <b>n'entend pas le clip 1</b> quand il génère le clip 2 : "
+               "la continuité de voix et de timbre vient de l'audio prolongé, "
+               "pas du texte. Toute formule qui référence « avant » est du poids "
+               "mort — <font face='Courier'>the same voice as before</font>, "
+               "<font face='Courier'>a whole tone higher than before</font>, "
+               "<font face='Courier'>as established earlier</font>. Décrire à "
+               "nouveau, ou supprimer."))
+    f.append(p("Corollaire utile : la tonalité ne s'écrit <b>jamais</b> dans le "
+               "champ de style, sauf pour une modulation entre deux clips — et "
+               "alors en absolu (<font face='Courier'>in B minor</font>), jamais "
+               "en relatif.", "Note"))
+
     # ---------- 9 ----------
     f.append(p("9. Étape 8 — Coller dans Suno", "Chapitre"))
     f.append(tableau(
@@ -437,8 +518,166 @@ def contenu():
 
     # ---------- 10 ----------
     f.append(PageBreak())
-    f.append(p("10. Checklist avant livraison", "Chapitre"))
-    f.append(p("Aucune livraison sans ces neuf vérifications."))
+    f.append(p("10. Objets qui ne sont pas des morceaux", "Chapitre"))
+
+    f.append(p("Le jingle", "Section"))
+    f.append(p("Suno n'a <b>pas de réglage de durée</b>. Sur un générique de "
+               "moins d'une minute, le risque s'inverse : ce n'est plus la "
+               "troncature qu'on craint, c'est le <b>remplissage</b>. Avec un "
+               "champ de paroles à moitié vide, Suno invente un couplet pour "
+               "meubler. Trois garde-fous, nécessaires ensemble :"))
+    f.extend(puces([
+        "L'écrire dans le style : <font face='Courier'>under one minute, no "
+        "verses, no long instrumental</font>. Une durée en toutes lettres passe "
+        "mieux qu'un nombre de mesures.",
+        "Fermer les paroles par une balise d'arrêt : "
+        "<font face='Courier'>[End: Everything stops dead, hard stop]</font>.",
+        "<b>Laisser la marge vide.</b> Remplir les 5000 caractères d'un jingle "
+        "revient à lui donner de quoi durer trois minutes. C'est le seul cas du "
+        "dossier où viser 4850 serait une faute.",
+    ]))
+    f.append(Spacer(1, 4))
+    f.append(p("Corollaire : sur un objet court, une routine de scratch écrite "
+               "dans une seule balise dure deux secondes — soit la moitié du "
+               "contenu perdue. La découper en passes n'est plus une "
+               "optimisation, c'est une condition.", "Note"))
+
+    f.append(p("L'instrumental", "Section"))
+    f.append(p("Sans un mot à écrire, le champ <i>Lyrics</i> sert quand même : "
+               "il devient une <b>partition</b>, où chaque balise porte un "
+               "nombre de mesures. C'est le seul endroit du système où l'on peut "
+               "décrire une chronologie — le champ de style décrit un état "
+               "global, sans notion de temps."))
+    f.append(Paragraph(
+        "[Verse Bed 1: 16 bars, drums, 808 and piano only, no brass, open]",
+        S["Bloc"]))
+    f.extend(puces([
+        "<b>Les comptes de mesures inclinent, ils ne garantissent pas.</b> "
+        "Additionner avant de générer : mesures x 4 x 60 / BPM = durée en "
+        "secondes. Ce qui dépasse se perd par la fin, donc outro court et "
+        "dernier hook placé avant.",
+        "<b>Faire taire la voix sans tuer la texture.</b> Un simple "
+        "<font face='Courier'>no vocals</font> supprime aussi les chops de soul. "
+        "La distinction porte sur la fonction : "
+        "<font face='Courier'>wordless chopped vocal texture only, used as "
+        "percussion, never as a melody line</font>.",
+        "<b>Trois niveaux de densité, jamais quatre.</b> Lits de couplet "
+        "pauvres, hooks riches, pont sans batterie. Un instru destiné à être "
+        "rappé doit laisser la place — centre du champ stéréo dégagé au-dessus "
+        "de 300 Hz.",
+    ]))
+
+    # ---------- 11 ----------
+    f.append(PageBreak())
+    f.append(p("11. Exemple complet, de bout en bout", "Chapitre"))
+    f.append(p("Un morceau réel du dossier, déroulé étape par étape : "
+               "<b>« Face B »</b>, club R&B commercial rapide sous identité "
+               "Prestige. Fiche complète dans "
+               "<font face='Courier'>examples/face-b.md</font>."))
+
+    f.append(p("Étape 1 — le brief", "Section"))
+    f.append(Paragraph("prestige old school banger commercial club rnb rapide",
+                       S["Bloc"]))
+    f.append(p("Quatre contraintes : identité Prestige (donc radio, vinyle, "
+               "MPC), registre club commercial (donc ratio hook élevé), R&B "
+               "(donc voix féminine et harmonies empilées), rapide (donc au "
+               "moins 118 BPM).", "Note"))
+
+    f.append(p("Étape 2 — les ADN traduits", "Section"))
+    f.append(tableau(
+        ["ADN visé", "Tags furtifs retenus"],
+        [["Prestige / broadcast",
+          "radio tuner sweep, heavy vinyl crackle, warm AM radio compression "
+          "on the intro voice"],
+         ["Golden Era",
+          "sampled MPC-60 kick and snare"],
+         ["Brandy",
+          "lush stacked harmonies, complex vocal runs, panoramic group vocal "
+          "responses"],
+         ["Cut Killer",
+          "scratched vocal sample stab, used as the hook riff"]],
+        [L * 0.26, L * 0.74]))
+    f.append(p("Aucun nom propre ne subsiste. La fusion tient en une seule "
+               "ligne de production : <font face='Courier'>sampled MPC-60 kick "
+               "and snare on a house grid</font> — les sons viennent de 1988, "
+               "la grille d'un club d'aujourd'hui.", "Note"))
+
+    f.append(p("Étape 3 — le champ Style, 889 / 1000", "Section"))
+    f.append(Paragraph(
+        "Commercial French club R&amp;B, fast and glossy. 122 BPM "
+        "four-on-the-floor, sampled MPC-60 kick and snare on a house grid, "
+        "crisp offbeat hi-hats, layered claps. Persistent scratched vocal "
+        "sample stab throughout, used as the hook riff, not as a solo. Filtered "
+        "soul-sample chords, round analog bassline with portamento glides, "
+        "Rhodes stabs, warm string swell, dark brass stabs, heavy vinyl crackle "
+        "under the whole mix. Female R&amp;B lead, silky agile topline, complex "
+        "vocal runs, lush stacked harmonies, panoramic group vocal responses. "
+        "Deep male radio host voice-over on the intro and outro, spoken not "
+        "sung, warm AM radio compression. Ultra-wide stereo field, panoramic "
+        "vocal layering. Radio club master, tight round low end, polished under "
+        "the vinyl grain. Exclude: no mumble rap, no distorted vocals, avoid "
+        "messy mix, no audio artifacts, no generic EDM, no cluttered low end, "
+        "avoid thin sounds.",
+        S["Bloc"]))
+    f.append(p("Ordre des couches, sans étiquettes : genre et BPM, rythmique, "
+               "persistance, instrumentation, voix, spatialisation, mastering, "
+               "exclusions. Bloc Prestige et non bloc standard, parce que "
+               "<font face='Courier'>heavy vinyl crackle</font> interdit "
+               "<font face='Courier'>no low-quality recording</font>.", "Note"))
+
+    f.append(p("Étape 4 — les paroles, extrait mesuré à 3920 / 5000", "Section"))
+    f.append(Paragraph(
+        "[Intro: Radio tuner sweep, vinyl crackle, scratched sample, host "
+        "voice-over, no drums]<br/>"
+        "(Instruction: Persistent scratched vocal sample stab throughout)<br/>"
+        "(voix d'hôte, grave, parlée, compression AM, au centre)<br/>"
+        "Prestige Old School. Deux heures du matin.<br/>"
+        "On sort la face B.<br/><br/>"
+        "[Chorus: Explosive hook, crowd answering wide, full drums, brass, "
+        "scratch on top]<br/>"
+        "(Call: Retourne-le !) Response: [Panoramic Group Vocals: Face B !]<br/>"
+        "(Call: Encore une fois !) Response: [Panoramic Group Vocals: Face B !]"
+        "<br/>"
+        "Tu connais la face A, tout le monde la connaît,<br/>"
+        "Moi je danse sur celle qu'ils passent jamais.<br/><br/>"
+        "[Bridge: Turntable stops dead, drums out, stacked a cappella "
+        "harmonies, Rhodes]<br/>"
+        "(le scratch s'arrête, plus de batterie, harmonies empilées)<br/>"
+        "Le disque tourne pas tout seul.",
+        S["Bloc"]))
+    f.append(p("La persistance est déclarée une deuxième fois en tête des "
+               "paroles. Le hook est un <b>ordre exécutable</b> — la salle peut "
+               "l'appliquer avec son corps. Et puisque le scratch est le moteur "
+               "du morceau, la rupture consiste à <b>l'arrêter</b> : c'est le "
+               "seul geste qui s'entende sur un disque déjà saturé de platine.",
+               "Note"))
+
+    f.append(p("Étape 5 — la mesure", "Section"))
+    f.append(Paragraph(
+        "$ python3 tools/count.py --style style.txt --lyrics paroles.txt<br/>"
+        "STYLE      889 / 1000  OK (marge 111)<br/>"
+        "PAROLES   3920 / 5000  OK (marge 1080)",
+        S["Bloc"]))
+
+    f.append(p("Étape 6 — les notes de studio", "Section"))
+    f.append(tableau(
+        ["Paramètre", "Valeur et raison"],
+        [["BPM", "122 — au-dessus de 126 les runs R&amp;B n'ont plus la place ; "
+                 "en dessous de 118 on retombe dans le mid-tempo"],
+         ["Tonalité", "Do mineur — et l'échantillon gratté est pitché dedans, "
+                      "sinon c'est un bruit et pas un riff"],
+         ["Delivery", "hôte parlé compressé AM ; chanteuse soyeuse et proche sur "
+                      "les couplets, doublée au refrain, runs en fin de ligne"],
+         ["Stéréo", "harmonies ouvertes à 30 %, 60 % puis 100 % sur les trois "
+                    "refrains ; crépitement large et constant, jamais modulé"],
+         ["Ratio hook", "2,18 — neuf sections de hook sur quinze, régime "
+                        "commercial sans sacrifier le texte"]],
+        [L * 0.18, L * 0.82]))
+
+    # ---------- 12 ----------
+    f.append(PageBreak())
+    f.append(p("12. Checklist avant livraison", "Chapitre"))
+    f.append(p("Aucune livraison sans ces onze vérifications."))
     f.append(checklist([
         "Le champ de style est en anglais, les paroles dans la langue du brief",
         "Aucun nom d'artiste, de marque ou de label dans le champ de style",
@@ -451,10 +690,13 @@ def contenu():
         "<font face='Courier'>tools/count.py</font> passe, avec au moins 50 "
         "caractères de marge sur chaque champ",
         "Les notes de studio donnent BPM, tonalité, delivery et leviers chiffrés",
+        "Morceau long : une seule variable change entre les deux clips, et le "
+        "raccord passe par un vide de cette variable",
+        "Aucun renvoi à « avant » dans le prompt du clip 2",
     ], L))
 
     f.append(Spacer(1, 10))
-    f.append(p("Les vingt morceaux de référence du dépôt, sous "
+    f.append(p("Les cinquante entrées de référence du dépôt, sous "
                "<font face='Courier'>examples/</font>, servent de calibrage : "
                "chacun porte son prompt de style et ses paroles mesurés, plus "
                "l'explication des choix de production. En cas de doute sur une "
