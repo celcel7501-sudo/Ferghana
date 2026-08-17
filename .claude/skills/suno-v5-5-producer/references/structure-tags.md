@@ -271,3 +271,32 @@ pauvres (batterie, basse, clavier), hooks riches (cuivres, cordes, scratch),
 pont sans batterie. Au-delà de trois états, le beat devient illisible pour celui
 qui écrit dessus. Le centre du champ stéréo au-dessus de 300 Hz reste dégagé :
 c'est la place de la voix à venir.
+
+---
+
+## L'ouverture à froid sur le refrain
+
+Squelette par défaut du dossier : intro → teaser → couplet → pré-refrain →
+refrain. C'est la structure des quarante-six premières entrées. Il en existe une
+autre, purement radio : **le refrain complet ouvre le morceau**, quatre mesures
+d'intro et rien d'autre. Voir `examples/yalla.md`.
+
+À écrire dans le style, sinon Suno place une intro instrumentale de vingt
+secondes par réflexe :
+
+```
+Opens straight on the full chorus, no build, hook inside the first ten seconds
+```
+
+Deux conséquences sur l'écriture, non négociables :
+
+1. **Le refrain doit se comprendre sans contexte.** Rien ne le précède, donc il
+   ne peut rien supposer. Un hook qui a besoin de son couplet pour faire sens ne
+   peut pas ouvrir un disque.
+2. **Il faut le mériter plus souvent.** Commencer par le sommet oblige à y
+   revenir : quatre refrains et quatre post-refrains pour deux couplets, contre
+   trois et deux dans la structure classique. Le ratio monte mécaniquement
+   au-dessus de 2.
+
+Registre : club, radio, anthem. À éviter sur un morceau conscient ou narratif —
+là, l'attente créée par le couplet est ce qui donne sa force au premier refrain.
