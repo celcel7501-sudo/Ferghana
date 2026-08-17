@@ -93,3 +93,50 @@ serrées sortira en bouillie.
   fois moins cher.
 - La Response tombe **après** la ligne, jamais dessus : c'est la règle qui fait
   fonctionner un refrain en club — la foule doit avoir la place de répondre.
+
+---
+
+## Deux voix lead : pourquoi ça se règle en deux clips
+
+Le champ de style ne décrit bien **qu'une seule voix dominante**. Écrire
+`male tenor lead` et `powerful female alto lead` dans le même prompt donne l'un
+de ces deux résultats : Suno moyenne les timbres, ou il alterne au hasard d'une
+section à l'autre. Les duos en un seul clip du dossier
+(`examples/il-est-a-moi.md`, `examples/elle-assure-grave.md`,
+`examples/layali.md`, `examples/ca-repart.md`) vivent avec ce défaut et le
+compensent par une répartition stricte des sections.
+
+La solution propre est le workflow Extend : **un clip par voix**, chacun avec un
+prompt où sa chanteuse est la seule.
+
+```
+Clip 1 : Male tenor lead only, one single lead voice
+Clip 2 : Powerful female alto lead, one single lead voice
+```
+
+Voir `examples/ta-version.md`.
+
+**Faire chanter les deux ensemble** reste possible, mais seulement dans le
+clip 2 et seulement tard :
+
+```
+Male and female voices sing together only on the bridge and the final chorus
+```
+
+Ça marche parce qu'à ce stade l'extension a installé le timbre masculin dans
+l'audio : le modèle le prolonge au lieu de l'inventer. Demander la même chose au
+clip 1 ne produit rien — il n'y a encore rien à prolonger.
+
+### Une variable à la fois
+
+Trois morceaux longs du dossier changent une seule chose entre les clips :
+
+| Morceau | Ce qui change | Ce qui reste |
+|---|---|---|
+| `deuxieme-salle.md` | le tempo (108 → 128) | tout le reste |
+| `youyous.md` | l'instrumentation (machine → mains) | tout le reste |
+| `ta-version.md` | la voix lead (homme → femme) | tout le reste |
+
+**Jamais deux à la fois.** Le raccord se cache derrière une rupture attendue ;
+deux ruptures simultanées ne se cachent plus, elles s'additionnent et on entend
+deux morceaux.

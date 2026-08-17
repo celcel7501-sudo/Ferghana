@@ -217,3 +217,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/prise-directe.md` | Instru club rap 100 BPM, paroles = partition de 104 mesures |
 | `examples/coupe-nette.md` | Boom bap NY 100 BPM, refrain entièrement scratché, ratio 0,40 |
 | `examples/yalla.md` | Raï'n'B club ADN Kore 114 BPM, refrain en ouverture à froid |
+| `examples/ta-version.md` | R&B ADN Kore 110 BPM, deux clips = deux voix lead |
