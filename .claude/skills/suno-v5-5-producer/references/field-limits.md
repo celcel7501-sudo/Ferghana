@@ -118,3 +118,36 @@ balise coûte proportionnellement beaucoup plus cher qu'ailleurs. Elle dure deux
 secondes ; sur cinquante-cinq secondes, c'est la moitié du contenu qui
 disparaît. La découper en passes séparées n'est plus une optimisation, c'est une
 condition.
+
+---
+
+## La tonalité dans le champ de style : une seule raison de l'écrire
+
+Sur quarante-huit morceaux du dossier, la tonalité n'apparaît **jamais** dans le
+prompt : elle vit dans les notes de studio. Deux raisons — elle coûte des
+caractères, et Suno choisit très bien tout seul à partir du genre et de
+l'instrumentation.
+
+L'exception unique est la **modulation entre deux clips**. Si le clip 2 doit
+être un ton au-dessus, rien dans l'audio ne le dira : il faut le déclarer, et le
+seul endroit où le déclarer est le prompt.
+
+```
+Clip 1 : Persistent synth-brass riff throughout, in A minor
+Clip 2 : Persistent synth-brass riff throughout, in B minor
+```
+
+Voir `examples/un-ton-au-dessus.md`.
+
+**Toujours en absolu, jamais en relatif.** `in B minor` fait le travail ;
+`a whole tone higher than before` est un renvoi mort (voir la section
+« ce qui est mort dans un prompt d'extension » ci-dessus) et coûte 33 caractères
+pour rien.
+
+**Un ton, pas un demi-ton.** Le demi-ton s'entend comme un accident de lecture,
+le ton comme une décision.
+
+**Le raccord doit passer par un vide harmonique.** Une coupe sans pulsation
+suffit pour changer de tempo ; changer de tonalité demande en plus qu'il n'y ait
+**pas de repère de hauteur** au point de coupe. Une montée de bruit blanc n'a
+pas de tonalité : c'est l'outil exact pour ça.
