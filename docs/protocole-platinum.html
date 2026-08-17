@@ -1,0 +1,894 @@
+<title>Protocole Platinum</title>
+<style>
+  /* ---------- tokens : clair par défaut ---------- */
+  :root {
+    --paper:   #F7F8F9;
+    --surface: #FFFFFF;
+    --sand:    #EFEDE8;
+    --ink:     #12161C;
+    --slate:   #5B646E;
+    --rule:    #D5D2CC;
+    --accent:  #B03A2E;
+    --accent-soft: rgba(176, 58, 46, 0.10);
+    --ok:      #3F6B4A;
+    --shadow:  0 1px 2px rgba(18, 22, 28, .05), 0 8px 24px rgba(18, 22, 28, .04);
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    --measure: 68ch;
+    --rail: 268px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:   #101317;
+      --surface: #171B20;
+      --sand:    #1C2026;
+      --ink:     #E3E1DC;
+      --slate:   #8C949D;
+      --rule:    #2A2F36;
+      --accent:  #D4664F;
+      --accent-soft: rgba(212, 102, 79, 0.14);
+      --ok:      #7FB08C;
+      --shadow:  0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.28);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:   #101317;
+    --surface: #171B20;
+    --sand:    #1C2026;
+    --ink:     #E3E1DC;
+    --slate:   #8C949D;
+    --rule:    #2A2F36;
+    --accent:  #D4664F;
+    --accent-soft: rgba(212, 102, 79, 0.14);
+    --ok:      #7FB08C;
+    --shadow:  0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.28);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ---------- charpente ---------- */
+  .shell {
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    gap: 0;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* ---------- rail ---------- */
+  .rail {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 34px 22px 34px 26px;
+    border-right: 1px solid var(--rule);
+    font-family: var(--mono);
+  }
+  .brand {
+    font-size: 11px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 4px;
+  }
+  .brand-sub {
+    font-size: 11px;
+    letter-spacing: .06em;
+    color: var(--slate);
+    margin: 0 0 26px;
+    line-height: 1.5;
+  }
+  .toc { display: flex; flex-direction: column; gap: 1px; }
+  .toc a {
+    display: grid;
+    grid-template-columns: 2.1em 1fr;
+    gap: 8px;
+    padding: 6px 8px 6px 6px;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 3px;
+    border-left: 2px solid transparent;
+  }
+  .toc a:hover { background: var(--accent-soft); }
+  .toc a.on { border-left-color: var(--accent); background: var(--accent-soft); }
+  .toc .n {
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .toc .sep {
+    margin: 12px 0 6px 6px;
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+
+  /* ---------- contenu ---------- */
+  main { padding: 0 44px 120px; min-width: 0; }
+
+  .head { padding: 74px 0 34px; border-bottom: 2px solid var(--ink); }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: var(--mono);
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.06;
+    letter-spacing: -.02em;
+    font-weight: 700;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .standfirst {
+    max-width: var(--measure);
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--slate);
+    margin: 0;
+  }
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    margin-top: 28px;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .facts div { display: flex; flex-direction: column; gap: 2px; }
+  .facts dt, .facts .k {
+    color: var(--slate);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+  .facts .v { font-size: 15px; font-variant-numeric: tabular-nums; }
+
+  section { padding-top: 56px; scroll-margin-top: 22px; }
+  h2 {
+    display: grid;
+    grid-template-columns: 2.4em 1fr;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 21px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin: 0 0 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+    text-wrap: balance;
+  }
+  h2 .n { color: var(--accent); font-variant-numeric: tabular-nums; }
+  h3 {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 34px 0 12px;
+  }
+  p, ul, ol { max-width: var(--measure); }
+  p { margin: 0 0 14px; }
+  strong { font-weight: 650; }
+
+  ul.rules { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-direction: column; gap: 12px; }
+  ul.rules li { padding-left: 20px; position: relative; }
+  ul.rules li::before {
+    content: "";
+    position: absolute;
+    left: 2px; top: .62em;
+    width: 7px; height: 2px;
+    background: var(--accent);
+  }
+
+  /* ---------- encadré ---------- */
+  .note {
+    max-width: var(--measure);
+    margin: 18px 0;
+    padding: 14px 16px 14px 18px;
+    border-left: 2px solid var(--accent);
+    background: var(--accent-soft);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink);
+    border-radius: 0 3px 3px 0;
+  }
+  .note p:last-child { margin-bottom: 0; }
+
+  /* ---------- code ---------- */
+  code {
+    font-family: var(--mono);
+    font-size: .87em;
+    background: var(--sand);
+    padding: .12em .34em;
+    border-radius: 2px;
+  }
+  .block {
+    margin: 16px 0 22px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .block-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--sand);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+  .block-top .label { flex: 1 1 auto; min-width: 0; }
+  pre {
+    margin: 0;
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: 12.6px;
+    line-height: 1.62;
+    color: var(--ink);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  pre.wrapless { white-space: pre; word-break: normal; }
+
+  /* ---------- compteur de budget ---------- */
+  .meter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    font-variant-numeric: tabular-nums;
+  }
+  .meter .bar {
+    width: 74px; height: 5px;
+    background: var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .meter .fill { display: block; height: 100%; background: var(--ok); }
+  .meter.tight .fill { background: var(--accent); }
+  .meter .num { color: var(--ink); letter-spacing: 0; }
+
+  button.copy {
+    flex: 0 0 auto;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    color: var(--slate);
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 4px 9px;
+    cursor: pointer;
+    transition: color .15s, border-color .15s;
+  }
+  button.copy:hover { color: var(--accent); border-color: var(--accent); }
+  button.copy[data-done="1"] { color: var(--ok); border-color: var(--ok); }
+
+  /* ---------- tableaux ---------- */
+  .scroll { overflow-x: auto; margin: 16px 0 22px; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 520px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 9px 14px 9px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  th {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    color: var(--slate);
+    border-bottom: 1.5px solid var(--ink);
+    white-space: nowrap;
+  }
+  td.mono, td.num { font-family: var(--mono); font-size: 12.8px; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ---------- checklist ---------- */
+  .check { list-style: none; padding: 0; margin: 16px 0 0; max-width: var(--measure); }
+  .check li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .check li::before {
+    content: "";
+    width: 13px; height: 13px;
+    margin-top: .34em;
+    border: 1.5px solid var(--slate);
+    border-radius: 2px;
+  }
+
+  /* ---------- pied ---------- */
+  footer {
+    margin-top: 80px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: var(--slate);
+    max-width: var(--measure);
+  }
+
+  @media (max-width: 900px) {
+    .shell { grid-template-columns: 1fr; }
+    .rail {
+      position: static; height: auto; border-right: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 22px 20px;
+    }
+    .toc { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 2px; }
+    .toc .sep { grid-column: 1 / -1; }
+    main { padding: 0 20px 80px; }
+    .head { padding-top: 40px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+
+<div class="shell">
+
+  <nav class="rail" aria-label="Sommaire">
+    <p class="brand">Studio Ferghana</p>
+    <p class="brand-sub">Protocole Platinum<br>Production Suno V5.5</p>
+    <div class="toc">
+      <div class="sep">Le morceau</div>
+      <a href="#c1"><span class="n">01</span><span>Vue d'ensemble</span></a>
+      <a href="#c2"><span class="n">02</span><span>Lire le brief</span></a>
+      <a href="#c3"><span class="n">03</span><span>Traduire les ADN</span></a>
+      <a href="#c4"><span class="n">04</span><span>Le champ Style</span></a>
+      <a href="#c5"><span class="n">05</span><span>Écrire les paroles</span></a>
+      <a href="#c6"><span class="n">06</span><span>Les exclusions</span></a>
+      <a href="#c7"><span class="n">07</span><span>Vérifier les limites</span></a>
+      <div class="sep">Cas particuliers</div>
+      <a href="#c8"><span class="n">08</span><span>Morceaux longs</span></a>
+      <a href="#c9"><span class="n">09</span><span>Coller dans Suno</span></a>
+      <a href="#c10"><span class="n">10</span><span>Jingle et instrumental</span></a>
+      <div class="sep">Référence</div>
+      <a href="#c11"><span class="n">11</span><span>Exemple complet</span></a>
+      <a href="#c12"><span class="n">12</span><span>Checklist</span></a>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="head">
+      <p class="eyebrow">Procédure de production</p>
+      <h1>Protocole Platinum</h1>
+      <p class="standfirst">Comment écrire un morceau pour Suno V5.5 sans perdre la moitié du prompt en cours de route. Deux champs, deux limites dures, huit étapes — et un exemple déroulé de bout en bout.</p>
+      <div class="facts">
+        <div><span class="k">Champ Style</span><span class="v">1000 car.</span></div>
+        <div><span class="k">Champ Lyrics</span><span class="v">5000 car.</span></div>
+        <div><span class="k">Marge minimale</span><span class="v">50 car.</span></div>
+        <div><span class="k">Morceaux de référence</span><span class="v">50</span></div>
+      </div>
+    </header>
+
+    <!-- 1 -->
+    <section id="c1">
+      <h2><span class="n">01</span><span>Vue d'ensemble</span></h2>
+      <p>Un morceau se livre en quatre blocs, toujours dans cet ordre. Les deux seuls qui entrent dans Suno sont le prompt de style et les paroles ; les deux autres servent à l'humain qui produit.</p>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Bloc</th><th>Contenu</th><th>Langue</th><th>Destination</th></tr></thead>
+          <tbody>
+            <tr><td>Analyse du mix</td><td>Pourquoi la fusion fonctionne, techniquement</td><td>Français</td><td>Note de production</td></tr>
+            <tr><td>Style Prompt</td><td>Le bloc de tags en couches</td><td><strong>Anglais</strong></td><td>Champ <em>Style of Music</em></td></tr>
+            <tr><td>Script et paroles</td><td>Texte, balises, call &amp; response</td><td>Français</td><td>Champ <em>Lyrics</em></td></tr>
+            <tr><td>Notes de studio</td><td>BPM, tonalité, delivery, leviers</td><td>Français</td><td>Note de production</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note"><p>Le champ de style est <strong>toujours en anglais</strong> : Suno lit les tags anglais bien plus fidèlement. La langue des paroles suit le brief, avec le français par défaut.</p></div>
+
+      <h3>Les écoles du studio</h3>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>École</th><th>Ce qu'elle apporte</th></tr></thead>
+          <tbody>
+            <tr><td>Timbaland</td><td>Rythmiques qui respirent : foley, beatbox, syncopes</td></tr>
+            <tr><td>Doc Gynéco</td><td>La plume : nonchalance, mélancolie, refrains qui collent</td></tr>
+            <tr><td>DJ Mehdi</td><td>Sampling, basses analogiques, French Touch urbaine</td></tr>
+            <tr><td>Cut Killer / Kore</td><td>Science du mix, scratch, énergie mixtape, sens du tube</td></tr>
+            <tr><td>Djimi Finger</td><td>Architecture Golden Era : piano sombre, cordes, basse jazz-fusion</td></tr>
+            <tr><td>Brandy / Ninho</td><td>Structures vocales : harmonies empilées, hooks mémorables</td></tr>
+            <tr><td>DJ Rim-K / Prestige</td><td>Identité maison : broadcast radio, MPC-60, cordes cinématographiques</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section id="c2">
+      <h2><span class="n">02</span><span>Étape 1 — Lire le brief</span></h2>
+      <p>Avant d'écrire une ligne, extraire quatre informations. Si l'une manque, elle se déduit ; si deux manquent, on demande.</p>
+      <ul class="rules">
+        <li><strong>Le genre et le tempo</strong> — ou, à défaut, une image et une énergie.</li>
+        <li><strong>La destination</strong> — radio, DJ set, morceau d'album, scène. Elle décide de la longueur du refrain et de la place du hook.</li>
+        <li><strong>La voix</strong> — homme, femme, duo, foule. Un duo remplit l'espace que le kick libère ; une foule demande des voyelles ouvertes.</li>
+        <li><strong>Les références</strong> — à traduire immédiatement en tags. Une référence non identifiée ne s'invente pas : on le dit, et on construit sur la partie certaine du brief.</li>
+      </ul>
+    </section>
+
+    <!-- 3 -->
+    <section id="c3">
+      <h2><span class="n">03</span><span>Étape 2 — Traduire les ADN</span></h2>
+      <p><strong>Ne jamais nommer un artiste dans le champ de style.</strong> C'est filtré, et la génération est perdue. On décrit le geste sonore, jamais la personne. Seuls les noms de machines et d'instruments sont autorisés : MPC, Moog, Rhodes, 808, Juno.</p>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>ADN visé</th><th>Tags furtifs à écrire</th></tr></thead>
+          <tbody>
+            <tr><td>Timbaland</td><td class="mono">syncopated foley percussion, organic mouth-percussion accents, heavy sidechain</td></tr>
+            <tr><td>Daft Punk / French Touch</td><td class="mono">filtered French house, heavy sidechain pumping, rhythmic vocoder, resonant filter sweeps</td></tr>
+            <tr><td>Brandy</td><td class="mono">lush multi-layered vocal harmonies, complex R&amp;B vocal runs, panoramic vocal layering</td></tr>
+            <tr><td>Doc Gynéco</td><td class="mono">nonchalant poetic urban delivery, melodic slacker flow</td></tr>
+            <tr><td>Djimi Finger / Secteur Ä</td><td class="mono">dark melancholic piano-driven, hard-hitting MPC drums, cinematic minor-key strings, deep melodic jazz-fusion bass</td></tr>
+            <tr><td>Kore</td><td class="mono">MPC-style swung drums, layered claps on the backbeat, darbuka fills, radio-ready anthemic chorus placement</td></tr>
+            <tr><td>DJ Mehdi</td><td class="mono">filtered soul loops, round analog bassline with portamento glides</td></tr>
+            <tr><td>Cut Killer</td><td class="mono">mixtape scratch drops, transformer cuts, backspin rewind</td></tr>
+            <tr><td>Scred Connexion</td><td class="mono">gritty authentic flow, conscious street storytelling, unpolished close-mic vocal</td></tr>
+            <tr><td>Ninho</td><td class="mono">melodic male tenor rap-singing, catchy sung hook</td></tr>
+            <tr><td>Booba / Le Duc</td><td class="mono">dark French trap, deep distorted 808 bass with long pitch glides, melodic autotune vocals, cold cavernous reverb</td></tr>
+            <tr><td>Rohff / Le Padre</td><td class="mono">conscious French rap, dramatic minor-key piano, soulful orchestral strings, raw unpolished delivery</td></tr>
+            <tr><td>DJ Rim-K / Prestige</td><td class="mono">Golden Era hip-hop podcast vibe, radio broadcast atmosphere, radio tuner sweep, vinyl crackle, hard-hitting MPC-60 drums</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note"><p>ADN absent de la table : isoler trois gestes — un rythmique, un harmonique, un de texture — traduire chacun en groupe nominal anglais court, puis vérifier qu'aucun nom propre ne subsiste.</p></div>
+    </section>
+
+    <!-- 4 -->
+    <section id="c4">
+      <h2><span class="n">04</span><span>Étape 3 — Construire le champ Style</span></h2>
+      <p>L'ordre porte la hiérarchie : Suno pondère la tête du prompt. On empile les couches dans cet ordre, séparées par des points.</p>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Ordre</th><th>Couche</th><th>Exemple</th></tr></thead>
+          <tbody>
+            <tr><td class="num">1</td><td>Genre précis</td><td class="mono">Golden-era French club rap, dark piano-driven boom bap</td></tr>
+            <tr><td class="num">2</td><td>ADN rythmique</td><td class="mono">100 BPM, hard-hitting MPC drums, claps on the backbeat</td></tr>
+            <tr><td class="num">3</td><td>Persistance</td><td class="mono">Persistent dark piano riff throughout</td></tr>
+            <tr><td class="num">4</td><td>Instrumentation</td><td class="mono">jazz-fusion bass with fretless slides, brass stabs</td></tr>
+            <tr><td class="num">5</td><td>Voix</td><td class="mono">male tenor, crisp diction, huge crowd chants</td></tr>
+            <tr><td class="num">6</td><td>Spatialisation</td><td class="mono">ultra-wide stereo field, panoramic vocal layering</td></tr>
+            <tr><td class="num">7</td><td>Turntablism</td><td class="mono">sharp rhythmic turntable cuts, transformer cuts</td></tr>
+            <tr><td class="num">8</td><td>Mastering</td><td class="mono">polished radio master, punchy compression</td></tr>
+            <tr><td class="num">9</td><td>Exclusions</td><td class="mono">Exclude: no mumble rap, avoid messy mix, …</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Pas d'étiquettes de couches dans le champ.</strong> Écrire <code>CORE GENRE:</code> ou <code>SONIC TEXTURE:</code> coûte environ 120 caractères et n'apporte rien au modèle. L'ordre suffit.</p>
+
+      <h3>La persistance, en double</h3>
+      <p>Suno abandonne un motif identitaire dès la première section. Pour l'en empêcher, il faut <strong>les deux déclarations</strong> ; une seule ne tient pas.</p>
+      <div class="block">
+        <div class="block-top"><span class="label">Les deux déclarations</span></div>
+        <pre class="wrapless">Champ de style   :  Persistent [instrument] throughout
+Tête des paroles :  (Instruction: Persistent [instrument] melody)</pre>
+      </div>
+      <div class="note"><p><strong>Un seul élément persistant par morceau.</strong> Deux persistances se neutralisent : le modèle arbitre et abandonne les deux. Et l'élément choisi doit survivre à toutes les ruptures du morceau — ce qui exclut presque toujours la basse, absente à chaque breakdown.</p></div>
+    </section>
+
+    <!-- 5 -->
+    <section id="c5">
+      <h2><span class="n">05</span><span>Étape 4 — Écrire les paroles</span></h2>
+      <p>Le squelette minimum d'un banger, dans l'ordre :</p>
+      <div class="block">
+        <div class="block-top"><span class="label">Squelette</span></div>
+        <pre>[Intro] → [Verse] → [Pre-Chorus: Energy ramp] → [Chorus: Explosive Hook] → [Verse] → [Pre-Chorus] → [Chorus] → [Bridge / DMC Routine] → [Chorus final] → [Outro]</pre>
+      </div>
+      <ul class="rules">
+        <li><strong>Balises enrichies, 60 à 80 caractères.</strong> Trois ou quatre directives, pas six : au-delà, c'est dilué. Une balise nue comme <code>[Verse]</code> est du gâchis.</li>
+        <li><strong>Du placement, pas des adjectifs.</strong> Une balise efficace dit quel instrument entre, à quel moment, et ce que fait la voix. Les adjectifs sont traités comme une ambiance moyenne étalée sur toute la section.</li>
+        <li><strong>Le refrain est identique à l'écrit</strong> entre ses occurrences : c'est ce qui déclenche la mémoire mélodique. Les variations passent par les balises et les ad-libs.</li>
+        <li><strong>Un pré-refrain sans texte</strong> ne produit qu'une montée instrumentale : c'est gâcher la marche la plus efficace vers le hook.</li>
+        <li><strong>Zéro markdown</strong> dans les deux champs. Les astérisques comptent dans la limite et peuvent être lus comme du texte.</li>
+      </ul>
+
+      <h3>Call &amp; response</h3>
+      <div class="block">
+        <div class="block-top"><span class="label">Syntaxe</span></div>
+        <pre>(Call: texte lancé par le lead) Response: [Panoramic Group Vocals: texte renvoyé]</pre>
+      </div>
+      <ul class="rules">
+        <li>La réponse tombe <strong>après</strong> l'appel, jamais dessus : la salle doit avoir la place de répondre.</li>
+        <li>La réponse est <strong>plus courte</strong> que l'appel et reprend un mot déjà entendu. Renvoyer l'appel en majuscules double le coût pour un hook mécanique.</li>
+        <li><strong>Coût : 90 à 110 caractères par ligne</strong>, soit environ 1200 sur les 5000 pour trois refrains. À budgéter dès la première ligne.</li>
+        <li>Variante économique : parenthèses simples, <code>Automatique (au-to-ma-tique)</code>. Deux fois moins cher, moins précis pour la spatialisation.</li>
+      </ul>
+      <div class="note"><p><strong>Règle de tempo, corrigée.</strong> Ce n'est pas le BPM qui limite la réponse, c'est le <strong>nombre de temps qu'on lui accorde</strong>. À 130 BPM, « La machine ! » — trois syllabes — passe très bien sur une demi-mesure ; dans une section où les appels tombent sur chaque temps, la réponse redescend à une syllabe. Le BPM dit seulement combien de temps tiennent dans une seconde.</p></div>
+    </section>
+
+    <!-- 6 -->
+    <section id="c6">
+      <h2><span class="n">06</span><span>Étape 5 — Les exclusions</span></h2>
+      <p>Bloc standard, ajouté en fin de champ de style :</p>
+      <div class="block" data-limit="1000">
+        <div class="block-top"><span class="label">Bloc standard</span></div>
+        <pre>Exclude: no mumble rap, no low-quality recording, no distorted vocals, avoid messy mix, ensure no audio artifacts, no generic EDM, avoid over-saturated bass.</pre>
+      </div>
+      <p><strong>Coût : 157 caractères</strong> sur les 1000. La partie positive doit donc tenir en 740 environ, pas 900.</p>
+      <ul class="rules">
+        <li><strong>Ne jamais exclure ce que le style demande par ailleurs.</strong> <code>no low-quality recording</code> contredit <code>vinyl crackle</code> : le modèle arbitre et perd les deux.</li>
+        <li><strong>Le champ de style conditionne positivement.</strong> Écrire <code>no distorted vocals</code> met surtout le mot <em>distorted</em> sous les yeux du modèle. Suno expose un champ dédié <strong>Exclude Styles</strong> où ces termes sont plus fiables et ne consomment pas le budget.</li>
+      </ul>
+
+      <h3>Conflits connus, à résoudre avant la génération</h3>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>ADN ou registre</th><th>Tag en conflit</th><th>Remplacement</th></tr></thead>
+          <tbody>
+            <tr><td>Booba / trap saturée</td><td class="mono">avoid over-saturated bass</td><td class="mono">no cluttered low end</td></tr>
+            <tr><td>Booba / autotune</td><td class="mono">no distorted vocals</td><td class="mono">no mumble rap, crisp diction</td></tr>
+            <tr><td>Rohff / delivery brut</td><td class="mono">no low-quality recording</td><td class="mono">polished cinematic master</td></tr>
+            <tr><td>Cut Killer / vinyle</td><td class="mono">no low-quality recording</td><td class="mono">polished radio master</td></tr>
+            <tr><td>Brandy, New Jack</td><td class="mono">no autotune</td><td>ne jamais l'ajouter ici</td></tr>
+            <tr><td>Chanson acoustique</td><td class="mono">avoid thin sounds, club loudness</td><td class="mono">avoid over-compression</td></tr>
+            <tr><td>Instrumental</td><td>—</td><td class="mono">no lead vocals, no rapping, no singing</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Le bloc par défaut de l'identité Prestige</h3>
+      <p>La signature maison réclame <code>vinyl crackle</code> et <code>radio broadcast atmosphere</code>. Le bloc standard contient <code>no low-quality recording</code> : les deux ne peuvent pas coexister. Ce n'est pas un conflit ponctuel, c'est un conflit <strong>avec l'identité</strong> — donc il se règle une fois pour toutes.</p>
+      <div class="block">
+        <div class="block-top"><span class="label">Bloc Prestige</span></div>
+        <pre>Exclude: no mumble rap, no distorted vocals, avoid messy mix, no audio artifacts, no generic EDM, no cluttered low end, avoid thin sounds.</pre>
+      </div>
+      <div class="note"><p>135 caractères, sept exclusions comme le bloc standard, zéro contradiction. Le jumeau positif de <code>no low-quality recording</code> part dans la couche mastering, où il ne se bat contre rien : <code>polished master under the vinyl grain</code>.</p></div>
+    </section>
+
+    <!-- 7 -->
+    <section id="c7">
+      <h2><span class="n">07</span><span>Étape 6 — Vérifier les limites</span></h2>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Champ</th><th>Limite dure</th><th>Cible de rédaction</th><th>Marge minimale</th></tr></thead>
+          <tbody>
+            <tr><td>Style of Music</td><td class="num">1000</td><td class="num">≈ 900</td><td class="num">50</td></tr>
+            <tr><td>Lyrics <span style="color:var(--slate)">(balises comprises)</span></td><td class="num">5000</td><td class="num">≈ 4850</td><td class="num">50</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Suno tronque en silence ce qui dépasse.</strong> On perd le mastering sur le style, l'outro et parfois le dernier refrain sur les paroles. Il faut donc mesurer, jamais estimer :</p>
+      <div class="block">
+        <div class="block-top"><span class="label">Mesure</span></div>
+        <pre>python3 tools/count.py --style style.txt --lyrics paroles.txt</pre>
+      </div>
+      <p>L'outil sort en code 1 si un champ déborde, et signale une marge inférieure à 50 caractères comme trop serrée.</p>
+
+      <h3>Ordre de sacrifice quand ça déborde</h3>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Rang</th><th>Ce qu'on coupe</th><th>Gain typique</th></tr></thead>
+          <tbody>
+            <tr><td class="num">1</td><td>Balises verbeuses — 150 caractères ramenés à 70</td><td class="num">200–280</td></tr>
+            <tr><td class="num">2</td><td>Didascalies trop longues</td><td class="num">20–60</td></tr>
+            <tr><td class="num">3</td><td>Outro parlé</td><td class="num">40–80</td></tr>
+            <tr><td class="num">4</td><td>Longueur du pont</td><td class="num">50–150</td></tr>
+            <tr><td class="num">5</td><td>Refrain final ramené à quatre lignes</td><td class="num">≈ 200</td></tr>
+            <tr><td>—</td><td><strong>Jamais les couplets</strong></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section id="c8">
+      <h2><span class="n">08</span><span>Étape 7 — Morceaux longs</span></h2>
+      <p>Au-delà d'environ trois minutes, un morceau ne se compresse pas : il se scinde en deux clips, chacun avec son propre champ de paroles, donc son propre budget de 5000 caractères.</p>
+
+      <h3>Huit raisons de scinder</h3>
+      <p>La longueur n'est que la première. Chaque morceau long du dossier scinde pour une raison différente, et cette raison décide de tout le reste.</p>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Raison de la scission</th><th>Ce que porte le clip 2</th></tr></thead>
+          <tbody>
+            <tr><td>Le texte ne rentre pas</td><td>la suite du morceau</td></tr>
+            <tr><td>Version radio puis version DJ</td><td>breakdown, montée, section instrumentale</td></tr>
+            <tr><td>Maxi 12 pouces</td><td>breakdown et workout basse-batterie de 32 mesures</td></tr>
+            <tr><td>Changement de tempo</td><td>la même chanson à un autre BPM</td></tr>
+            <tr><td>Changement d'instrumentation</td><td>machines sorties, percussions à mains</td></tr>
+            <tr><td>Deux voix lead</td><td>l'autre chanteur, seul dans son prompt</td></tr>
+            <tr><td>Modulation</td><td>la même chanson un ton au-dessus</td></tr>
+            <tr><td>Changement de lieu</td><td>la version live, salle et foule</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note"><p><strong>Une seule variable change entre les deux clips</strong> — et « une variable » veut dire un <strong>changement perçu</strong>, pas un tag. Une version live modifie six tags mais l'oreille les lit comme une seule information : on est passé en concert.</p>
+      <p><strong>Test</strong> : si tout ce qui change se résume en une phrase de six mots, c'est une variable. Si la phrase a besoin d'un « et », c'en est deux — et le raccord s'entendra.</p></div>
+
+      <h3>Le raccord se cache dans un vide</h3>
+      <p>Toujours un manque de repère, mais pas le même selon ce qui change. Une seconde suffit — vide <strong>de la chose qui va changer</strong>.</p>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Ce qui change</th><th>Vide nécessaire</th><th>Outil</th></tr></thead>
+          <tbody>
+            <tr><td>Le tempo</td><td>rythmique</td><td>batterie coupée, bruit de pièce</td></tr>
+            <tr><td>La tonalité</td><td>harmonique</td><td>montée de bruit blanc, sans hauteur</td></tr>
+            <tr><td>La voix lead</td><td>vocal</td><td>instrument seul, aucune voix</td></tr>
+            <tr><td>Le lieu</td><td>acoustique</td><td>arrêt de bande, puis l'air d'une autre pièce</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Ce qui est mort dans un prompt de clip 2</h3>
+      <p>Suno <strong>n'entend pas le clip 1</strong> quand il génère le clip 2 : la continuité de voix et de timbre vient de l'audio prolongé, pas du texte. Toute formule qui référence « avant » est du poids mort — <code>the same voice as before</code>, <code>a whole tone higher than before</code>, <code>as established earlier</code>. Décrire à nouveau, ou supprimer.</p>
+      <div class="note"><p>Corollaire : la tonalité ne s'écrit <strong>jamais</strong> dans le champ de style, sauf pour une modulation entre deux clips — et alors en absolu (<code>in B minor</code>), jamais en relatif.</p></div>
+    </section>
+
+    <!-- 9 -->
+    <section id="c9">
+      <h2><span class="n">09</span><span>Étape 8 — Coller dans Suno</span></h2>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Ordre</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td class="num">1</td><td>Coller le prompt de style dans <em>Style of Music</em>. Si l'interface expose <em>Exclude Styles</em>, y déplacer le bloc d'exclusions : 157 caractères libérés.</td></tr>
+            <tr><td class="num">2</td><td>Coller les paroles dans <em>Lyrics</em>, balises comprises.</td></tr>
+            <tr><td class="num">3</td><td>Générer, écouter, vérifier les points fragiles : motif persistant toujours présent après l'intro, mesure de silence conservée, coupure du pont respectée.</td></tr>
+            <tr><td class="num">4</td><td>Si un élément manque, appliquer un levier de re-génération plutôt que de réécrire. Chaque fiche morceau en liste quatre à six, chiffrés en caractères.</td></tr>
+            <tr><td class="num">5</td><td>Morceau long : choisir la prise, puis <em>Extend</em> depuis la <strong>fin</strong> du clip 1, et coller le style et les paroles du clip 2.</td></tr>
+            <tr><td class="num">6</td><td><em>Get Whole Song</em> pour recoller les deux clips et masteriser d'un bloc.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section id="c10">
+      <h2><span class="n">10</span><span>Objets qui ne sont pas des morceaux</span></h2>
+
+      <h3>Le jingle</h3>
+      <p>Suno n'a <strong>pas de réglage de durée</strong>. Sur un générique de moins d'une minute, le risque s'inverse : ce n'est plus la troncature qu'on craint, c'est le <strong>remplissage</strong>. Avec un champ de paroles à moitié vide, Suno invente un couplet pour meubler. Trois garde-fous, nécessaires ensemble :</p>
+      <ul class="rules">
+        <li>L'écrire dans le style : <code>under one minute, no verses, no long instrumental</code>. Une durée en toutes lettres passe mieux qu'un nombre de mesures.</li>
+        <li>Fermer les paroles par une balise d'arrêt : <code>[End: Everything stops dead, hard stop]</code>.</li>
+        <li><strong>Laisser la marge vide.</strong> Remplir les 5000 caractères d'un jingle revient à lui donner de quoi durer trois minutes. C'est le seul cas du dossier où viser 4850 serait une faute.</li>
+      </ul>
+
+      <h3>L'instrumental</h3>
+      <p>Sans un mot à écrire, le champ <em>Lyrics</em> sert quand même : il devient une <strong>partition</strong>, où chaque balise porte un nombre de mesures. C'est le seul endroit du système où l'on peut décrire une chronologie — le champ de style décrit un état global, sans notion de temps.</p>
+      <div class="block">
+        <div class="block-top"><span class="label">Une ligne de partition</span></div>
+        <pre>[Verse Bed 1: 16 bars, drums, 808 and piano only, no brass, open]</pre>
+      </div>
+      <ul class="rules">
+        <li><strong>Les comptes de mesures inclinent, ils ne garantissent pas.</strong> Additionner avant de générer : <code>mesures × 4 × 60 ÷ BPM</code> = durée en secondes. Ce qui dépasse se perd par la fin, donc outro court et dernier hook placé avant.</li>
+        <li><strong>Faire taire la voix sans tuer la texture.</strong> Un simple <code>no vocals</code> supprime aussi les chops de soul. La distinction porte sur la fonction : <code>wordless chopped vocal texture only, used as percussion, never as a melody line</code>.</li>
+        <li><strong>Trois niveaux de densité, jamais quatre.</strong> Lits de couplet pauvres, hooks riches, pont sans batterie. Un instru destiné à être rappé doit laisser la place — centre du champ stéréo dégagé au-dessus de 300 Hz.</li>
+      </ul>
+    </section>
+
+    <!-- 11 -->
+    <section id="c11">
+      <h2><span class="n">11</span><span>Exemple complet, de bout en bout</span></h2>
+      <p>Un morceau réel du dossier, déroulé étape par étape : <strong>« Face B »</strong>, club R&amp;B commercial rapide sous identité Prestige.</p>
+
+      <h3>Étape 1 — le brief</h3>
+      <div class="block">
+        <div class="block-top"><span class="label">Tel qu'il arrive</span></div>
+        <pre>prestige old school banger commercial club rnb rapide</pre>
+      </div>
+      <p>Quatre contraintes : identité Prestige (donc radio, vinyle, MPC), registre club commercial (donc ratio hook élevé), R&amp;B (donc voix féminine et harmonies empilées), rapide (donc au moins 118 BPM).</p>
+
+      <h3>Étape 2 — les ADN traduits</h3>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>ADN visé</th><th>Tags furtifs retenus</th></tr></thead>
+          <tbody>
+            <tr><td>Prestige / broadcast</td><td class="mono">radio tuner sweep, heavy vinyl crackle, warm AM radio compression on the intro voice</td></tr>
+            <tr><td>Golden Era</td><td class="mono">sampled MPC-60 kick and snare</td></tr>
+            <tr><td>Brandy</td><td class="mono">lush stacked harmonies, complex vocal runs, panoramic group vocal responses</td></tr>
+            <tr><td>Cut Killer</td><td class="mono">scratched vocal sample stab, used as the hook riff</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note"><p>Aucun nom propre ne subsiste. La fusion tient en une seule ligne de production : <code>sampled MPC-60 kick and snare on a house grid</code> — les sons viennent de 1988, la grille d'un club d'aujourd'hui.</p></div>
+
+      <h3>Étape 3 — le champ Style</h3>
+      <div class="block" data-limit="1000">
+        <div class="block-top"><span class="label">Style of Music</span></div>
+        <pre>Commercial French club R&amp;B, fast and glossy. 122 BPM four-on-the-floor, sampled MPC-60 kick and snare on a house grid, crisp offbeat hi-hats, layered claps. Persistent scratched vocal sample stab throughout, used as the hook riff, not as a solo. Filtered soul-sample chords, round analog bassline with portamento glides, Rhodes stabs, warm string swell, dark brass stabs, heavy vinyl crackle under the whole mix. Female R&amp;B lead, silky agile topline, complex vocal runs, lush stacked harmonies, panoramic group vocal responses. Deep male radio host voice-over on the intro and outro, spoken not sung, warm AM radio compression. Ultra-wide stereo field, panoramic vocal layering. Radio club master, tight round low end, polished under the vinyl grain. Exclude: no mumble rap, no distorted vocals, avoid messy mix, no audio artifacts, no generic EDM, no cluttered low end, avoid thin sounds.</pre>
+      </div>
+      <p>Ordre des couches, sans étiquettes : genre et BPM, rythmique, persistance, instrumentation, voix, spatialisation, mastering, exclusions. Bloc Prestige et non bloc standard, parce que <code>heavy vinyl crackle</code> interdit <code>no low-quality recording</code>.</p>
+
+      <h3>Étape 4 — les paroles</h3>
+      <div class="block" data-limit="5000" data-partial="1">
+        <div class="block-top"><span class="label">Lyrics — extrait</span></div>
+        <pre>[Intro: Radio tuner sweep, vinyl crackle, scratched sample, host voice-over, no drums]
+(Instruction: Persistent scratched vocal sample stab throughout)
+(voix d'hôte, grave, parlée, compression AM, au centre)
+Prestige Old School. Deux heures du matin.
+On sort la face B.
+
+[Chorus: Explosive hook, crowd answering wide, full drums, brass, scratch on top]
+(Call: Retourne-le !) Response: [Panoramic Group Vocals: Face B !]
+(Call: Encore une fois !) Response: [Panoramic Group Vocals: Face B !]
+Tu connais la face A, tout le monde la connaît,
+Moi je danse sur celle qu'ils passent jamais.
+
+[Bridge: Turntable stops dead, drums out, stacked a cappella harmonies, Rhodes]
+(le scratch s'arrête, plus de batterie, harmonies empilées)
+Le disque tourne pas tout seul.</pre>
+      </div>
+      <div class="note"><p>La persistance est déclarée une deuxième fois en tête des paroles. Le hook est un <strong>ordre exécutable</strong> — la salle peut l'appliquer avec son corps. Et puisque le scratch est le moteur du morceau, la rupture consiste à <strong>l'arrêter</strong> : c'est le seul geste qui s'entende sur un disque déjà saturé de platine.</p></div>
+
+      <h3>Étape 5 — la mesure</h3>
+      <div class="block">
+        <div class="block-top"><span class="label">Terminal</span></div>
+        <pre class="wrapless">$ python3 tools/count.py --style style.txt --lyrics paroles.txt
+STYLE      889 / 1000  OK (marge 111)
+PAROLES   3920 / 5000  OK (marge 1080)</pre>
+      </div>
+
+      <h3>Étape 6 — les notes de studio</h3>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Paramètre</th><th>Valeur et raison</th></tr></thead>
+          <tbody>
+            <tr><td>BPM</td><td>122 — au-dessus de 126 les runs R&amp;B n'ont plus la place ; en dessous de 118 on retombe dans le mid-tempo</td></tr>
+            <tr><td>Tonalité</td><td>Do mineur — et l'échantillon gratté est pitché dedans, sinon c'est un bruit et pas un riff</td></tr>
+            <tr><td>Delivery</td><td>hôte parlé compressé AM ; chanteuse soyeuse et proche sur les couplets, doublée au refrain, runs en fin de ligne</td></tr>
+            <tr><td>Stéréo</td><td>harmonies ouvertes à 30 %, 60 % puis 100 % sur les trois refrains ; crépitement large et constant, jamais modulé</td></tr>
+            <tr><td>Ratio hook</td><td>2,18 — neuf sections de hook sur quinze, régime commercial sans sacrifier le texte</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section id="c12">
+      <h2><span class="n">12</span><span>Checklist avant livraison</span></h2>
+      <p>Aucune livraison sans ces onze vérifications.</p>
+      <ul class="check">
+        <li><span>Le champ de style est en anglais, les paroles dans la langue du brief</span></li>
+        <li><span>Aucun nom d'artiste, de marque ou de label dans le champ de style</span></li>
+        <li><span>Un seul élément persistant, déclaré dans les deux champs</span></li>
+        <li><span>Structure complète : intro, pré-refrain écrit, refrain, rupture, refrain final</span></li>
+        <li><span>Le refrain est identique à l'écrit entre ses occurrences</span></li>
+        <li><span>Bloc d'exclusions présent, et cohérent avec la couche texture</span></li>
+        <li><span>Aucun markdown dans les deux champs</span></li>
+        <li><span><code>tools/count.py</code> passe, avec au moins 50 caractères de marge sur chaque champ</span></li>
+        <li><span>Les notes de studio donnent BPM, tonalité, delivery et leviers chiffrés</span></li>
+        <li><span>Morceau long : une seule variable change entre les deux clips, et le raccord passe par un vide de cette variable</span></li>
+        <li><span>Aucun renvoi à « avant » dans le prompt du clip 2</span></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>Studio Ferghana — Protocole Platinum. Le protocole complet, ses références et cinquante entrées de calibrage vivent dans le dépôt, sous <code>.claude/skills/suno-v5-5-producer/</code>. En cas de divergence, le dépôt fait foi.</p>
+      <p>Version imprimable : <code>docs/procedure-suno-v5-5.pdf</code>, régénérable par <code>python3 tools/make_procedure_pdf.py</code>.</p>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+(function () {
+  // Compteur de budget : la longueur est mesurée, jamais recopiée.
+  document.querySelectorAll('.block[data-limit]').forEach(function (block) {
+    var pre = block.querySelector('pre');
+    var top = block.querySelector('.block-top');
+    if (!pre || !top) return;
+    var limit = parseInt(block.getAttribute('data-limit'), 10);
+    var n = pre.textContent.replace(/\s+$/, '').length;
+    var partial = block.hasAttribute('data-partial');
+    var pct = Math.min(100, Math.round((n / limit) * 100));
+
+    var m = document.createElement('span');
+    m.className = 'meter' + (!partial && limit - n < 50 ? ' tight' : '');
+    var bar = document.createElement('span');
+    bar.className = 'bar';
+    var fill = document.createElement('span');
+    fill.className = 'fill';
+    fill.style.width = pct + '%';
+    bar.appendChild(fill);
+    var num = document.createElement('span');
+    num.className = 'num';
+    num.textContent = (partial ? '≈ ' : '') + n + ' / ' + limit;
+    m.appendChild(bar);
+    m.appendChild(num);
+    top.appendChild(m);
+  });
+
+  // Copier : Presse-papiers si autorisé, sinon sélection pour un ⌘C manuel.
+  document.querySelectorAll('.block').forEach(function (block) {
+    var pre = block.querySelector('pre');
+    var top = block.querySelector('.block-top');
+    if (!pre || !top) return;
+    var b = document.createElement('button');
+    b.className = 'copy';
+    b.type = 'button';
+    b.textContent = 'Copier';
+    b.addEventListener('click', function () {
+      var txt = pre.textContent;
+      var done = function (label) {
+        b.textContent = label;
+        b.setAttribute('data-done', '1');
+        setTimeout(function () {
+          b.textContent = 'Copier';
+          b.removeAttribute('data-done');
+        }, 2200);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(function () { done('Copié'); })
+          .catch(function () { select(); });
+      } else { select(); }
+      function select() {
+        var r = document.createRange();
+        r.selectNodeContents(pre);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+        done('Sélectionné');
+      }
+    });
+    top.appendChild(b);
+  });
+
+  // Chapitre courant dans le rail.
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.classList.remove('on'); });
+      var a = byId[e.target.id];
+      if (a) a.classList.add('on');
+    });
+  }, { rootMargin: '-10% 0px -75% 0px' });
+  document.querySelectorAll('section[id]').forEach(function (s) { obs.observe(s); });
+})();
+</script>
