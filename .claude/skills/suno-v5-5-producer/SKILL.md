@@ -215,3 +215,4 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 | `examples/generique-prestige.md` | Générique de podcast 92 BPM, ~55 s, marge vide comme instruction |
 | `examples/face-b.md` | Club R&B commercial 122 BPM, identité Prestige, scratch persistant |
 | `examples/prise-directe.md` | Instru club rap 100 BPM, paroles = partition de 104 mesures |
+| `examples/coupe-nette.md` | Boom bap NY 100 BPM, refrain entièrement scratché, ratio 0,40 |

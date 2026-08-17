@@ -72,3 +72,34 @@ Trois conditions :
 Densité de placement : sur le contretemps de chaque mesure, en retrait sous les
 couplets, au-dessus de la voix au refrain, seul avec les claps au post-refrain.
 Même courbe qu'un stab de synthé — avec le grain d'une platine.
+
+---
+
+## Écrire un refrain entièrement scratché
+
+Un cran au-delà du scratch persistant : le refrain **n'a pas de voix**. Ni
+chanté, ni rappé, ni scandé — quatre fragments coupés à la platine. Voir
+`examples/coupe-nette.md`.
+
+C'est l'objet le plus éloigné du réflexe par défaut du modèle : sans instruction
+contraire, Suno invente un refrain chanté, parce qu'un refrain « doit » être
+chanté. Trois dispositifs, et il faut **les trois** :
+
+1. **Notation en bégaiement** : `Cou-cou-coupe nette`. Les tirets et la syllabe
+   répétée disent un geste de main sur un disque, pas une ligne mélodique.
+2. **Une didascalie par ligne** : `(scratché)` en tête de chaque fragment. La
+   balise de section ne suffit pas — sur un bloc de quatre lignes, Suno
+   n'applique la directive qu'à la première.
+3. **`no melodic hook` dans les exclusions**, en plus de `no singing`. Elle
+   bloque le réflexe au niveau du style et pas seulement de la section.
+
+### D'où viennent les phrases
+
+Sur les disques de cette école, elles sont prélevées sur d'autres disques. Dans
+le dossier, **elles viennent des couplets du morceau lui-même** : « coupe
+nette », « pas de bavure », « on garde le meilleur » apparaissent dans les
+couplets avant d'être coupées au refrain. L'auditeur les a déjà entendues, donc
+la coupe s'entend comme une citation et non comme un bruit.
+
+Généralisation de la règle posée sur `examples/l-elite.md` : **le mot gratté
+doit venir du morceau.** Ici, tout le refrain.
