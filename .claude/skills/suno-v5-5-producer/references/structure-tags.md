@@ -226,3 +226,48 @@ radio), le crépitement installe l'époque, la voix-off installe l'hôte.
 - **La reprendre à l'outro** referme le générique et transforme le morceau en
   épisode. Voir `examples/cage-d-escalier.md` et `examples/impeccable.md` pour
   le principe intro/outro symétriques.
+
+---
+
+## L'instrumental : le champ de paroles devient une partition
+
+Sur un instru, il n'y a pas un mot à écrire — et le champ *Lyrics* sert quand
+même, autrement. Il devient un **plan de montage** où chaque balise porte un
+nombre de mesures. Voir `examples/prise-directe.md`.
+
+```
+[Verse Bed 1: 16 bars, drums, 808 and piano only, no brass, no strings, open]
+```
+
+C'est le seul endroit du système où l'on peut décrire une **chronologie** : le
+champ de style décrit un état global, sans notion de temps.
+
+### Comptes de mesures
+
+Ce sont des **inclinaisons, pas des garanties**. Suno respecte assez bien les
+proportions (un bloc de 16 sonne deux fois plus long qu'un bloc de 8), beaucoup
+moins bien la durée absolue. D'où la vérification à faire avant de générer :
+
+> mesures × 4 × 60 ÷ BPM = durée en secondes
+
+Ce qui dépasse le plafond de génération **se perd par la fin**. Placer en queue
+ce qu'on accepte de perdre : un outro court, et jamais le dernier hook.
+
+### Faire taire la voix sans tuer la texture
+
+Un simple `no vocals` supprime aussi les chops de soul, qui font une bonne part
+du grain d'un beat. La distinction porte sur la **fonction**, pas sur la
+présence :
+
+```
+no lead vocal, no rapped verse, no sung hook.
+Wordless chopped vocal texture only, used as percussion, never as a melody line.
+```
+
+### Densité : trois niveaux, jamais quatre
+
+Un instru destiné à être rappé doit **laisser la place**. Lits de couplet
+pauvres (batterie, basse, clavier), hooks riches (cuivres, cordes, scratch),
+pont sans batterie. Au-delà de trois états, le beat devient illisible pour celui
+qui écrit dessus. Le centre du champ stéréo au-dessus de 300 Hz reste dégagé :
+c'est la place de la voix à venir.
