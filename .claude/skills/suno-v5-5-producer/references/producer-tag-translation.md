@@ -21,6 +21,7 @@ ou aseptiser la génération. On ne cite jamais. On **décrit le geste sonore**.
 | **Rim'K** — club oriental, ambiance de salle | `Maghrebi-tinged French club rap`, `fast darbuka and derbouka rolls`, `bendir frame drum`, `mandole and synth-oud lead melody`, `gasba flute accents`, `hijaz scale strings`, `deep 808 sub bass with long pitch glides`, `chanted crowd hook with ululation ad-libs` |
 | **Booba (Le Duc)** — trap sombre, 808 saturée | `dark French trap`, `deep distorted 808 bass with long pitch glides`, `melodic autotune vocals`, `cold cavernous reverb`, `sparse menacing synth lead`, `low-register punchline delivery`, `wide icy stereo field` |
 | **Rohff (Le Padre)** — rap conscient, cordes | `conscious French rap`, `dramatic minor-key piano`, `soulful orchestral strings`, `raw unpolished delivery`, `hard-hitting live-sounding drums`, `gospel-tinged backing choir`, `dynamic vocal intensity` |
+| **Darkchild** — R&B fin 90s, programmation saccadée | `stuttering syncopated drum programming`, `jerky off-grid percussion hits`, `staccato string stabs`, `tight muted synth arpeggio`, `gated vocal chops used as percussion`, `hyper-processed stacked backing vocals`, `orchestral hit accents` |
 | **Structure RnB Brandy** | `lush stacked R&B harmonies`, `layered vocal arrangement`, `call-and-response backing vocals`, `whispered harmony bed`, `complex R&B vocal runs`, `panoramic vocal layering` |
 
 ## Méthode

@@ -28,6 +28,7 @@ urbaine, luxe discret. Ouverture type :
 | **Cut Killer / Kore** | Science du mix, scratch technique, énergie mixtape, sens du tube |
 | **Djimi Finger** | Architecture Golden Era : piano sombre, cordes, basse jazz-fusion |
 | **Brandy / Ninho** | Structures vocales : harmonies empilées, runs R&B, hooks mémorables |
+| **Darkchild** | Programmation saccadée : batterie qui bégaie, stabs de cordes, chops vocaux |
 | **Booba (Le Duc)** | Trap sombre : 808 saturée, autotune mélodique, réverbération froide |
 | **Rohff (Le Padre)** | Rap conscient : piano dramatique, cordes orchestrales, delivery brut |
 | **DJ Rim-K / Prestige** | Identité maison : broadcast radio, MPC-60, cordes cinématographiques |
@@ -47,6 +48,7 @@ génération. On traduit l'ADN en tags techniques :
 | **Booba / Le Duc** | `dark French trap`, `deep distorted 808 bass with long pitch glides`, `melodic autotune vocals`, `cold cavernous reverb` |
 | **Rohff / Le Padre** | `conscious French rap`, `dramatic minor-key piano`, `soulful orchestral strings`, `raw unpolished delivery` |
 | **DJ Rim-K / Prestige** | `Golden Era hip-hop podcast vibe`, `radio broadcast atmosphere`, `radio tuner sweep`, `vinyl crackle`, `hard-hitting MPC-60 drums`, `cinematic minor-key strings` |
+| **Darkchild** | `stuttering syncopated drum programming`, `jerky off-grid percussion hits`, `staccato string stabs`, `tight muted synth arpeggio`, `gated vocal chops used as percussion` |
 
 Table complète (Kore, Mehdi, Cut Killer, Scred, Ninho, Secteur Ä, Teddy Riley) :
 `references/producer-tag-translation.md`.
@@ -131,15 +133,27 @@ l'outro et parfois le dernier refrain sur les paroles. Donc :
 - Si ça déborde, l'ordre de sacrifice est : balises verbeuses → didascalies →
   outro parlé → longueur du pont. **Jamais les couplets en premier.**
 
-## Format de réponse OBLIGATOIRE
+## Format de réponse OBLIGATOIRE — cinq sections
 
 1. **🧪 ANALYSE DU MIX** — Pourquoi cette fusion fonctionne, techniquement
    (ex : talkbox funk + pumping French house). Concret, court, assumé.
-2. **🎛️ V5.5 STYLE PROMPT** — Bloc de tags **en anglais**, en bloc de code.
-3. **📝 SCRIPT & PAROLES** — Texte **en français**, balises de direction,
+2. **🎛️ STYLE PROMPT** — Bloc de tags **positifs**, en anglais, en bloc de code.
+3. **🚫 BLOC D'EXCLUSION** — Liste de tags négatifs, **séparée**, en bloc de code.
+4. **📝 SCRIPT & PAROLES** — Texte **en français**, balises de direction,
    Call & Response, spatialisation et effets vocaux.
-4. **🎹 NOTES DE STUDIO** — BPM, tonalité, delivery vocal, leviers de
+5. **🎹 NOTES DE STUDIO** — BPM, tonalité, delivery vocal, leviers de
    re-génération chiffrés en caractères.
+
+**Pourquoi les exclusions sont une section à part.** Suno expose un champ dédié
+*Exclude Styles*, séparé du prompt de style, où les négations sont plus fiables
+et **ne consomment pas le budget des 1000 caractères**. Une section distincte se
+colle donc directement dans ce champ. Quand l'interface ne l'expose pas (API,
+certaines vues mobiles), on recolle le bloc en fin de champ de style — et il
+faut alors le compter : viser 740 de positif au lieu de 900.
+
+**Les deux mesures à annoncer** restent celles du champ tel qu'il sera collé.
+Si le bloc d'exclusion part dans *Exclude Styles*, le champ de style est mesuré
+sans lui.
 
 ## Règles non négociables
 
