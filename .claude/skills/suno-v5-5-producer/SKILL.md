@@ -235,3 +235,4 @@ sans lui.
 | `examples/un-ton-au-dessus.md` | Club pop 124 BPM sans raï, deux clips = modulation d'un ton |
 | `examples/la-deuxieme-fois.md` | Secteur Ä à 112 BPM, deux clips = studio puis live |
 | `examples/sur-la-frequence.md` | Même prompt de style que `face-b.md`, autre texte |
+| `examples/je-te-le-dis-une-fois.md` | Darkchild × Djimi Finger 96 BPM, fusion par couches, format 5 sections |

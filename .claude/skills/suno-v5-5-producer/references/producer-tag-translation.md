@@ -44,3 +44,35 @@ personnes.
 Empiler les trois ADN sans hiérarchie donne une bouillie. Dans un morceau :
 **un ADN mène** (généralement le rythmique), les deux autres décorent. Écrire
 les tags dans cet ordre de priorité — Suno pondère la tête du prompt.
+
+## Fusionner deux ADN : la règle des couches
+
+« Un ADN mène, les deux autres décorent » suffit quand les ADN portent des
+choses différentes. Elle ne suffit plus quand **deux écoles se disputent la même
+couche** — deux programmeurs de batterie, deux architectes harmoniques.
+
+La sortie est une **répartition explicite, couche par couche**. Exemple réel,
+`examples/je-te-le-dis-une-fois.md` (Darkchild × Djimi Finger) :
+
+| Couche | École qui la tient |
+|---|---|
+| Programmation rythmique | Darkchild — batterie qui bégaie, percussions hors grille |
+| Timbre de la batterie | Djimi Finger — MPC-60 |
+| Matériau harmonique | Djimi Finger — piano sombre, cordes mineures, basse fretless |
+| Ornement mélodique | Darkchild — stabs de cordes staccato, arpège étouffé |
+
+**Le conflit se règle en un seul groupe nominal**, jamais en deux tags qui se
+font face :
+
+```
+MPC-60 kick and snare programmed in a stuttering off-grid pattern
+```
+
+Le son vient d'une école, le placement de l'autre. Même construction que
+`sampled MPC-60 kick and snare on a house grid` sur `examples/face-b.md`.
+
+**Corollaire sur la persistance.** Quand un motif appartient aux deux ADN à la
+fois, c'est lui qui doit persister : il fait la jointure sans qu'on l'explique.
+Sur ce morceau, le stab de cordes staccato est pitché (donc harmonique, côté
+Golden Era) et court (donc percussif, côté Darkchild) — aucun autre élément ne
+pouvait tenir ce rôle.
