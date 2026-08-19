@@ -450,3 +450,46 @@ instrumentale. **On budgète avant d'écrire une ligne.**
 s'allongent.** Sur ce morceau : 1,24 au texte contre 3,5 en mesures, facteur
 2,8, là où `doucement.md` était à 2. Les bords instrumentaux n'ont rien que le
 compteur de caractères puisse voir.
+
+### Le refrain à trois lectures : mettre de l'émotion dans un disque de club
+
+Contradiction posée par `references/plume-et-flow.md` : un texte à forte charge
+demande de la place, donc un ratio bas, alors qu'un banger club vit entre 2,2 et
+2,9. « Émotionnel **et** club » est donc une commande contradictoire — sauf si
+l'émotion sort du texte.
+
+**Elle n'a pas le choix : il n'y a pas assez de texte.** Un refrain de quatre
+lignes chanté quatre fois ne peut pas porter un récit. L'émotion doit être dans
+ce qui change **sous** des mots qui, eux, ne changent pas.
+
+Dispositif, mesuré sur `examples/la-derniere.md` :
+
+| Passage | Arrangement | Sens produit |
+|---|---|---|
+| Refrains 1 et 2 | Tout, majeur relatif, salle pleine | La fête |
+| **Refrain dépouillé** | Une voix, ni batterie ni basse, nappe et salle au loin | L'adieu |
+| Refrain final | Tout revient d'un bloc, la salle chante | Les deux à la fois |
+
+**Trois conditions, toutes obligatoires :**
+
+1. **Le texte doit être constructible dans les deux sens.** `la dernière` est le
+   dernier morceau de la nuit **et** la dernière fois. Aucune ligne ne tranche.
+   Si le texte disait laquelle des deux lectures est la bonne, le dépouillement
+   ne révélerait rien.
+2. **L'élément persistant doit traverser le dépouillement** —
+   `present in every section, even the stripped chorus`. C'est lui qui fait
+   reconnaître *le même refrain* ; sans lui, la section nue s'entend comme un
+   autre morceau et il n'y a plus de révélation.
+3. **Le retour se fait d'un bloc**, sur le premier temps, jamais en fondu ni en
+   montée.
+
+**Bénéfice chiffré sur le ratio.** Le refrain dépouillé est du contenu
+émotionnel qui **compte comme hook** — 250 caractères dans la colonne refrain
+pour un travail de pont. Sans lui il fallait allonger les couplets, et le ratio
+tombait vers 1,2. Avec lui : 1,94. Toujours sous la fenêtre club, très au-dessus
+du narratif.
+
+**Variante la plus forte, et pourquoi elle demande deux clips.** Passer le
+refrain final en **mineur parallèle** — mêmes mots, même mélodie, mode retourné.
+C'est un changement de mode : il se déclare en tonalité absolue dans un clip 2,
+jamais au milieu d'un clip.

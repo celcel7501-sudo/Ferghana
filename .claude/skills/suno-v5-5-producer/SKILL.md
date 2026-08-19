@@ -243,3 +243,4 @@ sans lui.
 | `examples/la-cle-sous-le-pot.md` | Plume conteuse 90 BPM, silences écrits, rimes riches placées |
 | `examples/doucement.md` | Amapiano × afrobeats 110 BPM, persistance à deux étages, chant sur le 3-3-2 |
 | `examples/pas-d-photos.md` | Amapiano × plume Ninho 112 BPM, version club, fusion par sections |
+| `examples/la-derniere.md` | Anthem club 124 BPM, refrain à trois lectures, émotion sans baisser le ratio |
