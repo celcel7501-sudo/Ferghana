@@ -354,3 +354,38 @@ voix n'est pas entraînant, il est seulement joli.
 **Le tempo borne le squelette.** Un squelette de 8 syllabes tient dans quatre
 mesures jusqu'à ~112 BPM. Au-delà il faut le raccourcir, sinon la ligne se
 précipite — même arithmétique que pour la longueur des réponses de groupe.
+
+### Écrire un silence : on n'écrit pas le vide, on écrit qui joue tout seul
+
+Suno **ne laisse jamais un trou**. Une ligne vide, une ligne de tirets, un
+`(silence)` isolé au milieu d'un couplet sont bouchés par le modèle avec ce
+qu'il a sous la main — le plus souvent une reprise de batterie ou une syllabe
+inventée. Le silence ne se demande pas en creux.
+
+Il se demande en **assignant la mesure à un instrument** :
+
+```
+(la contrebasse seule, deux temps)
+```
+
+Le vide devient une consigne d'orchestration, donc quelque chose que le modèle
+sait exécuter. Exemple réel : `examples/la-cle-sous-le-pot.md`, trois fois dans
+le même couplet, entre les portraits.
+
+**La moitié de la manœuvre est dans le champ de style.** Sans un instrument
+désigné pour occuper le trou, l'instruction n'a personne à qui s'adresser :
+
+```
+Persistent upright bass motif throughout, walking and unhurried, carrying every gap between the lines.
+```
+
+C'est la persistance appliquée au négatif : l'élément persistant n'est plus là
+pour tenir le morceau, il est là pour **tenir les silences**. Il doit donc être
+choisi parmi ceux qui survivent à toutes les ruptures — mêmes contraintes que
+dans `references/spatialization-and-persistence.md`.
+
+**Variante : faire répondre un autre instrument à la place de la voix.** Au pont
+de ce morceau, la trompette bouchée joue quatre temps après une phrase laissée
+sans réponse — `(la trompette bouchée répond à sa place, quatre temps)`. La
+phrase qui manque est jouée, pas dite. Plus fort qu'un silence, et le modèle
+l'exécute parce qu'on lui a nommé l'exécutant.

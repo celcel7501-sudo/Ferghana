@@ -240,3 +240,4 @@ sans lui.
 | `examples/sur-la-frequence.md` | Même prompt de style que `face-b.md`, autre texte |
 | `examples/je-te-le-dis-une-fois.md` | Darkchild × Djimi Finger 96 BPM, fusion par couches, format 5 sections |
 | `examples/dis-moi.md` | Darkchild × plume Ninho 105 BPM, refrain à squelette syllabique constant |
+| `examples/la-cle-sous-le-pot.md` | Plume conteuse 90 BPM, silences écrits, rimes riches placées |
