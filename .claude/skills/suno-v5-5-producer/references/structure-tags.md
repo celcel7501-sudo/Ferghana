@@ -389,3 +389,33 @@ de ce morceau, la trompette bouchée joue quatre temps après une phrase laissé
 sans réponse — `(la trompette bouchée répond à sa place, quatre temps)`. La
 phrase qui manque est jouée, pas dite. Plus fort qu'un silence, et le modèle
 l'exécute parce qu'on lui a nommé l'exécutant.
+
+### Chiffrer le biais du ratio : texte contre temps
+
+Le dossier documentait que le ratio hook / couplets **mesure du texte, pas du
+temps**. `examples/doucement.md` le chiffre pour la première fois, parce que ses
+deux plateaux instrumentaux de 16 mesures ne coûtent que ~290 caractères chacun.
+
+| | Texte | Temps entendu |
+|---|---|---|
+| Hook (refrains, drops, pré-refrains) | 1648 car. | ≈ 157 s |
+| Couplets | 790 car. | ≈ 35 s |
+| **Ratio** | **2,09** | **≈ 4,5** |
+
+**Le ratio texte sous-lit d'un facteur deux** sur un genre à plateaux. La
+conversion est celle de la partition instrumentale : à 110 BPM une mesure vaut
+`4 × 60 ÷ 110 = 2,18 s`, donc 16 mesures valent 35 secondes pour trois lignes
+écrites.
+
+**Conséquence pratique.** Sur un genre à plateaux — amapiano, afro-house, dub,
+tout ce qui vit de boucles instrumentales longues — ne jamais conclure à partir
+du ratio texte seul. Convertir les sections instrumentales en mesures d'abord.
+Un ratio texte de 2 peut cacher un morceau où la voix occupe un cinquième de la
+durée.
+
+**Corollaire sur la structure du genre.** Le squelette maison
+(`Pre-Chorus: Energy ramp` → `Chorus: Explosive Hook`) est **nuisible** sur ces
+genres : ils construisent en retirant, pas en empilant. Le pré-refrain devient
+`[Pre-Chorus: No riser, everything drops out except the shaker, four bars]`, et
+le champ de style porte `no build-up risers` — négation qui reste dans le champ
+**positif**, collée à la phrase de structure qu'elle qualifie.

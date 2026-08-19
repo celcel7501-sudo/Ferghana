@@ -241,3 +241,4 @@ sans lui.
 | `examples/je-te-le-dis-une-fois.md` | Darkchild × Djimi Finger 96 BPM, fusion par couches, format 5 sections |
 | `examples/dis-moi.md` | Darkchild × plume Ninho 105 BPM, refrain à squelette syllabique constant |
 | `examples/la-cle-sous-le-pot.md` | Plume conteuse 90 BPM, silences écrits, rimes riches placées |
+| `examples/doucement.md` | Amapiano × afrobeats 110 BPM, persistance à deux étages, chant sur le 3-3-2 |

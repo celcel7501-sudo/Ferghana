@@ -171,3 +171,35 @@ qui change :
 
 Dans les quatre cas, une seconde suffit — mais elle doit être vide **de la chose
 qui va changer**.
+
+## Persistance à deux étages : les genres soustractifs
+
+La règle générale — l'élément persistant doit survivre à **toutes** les ruptures
+— tombe en panne sur les genres dont le sommet dramatique est une **soustraction**
+(amapiano, certaines formes de house africaine, le dub). Là, l'élément le plus
+identifiable du morceau est justement celui qu'on enlève.
+
+Cas réel : `examples/doucement.md`. Le **log drum** est simultanément la basse,
+la percussion principale et le motif mélodique — donc le candidat évident à la
+persistance. Sauf que le seul événement du morceau consiste à le faire
+disparaître.
+
+La sortie est d'empiler **deux niveaux** :
+
+| Étage | Ce que c'est | Comportement |
+|---|---|---|
+| **La charge** | L'élément identifiable du genre | Porte le morceau et **doit** pouvoir disparaître — sa disparition est l'événement |
+| **Le fil** | Un élément mince et continu | Ne s'arrête jamais, y compris pendant la soustraction |
+
+Le fil se déclare avec une proposition explicite sur son maintien :
+
+```
+Persistent shaker thread throughout, never stopping, still there when the log drum is out.
+```
+
+**La dernière proposition est la moitié utile du tag.** Sans elle, Suno coupe
+tout pendant le breakdown, et le retour s'entend comme un raccord de montage
+plutôt que comme un événement musical.
+
+**Règle** : dès qu'un genre fait de la soustraction son sommet, prévoir deux
+persistances — celle qu'on retire, et celle qui reste pour tenir la couture.
