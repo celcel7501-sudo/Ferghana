@@ -242,3 +242,4 @@ sans lui.
 | `examples/dis-moi.md` | Darkchild × plume Ninho 105 BPM, refrain à squelette syllabique constant |
 | `examples/la-cle-sous-le-pot.md` | Plume conteuse 90 BPM, silences écrits, rimes riches placées |
 | `examples/doucement.md` | Amapiano × afrobeats 110 BPM, persistance à deux étages, chant sur le 3-3-2 |
+| `examples/pas-d-photos.md` | Amapiano × plume Ninho 112 BPM, version club, fusion par sections |

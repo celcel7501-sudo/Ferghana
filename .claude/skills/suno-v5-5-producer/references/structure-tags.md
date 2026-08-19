@@ -419,3 +419,34 @@ genres : ils construisent en retirant, pas en empilant. Le pré-refrain devient
 `[Pre-Chorus: No riser, everything drops out except the shaker, four bars]`, et
 le champ de style porte `no build-up risers` — négation qui reste dans le champ
 **positif**, collée à la phrase de structure qu'elle qualifie.
+
+### Le budget en mesures : les bords se paient sur la chanson
+
+Une version club a deux bords qui n'existent pas sur une version chanson : un
+**intro DJ** sur un seul motif et un **outro** qui ne descend pas. Ils servent à
+mixer dedans et dehors, et ils coûtent cher.
+
+Sur `examples/pas-d-photos.md` : 16 mesures d'intro et 12 d'outro, soit **28
+mesures — une minute pleine à 112 BPM**. Elles ne s'ajoutent pas au morceau,
+elles s'en **retranchent**, sinon le dernier refrain sort du cadre. Concrètement,
+le deuxième plateau est tombé de 16 à 8 mesures et le breakdown de 8 à 4.
+
+| Section | Mesures |
+|---|---|
+| DJ Intro | 16 |
+| Couplet 1 / Pré / Refrain | 8 / 4 / 8 |
+| Plateau 1 | 16 |
+| Couplet 2 / Pré / Refrain | 8 / 4 / 8 |
+| Plateau 2 | 8 |
+| Breakdown | 4 |
+| Refrain final | 8 |
+| DJ Outro | 12 |
+| **Total** | **104 → 3 min 43** |
+
+Conversion : `mesures × 4 × 60 ÷ BPM` — la même que pour la partition
+instrumentale. **On budgète avant d'écrire une ligne.**
+
+**Et le ratio texte ment de plus en plus fort à mesure que les bords
+s'allongent.** Sur ce morceau : 1,24 au texte contre 3,5 en mesures, facteur
+2,8, là où `doucement.md` était à 2. Les bords instrumentaux n'ont rien que le
+compteur de caractères puisse voir.

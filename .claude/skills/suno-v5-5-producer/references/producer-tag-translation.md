@@ -78,3 +78,29 @@ fois, c'est lui qui doit persister : il fait la jointure sans qu'on l'explique.
 Sur ce morceau, le stab de cordes staccato est pitché (donc harmonique, côté
 Golden Era) et court (donc percussif, côté Darkchild) — aucun autre élément ne
 pouvait tenir ce rôle.
+
+## Troisième forme de fusion : la répartition par sections
+
+Le dossier connaissait deux façons de faire tenir deux ADN ensemble. Il en
+existe une troisième.
+
+| Forme | Quand l'utiliser | Exemple |
+|---|---|---|
+| **Un ADN mène** | Les ADN portent des choses différentes | La plupart des morceaux |
+| **Répartition par couches** | Deux écoles se disputent une couche | `examples/je-te-le-dis-une-fois.md` |
+| **Répartition par sections** | Deux écoles veulent la **même** couche à des **densités incompatibles** | `examples/pas-d-photos.md` |
+
+Cas réel : plume Ninho (dense, mélodique, écrite) et chant amapiano (trois mots,
+percussif). Les deux veulent la **voix** — aucune répartition par couches n'est
+possible, c'est la même couche. La sortie est de découper par section :
+
+- **Couplets** → l'ADN dense. Huit vers, images, rimes riches.
+- **Refrain** → l'ADN minimal. Quatre lignes, trois syllabes, zéro image.
+
+**Le contraste devient l'argument du morceau** : après huit vers qui expliquent,
+le refrain n'explique plus rien.
+
+**Condition pour que ça tienne** : le refrain doit **répondre au dernier vers du
+couplet**. Sur ce morceau, le couplet finit sur « ça se voit pas sur une photo »
+et le chant enchaîne sur `Pas d'photos`. Sans ce raccord, un hook de trois mots
+s'entend comme un bouche-trou.

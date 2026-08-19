@@ -151,3 +151,24 @@ le ton comme une décision.
 suffit pour changer de tempo ; changer de tonalité demande en plus qu'il n'y ait
 **pas de repère de hauteur** au point de coupe. Une montée de bruit blanc n'a
 pas de tonalité : c'est l'outil exact pour ça.
+
+## « Remix » : un autre mot mort
+
+Même famille que les rétro-références d'un prompt d'extension : **Suno n'a pas
+entendu d'original.** `club remix version`, `remix of the original`, `extended
+remix` coûtent des caractères et ne produisent rien — il n'existe aucun morceau
+auquel se référer.
+
+Ce que le mot veut dire se réécrit intégralement en structure :
+
+```
+Long DJ intro on one loop, long instrumental plateaus, one subtraction, long percussive outro, no build-up risers.
+```
+
+Et côté paroles, les bords deviennent des sections comptées en mesures :
+`[DJ Intro: 16 bars, … no vocals]`, `[DJ Outro: 12 bars, … no vocals]`, fermées
+par `[End: The loop keeps going, no fade, hard stop on the downbeat]`. **Un
+fondu rend le disque inmixable** — c'est exactement ce qu'une version club ne
+doit pas faire.
+
+Exemple : `examples/pas-d-photos.md`.
