@@ -317,3 +317,40 @@ mécaniquement un ratio autour de 2,2.
 ne se joue pas à l'écriture, ça se joue en retirant les réponses de groupe du
 prompt. Le ratio se décide au brief, en même temps que la couche vocale — pas à
 la relecture.
+
+### « Refrain entraînant » : ça se compte
+
+Un brief demande souvent un refrain « entraînant ». Ce n'est pas un adjectif
+vague : c'est une propriété **métrique**, et elle se vérifie en comptant les
+syllabes chantées.
+
+Un refrain entraînant est un refrain dont **l'auditeur prédit la forme après la
+première ligne**. La condition la plus simple pour obtenir ça : les quatre
+lignes partagent le **même nombre de syllabes**, donc le même rythme mélodique,
+donc une seule phrase de quatre mesures répétée. Exemple mesuré,
+`examples/dis-moi.md` — quatre lignes, 8 syllabes chacune, forme A A′ B B′ (les
+deux premières lignes ouvrent à l'identique, les deux dernières répondent).
+
+**L'instruction correspondante doit être dans le champ de style**, parce que
+Suno ne compte pas les syllabes du texte tout seul :
+
+```
+The chorus melody is one four-bar phrase repeated with the same rhythm on every line.
+```
+
+Sans elle, le modèle écrit volontiers quatre mélodies différentes sur un texte
+pourtant parfaitement régulier — et le refrain cesse d'être prévisible.
+
+**Corollaire : pas de Call & Response dans un hook chanté mélodique.** La
+réponse de groupe coupe la phrase de quatre mesures en deux et détruit ce qu'on
+vient de construire. On la reporte sur le **post-refrain**, où elle ne gêne
+rien. Le Call & Response appartient aux hooks scandés, pas aux hooks chantés.
+
+**Le test du pont.** Couper la voix lead au pont et faire porter la mélodie du
+refrain par un autre élément — chops gatés, synthé, cordes — vérifie que la
+mélodie tient seule. Un refrain que l'auditeur ne peut pas compléter sans la
+voix n'est pas entraînant, il est seulement joli.
+
+**Le tempo borne le squelette.** Un squelette de 8 syllabes tient dans quatre
+mesures jusqu'à ~112 BPM. Au-delà il faut le raccourcir, sinon la ligne se
+précipite — même arithmétique que pour la longueur des réponses de groupe.

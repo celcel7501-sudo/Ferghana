@@ -236,3 +236,4 @@ sans lui.
 | `examples/la-deuxieme-fois.md` | Secteur Ä à 112 BPM, deux clips = studio puis live |
 | `examples/sur-la-frequence.md` | Même prompt de style que `face-b.md`, autre texte |
 | `examples/je-te-le-dis-une-fois.md` | Darkchild × Djimi Finger 96 BPM, fusion par couches, format 5 sections |
+| `examples/dis-moi.md` | Darkchild × plume Ninho 105 BPM, refrain à squelette syllabique constant |
