@@ -22,6 +22,8 @@ ou aseptiser la génération. On ne cite jamais. On **décrit le geste sonore**.
 | **Booba (Le Duc)** — trap sombre, 808 saturée | `dark French trap`, `deep distorted 808 bass with long pitch glides`, `melodic autotune vocals`, `cold cavernous reverb`, `sparse menacing synth lead`, `low-register punchline delivery`, `wide icy stereo field` |
 | **Rohff (Le Padre)** — rap conscient, cordes | `conscious French rap`, `dramatic minor-key piano`, `soulful orchestral strings`, `raw unpolished delivery`, `hard-hitting live-sounding drums`, `gospel-tinged backing choir`, `dynamic vocal intensity` |
 | **Darkchild** — R&B fin 90s, programmation saccadée | `stuttering syncopated drum programming`, `jerky off-grid percussion hits`, `staccato string stabs`, `tight muted synth arpeggio`, `gated vocal chops used as percussion`, `hyper-processed stacked backing vocals`, `orchestral hit accents` |
+| **Oxmo Puccino** — conteur, punchline posée | `deep warm baritone`, `unhurried spoken-sung storytelling`, `conversational phrasing with long pauses`, `close-mic intimate delivery`, `jazz-tinged upright bass`, `brushed drums`, `muted trumpet answer` |
+| **Lino** — technicien, dense, dur | `dense aggressive technical flow`, `hard consonant attack`, `high-density multisyllabic delivery`, `raw unpolished close-mic vocal`, `dark heavy boom bap`, `menacing minor-key horn stabs`, `no reverb on the lead` |
 | **Structure RnB Brandy** | `lush stacked R&B harmonies`, `layered vocal arrangement`, `call-and-response backing vocals`, `whispered harmony bed`, `complex R&B vocal runs`, `panoramic vocal layering` |
 
 ## Méthode

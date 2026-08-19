@@ -32,6 +32,8 @@ urbaine, luxe discret. Ouverture type :
 | **Booba (Le Duc)** | Trap sombre : 808 saturée, autotune mélodique, réverbération froide |
 | **Rohff (Le Padre)** | Rap conscient : piano dramatique, cordes orchestrales, delivery brut |
 | **DJ Rim-K / Prestige** | Identité maison : broadcast radio, MPC-60, cordes cinématographiques |
+| **Oxmo Puccino** | La plume conteuse : images concrètes, punchline posée, baryton chaud |
+| **Lino** | La plume technique : rimes riches, densité syllabique, attaque dure |
 
 ## I. Ingénierie sonore furtive (anti-censure)
 
@@ -179,6 +181,7 @@ sans lui.
 - `references/style-prompt-layers.md` — grammaire du champ Style of Music.
 - `references/structure-tags.md` — catalogue des balises de direction.
 - `references/dmc-scratch-lexicon.md` — vocabulaire scratch et placement.
+- `references/plume-et-flow.md` — rime riche, métrique du vers, tags de débit.
 
 ## Morceaux de référence
 
