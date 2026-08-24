@@ -69,3 +69,26 @@ MASTERING: ...
   Viser 90–150 mots, chaque mot portant une information.
 - **Les contradictions se paient** : `lo-fi hiss` + `pristine hi-fi clarity`
   donne une bouillie tiède. Choisir un camp.
+
+## Le tempo lent qui doit danser : le club se fabrique dans les charleys
+
+Un brief demande parfois « club » et « dansant » sur un tempo qui n'en est pas
+un — 95, 97, 100 BPM. Le réflexe est de monter le BPM ; c'est l'erreur, parce
+que le tempo est aussi ce qui décide de la longueur des vers chantables.
+
+Le geste correct est celui du R&B club moderne : **dissocier le haut et le bas
+de la rythmique.**
+
+```
+Punchy kick and sharp snare in half-time, double-time hats and rapid claps on top
+```
+
+Le kick et la caisse claire restent au tempo écrit — donc la voix peut chanter
+des phrases entières. Les charleys et les claps battent au double — donc la
+salle danse. **C'est le haut du morceau qui fait danser, pas le kick.**
+
+Exemple mesuré : `examples/ne-raccroche-pas-club.md`, 97 BPM, textes longs.
+
+Bornes utiles : sous ~92 BPM les charleys en double-temps s'entendent comme du
+boom bap ; au-dessus de ~102 la moitié de l'intérêt disparaît, puisque la grille
+simple suffit déjà à faire danser.

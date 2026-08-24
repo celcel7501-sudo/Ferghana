@@ -493,3 +493,30 @@ du narratif.
 refrain final en **mineur parallèle** — mêmes mots, même mélodie, mode retourné.
 C'est un changement de mode : il se déclare en tonalité absolue dans un clip 2,
 jamais au milieu d'un clip.
+
+### La note opératique : une dépense unique, sur une voyelle
+
+Deux règles, apprises sur `examples/ne-raccroche-pas-club.md`.
+
+**Une seule fois dans le morceau.** Un ténor qui monte à chaque refrain
+n'impressionne plus au deuxième — la note haute est une dépense, pas une
+texture. On la place à l'endroit où le personnage n'a plus de mots : fin de
+pont, après la dernière phrase parlée.
+
+**Sur une voyelle, sans texte.** Le registre opératique écrase les consonnes ;
+un texte chanté là-haut devient inintelligible et le modèle le rend en bouillie.
+
+```
+[Operatic Note: One sustained high tenor note on a vowel, no words, four bars]
+```
+
+Et dans le champ de style, la contrepartie :
+`one sustained operatic high note on a vowel, no words`.
+
+**Deux compléments qui font la différence.** Un seul instrument sous la note —
+sur ce morceau, le glissando de 808, rien d'autre. Et la note se pose sur la
+**quinte** plutôt que sur la tonique : plus haute, non résolue, elle laisse la
+phrase ouverte au lieu de la fermer.
+
+**Garde-fou d'exclusion** : `no shouted vocals`. Sans lui, Suno confond parfois
+la note tenue avec un cri.

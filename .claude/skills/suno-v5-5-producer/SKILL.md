@@ -246,3 +246,4 @@ sans lui.
 | `examples/doucement.md` | Amapiano × afrobeats 110 BPM, persistance à deux étages, chant sur le 3-3-2 |
 | `examples/pas-d-photos.md` | Amapiano × plume Ninho 112 BPM, version club, fusion par sections |
 | `examples/la-derniere.md` | Anthem club 124 BPM, refrain à trois lectures, émotion sans baisser le ratio |
+| `examples/ne-raccroche-pas-club.md` | Duo R&B club opératique 97 BPM, re-taille métrique d'un texte de 72 BPM |

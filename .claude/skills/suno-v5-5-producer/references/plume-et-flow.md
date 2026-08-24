@@ -81,3 +81,26 @@ contradictoire : le second ne laisse pas assez de texte au premier.
 Arbitrage : si le brief demande les deux, la plume va dans les **couplets** et le
 refrain reste littéral. Un refrain métaphorique sur un banger club ne se
 comprend jamais — il est chanté quatre fois par une salle qui ne l'écoute pas.
+
+## Re-tailler un texte pour un autre tempo
+
+Un texte écrit pour un tempo ne se transpose pas : il se **re-taille**. Un vers
+de dix-huit syllabes qui fonctionne parlé à 72 BPM ne rentre plus à 97 — soit on
+le précipite et le sens tombe, soit on l'étale et le groove tombe.
+
+Ordre des opérations, vérifié sur `examples/ne-raccroche-pas-club.md` (même
+texte que `ne-raccroche-pas.md`, passé de 72 à 97 BPM) :
+
+1. **Le refrain d'abord.** C'est lui qui doit devenir un hook. On recoupe les
+   lignes sur un squelette syllabique constant sans perdre une idée — quatre
+   lignes de prose deviennent quatre lignes de 8 syllabes.
+2. **Les couplets ensuite, raccourcis mais pas réécrits.** On coupe les
+   subordonnées, on garde les images. Une comparaison de neuf mots se réduit à
+   deux mots quand la place manque, et le sens survit.
+3. **Ce qu'on ajoute doit être concret.** Un objet, une opposition, un chiffre —
+   jamais un adjectif. Une image devient un argument quand on lui oppose son
+   contraire dans la même phrase.
+
+**Test de contrôle** : lire le couplet à voix haute au nouveau tempo, en
+frappant la mesure. Si une ligne oblige à accélérer, elle n'est pas re-taillée,
+elle est juste recopiée.
