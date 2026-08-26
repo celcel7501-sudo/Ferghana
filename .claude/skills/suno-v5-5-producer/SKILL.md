@@ -247,3 +247,6 @@ sans lui.
 | `examples/pas-d-photos.md` | Amapiano × plume Ninho 112 BPM, version club, fusion par sections |
 | `examples/la-derniere.md` | Anthem club 124 BPM, refrain à trois lectures, émotion sans baisser le ratio |
 | `examples/ne-raccroche-pas-club.md` | Duo R&B club opératique 97 BPM, re-taille métrique d'un texte de 72 BPM |
+| `examples/le-premier-cheque.md` | Boom bap 97 BPM (1/3), croches droites, pont en demi-temps — porte l'analyse de série |
+| `examples/compte-les-miens.md` | Boom bap 97 BPM (2/3), doubles-croches swinguées, hook unisson, pont en double-temps |
+| `examples/la-meme-heure.md` | Boom bap 97 BPM (3/3), half-time, chœur gospel, pont sans harmonie |

@@ -520,3 +520,53 @@ phrase ouverte au lieu de la fermer.
 
 **Garde-fou d'exclusion** : `no shouted vocals`. Sans lui, Suno confond parfois
 la note tenue avec un cri.
+
+### Trois morceaux au même BPM : la variation à tempo constant
+
+Quand un brief demande plusieurs morceaux dans le même idiome et au même tempo,
+le problème n'est pas d'écrire — c'est d'éviter trois fois le même disque.
+**Ce qui différencie deux disques au même BPM, ce n'est jamais le BPM.**
+
+Quatre leviers ; en bouger au moins **trois** pour que l'oreille entende trois
+morceaux. Série vérifiée : `le-premier-cheque.md`, `compte-les-miens.md`,
+`la-meme-heure.md`, tous à 97 BPM.
+
+| | Subdivision | Densité du couplet | Forme du hook | Rupture |
+|---|---|---|---|---|
+| 1 | Croches droites | Moyenne, narrative | Ténor chanté, mélodique | Demi-temps |
+| 2 | Doubles-croches swinguées | Dense, technique | Unisson scandé + réponses | Double-temps |
+| 3 | Half-time, caisse claire sur le 3 | Aérée, silences écrits | Ténor tenu + chœur | Harmonie coupée |
+
+**La subdivision est le levier le plus fort et le moins cher** : un groupe de
+quelques mots dans la phrase de batterie — `on straight eighths`, `on heavily
+swung sixteenths`, `snare on beat three, half-time feel` — change tout ce que le
+corps entend, sans qu'un seul chiffre bouge.
+
+### Rompre sans perdre le drive
+
+« Rythme entraînant du début à la fin » **interdit le breakdown**. La rupture
+par défaut du dossier est une soustraction ; il faut d'autres formes.
+
+| Rupture | Comment | Ce qu'on y gagne |
+|---|---|---|
+| **Demi-temps** | La batterie ralentit de moitié, elle ne s'arrête pas | Le poids double, le fil reste |
+| **Double-temps** | La batterie double, le riff garde son tempo | L'urgence, sans changer de morceau |
+| **Harmonie coupée** | Instruments harmoniques dehors ; batterie, claps et voix restent | Le vide se fait par le haut |
+
+Dans les trois cas, même consigne de retour : `return on the downbeat, no fill,
+no fade`. **Un fill de retour est un aveu de couture.** Et le champ de style
+porte la contrainte en clair : `The groove never stops, no breakdown, drums
+present from the first bar to the last.`
+
+### Confirmation : c'est le squelette qui fixe le ratio, pas le prompt
+
+Le dossier avait noté que deux morceaux à prompt **identique** landaient à 0,04
+l'un de l'autre (`face-b.md` / `sur-la-frequence.md`). La série à 97 BPM va plus
+loin : trois textes indépendants, trois **prompts différents** — subdivision,
+hook, instrumentation — et des ratios de **1,56 / 1,55 / 1,49**, soit 0,07
+d'écart.
+
+Le facteur commun n'est pas le prompt, c'est le **squelette de sections** : deux
+couplets, trois refrains, trois post-refrains, une rupture. Cette structure
+produit un ratio autour de 1,5 quel que soit le texte qu'on met dedans. Pour
+déplacer un ratio, on change le squelette — pas les mots.
