@@ -570,3 +570,40 @@ Le facteur commun n'est pas le prompt, c'est le **squelette de sections** : deux
 couplets, trois refrains, trois post-refrains, une rupture. Cette structure
 produit un ratio autour de 1,5 quel que soit le texte qu'on met dedans. Pour
 déplacer un ratio, on change le squelette — pas les mots.
+
+### Densité de balises : une balise en début de ligne ouvre une section
+
+Piège le plus coûteux du dossier, et le plus invisible à la relecture humaine.
+**Suno lit toute balise entre crochets placée en début de ligne comme
+l'ouverture d'une nouvelle section.**
+
+Cas réel, `examples/encore-une.md` — script client très détaillé, direction
+d'acteurs ligne par ligne :
+
+| | Balises en début de ligne | Sections lues |
+|---|---|---|
+| Script d'origine | **70** | ~70 |
+| Script réparé | **12** | 12 |
+
+Soixante-dix micro-sections de deux secondes : ni couplet, ni refrain, et
+**aucune persistance possible** — plus rien ne dure assez longtemps pour qu'un
+motif s'installe.
+
+**La réparation ne touche pas un mot du texte.** Elle descend la direction du
+niveau *ligne* au niveau *parenthèse* :
+
+| À éviter | À écrire |
+|---|---|
+| `[Male, spoken, dry close-mic]` seul sur sa ligne | `(lui, parlé, sec, proche du micro)` |
+| `[Group Vocals, ultra-wide]: …` en tête de ligne | `(tous, panoramique) …` |
+| `[Female, wide]: (Call: …)` | `(Call: …) Response: [Female Vocal, wide: …]` |
+
+**Règle** : un crochet est sans danger **au milieu** d'une ligne, jamais au
+début. C'est précisément pourquoi la syntaxe maison du Call & Response place le
+crochet après `Response:`.
+
+**Corollaire — ce qui est une propriété du morceau appartient au style.** Si le
+script répète à chaque intervention que telle voix est sèche et proche et
+l'autre large et lointaine, c'est une propriété permanente : elle s'écrit **une
+fois** dans le champ de style, où elle tient sur toute la durée, au lieu de
+trente fois dans les paroles où elle fragmente la structure.

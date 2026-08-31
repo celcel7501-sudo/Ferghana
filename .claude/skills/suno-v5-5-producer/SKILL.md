@@ -250,3 +250,4 @@ sans lui.
 | `examples/le-premier-cheque.md` | Boom bap 97 BPM (1/3), croches droites, pont en demi-temps — porte l'analyse de série |
 | `examples/compte-les-miens.md` | Boom bap 97 BPM (2/3), doubles-croches swinguées, hook unisson, pont en double-temps |
 | `examples/la-meme-heure.md` | Boom bap 97 BPM (3/3), half-time, chœur gospel, pont sans harmonie |
+| `examples/encore-une.md` | French Touch disco house 120 BPM, duo, réparation d'un script sur-balisé |
