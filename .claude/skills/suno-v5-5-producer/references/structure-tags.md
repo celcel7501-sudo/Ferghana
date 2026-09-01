@@ -607,3 +607,19 @@ script répète à chaque intervention que telle voix est sèche et proche et
 l'autre large et lointaine, c'est une propriété permanente : elle s'écrit **une
 fois** dans le champ de style, où elle tient sur toute la durée, au lieu de
 trente fois dans les paroles où elle fragmente la structure.
+
+### Un morceau en deux clips a deux ratios, et ils doivent différer
+
+Mesurer le ratio hook / couplets sur les deux clips réunis donne un chiffre qui
+ne décrit ni l'un ni l'autre. Sur `examples/la-grande-salle.md` :
+
+| | Ratio | Ce que le clip fait |
+|---|---|---|
+| Clip 1 | **0,98** | Porte l'histoire — trois couplets longs, registre narratif |
+| Clip 2 | **2,91** | Payoff pur — hook, chœur, salle ; fenêtre club |
+| Les deux ensemble | 1,30 | **Ne décrit rien** |
+
+**Règle** : sur un morceau scindé, le ratio se mesure clip par clip. Ce sont deux
+disques dans une même enveloppe, et ils n'ont pas le même métier. Un clip 2 dont
+le ratio ressemble à celui du clip 1 n'est pas un aboutissement, c'est une
+répétition.

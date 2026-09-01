@@ -251,3 +251,4 @@ sans lui.
 | `examples/compte-les-miens.md` | Boom bap 97 BPM (2/3), doubles-croches swinguées, hook unisson, pont en double-temps |
 | `examples/la-meme-heure.md` | Boom bap 97 BPM (3/3), half-time, chœur gospel, pont sans harmonie |
 | `examples/encore-une.md` | French Touch disco house 120 BPM, duo, réparation d'un script sur-balisé |
+| `examples/la-grande-salle.md` | **Morceau-étalon** : 100 BPM, 2 clips, 17 dispositifs actifs, style à 967/1000 |

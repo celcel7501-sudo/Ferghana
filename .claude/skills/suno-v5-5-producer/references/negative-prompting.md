@@ -118,3 +118,28 @@ propres — c'est là que vivent les DJ drops, les crédits et les signatures de
 
 En clair : **on ne nomme jamais dans le style, on nomme librement dans les
 paroles.**
+
+## Puissance maximale : le budget rempli sans une seule contradiction
+
+« Le prompt le plus puissant possible » n'est pas le plus dense. C'est celui
+dont **chaque clause a été vérifiée contre toutes les autres**. Les prompts
+surchargés échouent presque toujours sur une contradiction interne, pas sur un
+manque de tags :
+
+- `no autotune` sous des harmonies empilées
+- `no low-quality recording` sous `vinyl crackle`
+- `no trap drums` sous une 808 lourde
+- deux écoles de batterie sur la même couche, sans arbitrage
+
+**Conséquence budgétaire, mesurée sur `examples/la-grande-salle.md`** : le champ
+de style tient 967 caractères, le bloc d'exclusion 145. Total en mode repli :
+**1122**. Il n'existe aucune version de ce prompt qui tienne recollée.
+
+**À ce niveau de remplissage, le champ dédié *Exclude Styles* n'est plus une
+commodité : il est la condition d'existence du morceau.** C'est la mesure la
+plus nette de ce que vaut le format en cinq sections.
+
+**Et le prix se paie sur les leviers.** Un morceau à 33 caractères de marge n'a
+plus de levier de re-génération. Quand il faut en récupérer, retirer dans l'ordre
+habituel — texture, puis ornement, puis mastering — et **jamais** la ligne de
+persistance ni la phrase de batterie.
