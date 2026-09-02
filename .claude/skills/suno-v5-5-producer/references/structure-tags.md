@@ -642,3 +642,43 @@ C'est aussi un silence attribué, au sens de la règle « on n'écrit pas le vid
 on écrit qui l'occupe » — ici l'occupant est la voix du batteur. Et le retour se
 fait **sans fill** : un fill trahirait un montage, alors que tout l'argument du
 genre est qu'il n'y en a pas.
+
+### Au-delà de ~130 BPM, l'unité du hook n'est plus la ligne
+
+La règle du squelette syllabique — quatre lignes de même longueur — suppose
+qu'une ligne tient dans une mesure. À 138 BPM une mesure dure 1,74 seconde : une
+ligne de huit syllabes ne rentre plus sans se précipiter.
+
+Le hook se reconstruit alors autour d'une **cellule de deux syllabes**, hachée
+et répétée. La régularité ne porte plus sur le compte de syllabes par ligne mais
+sur **la place de la cellule dans la mesure**.
+
+```
+Lâche tout !
+(Lâ-lâ-lâche)
+Lâche tout !
+(Lâ-lâ-lâche)
+```
+
+Et le champ de style doit le déclarer, sinon le modèle chante une ligne longue :
+
+```
+The hook is built from one two-syllable cell chopped and repeated, never a long sung line.
+```
+
+**Le Call & Response atteint sa limite basse.** L'arithmétique du dossier donnait
+trois syllabes de réponse à 130 BPM. À 138, avec un appel sur une demi-mesure, la
+réponse tient en **un mot**. En dessous, il n'y a plus de réponse, il y a un cri.
+
+**Et la rupture change de nature.** À ce tempo, un half-time donnerait 69 BPM,
+c'est-à-dire un autre morceau. La seule rupture praticable est la **soustraction
+totale** : tout coupe sauf la cellule, deux mesures, puis le beat revient entier
+— sans riser, qui sonnerait EDM.
+
+Les trois formes du squelette, récapitulées :
+
+| Registre | Unité | Exemple |
+|---|---|---|
+| Chanté mélodique | Ligne de 8 syllabes, ×4 | `examples/dis-moi.md` |
+| Scandé | Ligne de 3 appuis sur la grille | `examples/doucement.md` |
+| **Haché, > 130 BPM** | **Cellule de 2 syllabes** | `examples/lache-tout.md` |

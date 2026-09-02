@@ -254,3 +254,4 @@ sans lui.
 | `examples/sans-filet.md` | Plume Ninho sur groupe live 90 BPM, faire jouer plutôt que programmer |
 | `examples/toute-la-famille.md` | Golden Era × darbouka 95 BPM, refrain scandé, collision claps/percussion |
 | `examples/ca-se-voit.md` | R&B FR 120 BPM, deux clips = a cappella, jointure sans vide |
+| `examples/lache-tout.md` | Club rapide grille Jersey 138 BPM, hook en cellules de deux syllabes |

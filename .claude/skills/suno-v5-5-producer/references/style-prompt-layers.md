@@ -159,3 +159,28 @@ Répartition qui fonctionne, vérifiée sur `examples/toute-la-famille.md` :
 
 La règle générale : **quand deux familles de percussion se disputent une place,
 l'une prend les temps, l'autre prend les trous.** Jamais les deux partout.
+
+## Le nom d'un genre ne produit pas sa grille
+
+Règle générale, dégagée après l'avoir rencontrée trois fois : **quand l'identité
+d'un genre tient dans un motif d'une mesure, on décrit le motif, pas le genre.**
+Le nom seul donne le tempo et la couleur, jamais la démarche.
+
+| Genre | Ce que le nom seul produit | Ce qu'il faut écrire |
+|---|---|---|
+| Amapiano | House africaine générique | `playing the three-three-two pattern` |
+| Club à tempo lent | Boom bap ou house molle | `kick and snare in half-time, double-time hats on top` |
+| Jersey club | House rapide quelconque | `five kicks per bar grouped three then two, the last two tight together` |
+
+Exemples : `examples/doucement.md`, `examples/ne-raccroche-pas-club.md`,
+`examples/lache-tout.md`.
+
+**Le marqueur secondaire vaut son coût.** À côté du motif, chaque genre a un
+timbre signature qui l'identifie en quatre mots — le *bed-squeak* du Jersey, le
+*log drum* de l'amapiano. Écrire les deux coûte moins qu'un adjectif de texture
+et produit infiniment plus.
+
+**Corollaire sur l'espacement.** Le groupement compte autant que le nombre :
+cinq kicks étalés régulièrement donnent du four-on-the-floor avec un coup en
+trop ; les mêmes cinq groupés trois puis deux font basculer le corps. Écrire le
+nombre sans le groupement ne sert à rien.
