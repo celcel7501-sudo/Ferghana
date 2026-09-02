@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "ESNext", "moduleResolution": "bundler",
+    "strict": true, "skipLibCheck": true, "outDir": "/tmp/sm-build",
+    "baseUrl": "..", "paths": { "@/*": ["src/*"] }
+  },
+  "include": ["../src/domain/**/*.ts", "../src/data/styles.ts", "../src/data/options.ts", "../src/types/**/*.ts"]
+}

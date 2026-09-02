@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Suno Maestro",
+    "slug": "suno-maestro",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "sunomaestro",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0B0B10",
+    "splash": { "resizeMode": "contain", "backgroundColor": "#0B0B10" },
+    "assetBundlePatterns": ["**/*"],
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.ferghana.sunomaestro" },
+    "android": {
+      "package": "com.ferghana.sunomaestro",
+      "adaptiveIcon": { "backgroundColor": "#0B0B10" }
+    },
+    "extra": {
+      "aiBaseUrl": null
+    }
+  }
+}
