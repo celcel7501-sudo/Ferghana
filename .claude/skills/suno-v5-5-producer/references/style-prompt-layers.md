@@ -92,3 +92,38 @@ Exemple mesuré : `examples/ne-raccroche-pas-club.md`, 97 BPM, textes longs.
 Bornes utiles : sous ~92 BPM les charleys en double-temps s'entendent comme du
 boom bap ; au-dessus de ~102 la moitié de l'intérêt disparaît, puisque la grille
 simple suffit déjà à faire danser.
+
+## Faire jouer plutôt que programmer
+
+Suno quantifie par défaut. `live band` seul ne produit pas un groupe : il produit
+une boîte à rythmes avec des sons d'instruments. Ce qui produit réellement le
+geste tient en quatre clauses :
+
+```
+Live drum kit played by hand … room mics open, no quantization on bass and guitars.
+One take feel, timing imperfections kept, no click-track stiffness.
+```
+
+Plus, dans le bloc d'exclusion, le tag décisif : `no programmed drums`. Il ne
+contredit pas `tight kick and snare on the grid` — **jouer serré et programmer
+sont deux choses différentes**.
+
+**La tension à arbitrer.** Un chanté-rappé mélodique a besoin d'une grille à
+laquelle s'accrocher ; un groupe live dérive. Les deux ne peuvent pas gagner. La
+sortie est une répartition par couches :
+
+| Couche | Décision |
+|---|---|
+| Kick et caisse claire | **Serrés, sur la grille** — la voix a besoin de son repère |
+| Basse et guitares | **Libres** — c'est là que le groupe respire |
+| Voix | Sur la grille de la batterie, jamais sur celle de la basse |
+
+Si tout dérive, le hook cesse d'être prévisible — et la prévisibilité est
+justement ce qui le rend entraînant.
+
+**Contre-intuitif mais nécessaire** : `timing imperfections kept` doit rester
+dans le prompt. Sans lui, le modèle lisse tout et le morceau redevient une
+maquette propre.
+
+Bornes de tempo : au-dessus de ~96 BPM, une batterie jouée à la main recommence
+à sonner comme une machine, et tout le travail d'imperfection est perdu.

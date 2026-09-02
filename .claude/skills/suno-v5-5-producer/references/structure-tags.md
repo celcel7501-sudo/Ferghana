@@ -623,3 +623,22 @@ ne décrit ni l'un ni l'autre. Sur `examples/la-grande-salle.md` :
 disques dans une même enveloppe, et ils n'ont pas le même métier. Un clip 2 dont
 le ratio ressemble à celui du clip 1 n'est pas un aboutissement, c'est une
 répétition.
+
+### Le décompte audible : le riser des disques joués
+
+Un disque de groupe n'a pas de montée de bruit blanc — il a un batteur qui
+compte. Le décompte remplit exactement la même fonction qu'un riser, mais dans
+la logique du genre :
+
+```
+(le batteur compte à voix haute, la salle entière revient d'un bloc)
+(un, deux, trois, quatre)
+```
+
+Deux emplois, sur `examples/sans-filet.md` : il **ouvre** le morceau, et il
+**revient au pont** pour ramener tout le monde d'un bloc.
+
+C'est aussi un silence attribué, au sens de la règle « on n'écrit pas le vide,
+on écrit qui l'occupe » — ici l'occupant est la voix du batteur. Et le retour se
+fait **sans fill** : un fill trahirait un montage, alors que tout l'argument du
+genre est qu'il n'y en a pas.

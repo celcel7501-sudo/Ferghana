@@ -104,3 +104,23 @@ le refrain n'explique plus rien.
 couplet**. Sur ce morceau, le couplet finit sur « ça se voit pas sur une photo »
 et le chant enchaîne sur `Pas d'photos`. Sans ce raccord, un hook de trois mots
 s'entend comme un bouche-trou.
+
+## Un ADN purement vocal ne décide de rien
+
+Certains briefs ne donnent que la couche vocale — par exemple
+`melodic male tenor rap-singing, catchy sung hook`. Ces tags portent le timbre,
+le registre et la forme du hook. **Ils ne disent rien du tempo, du genre, de la
+batterie ni de l'harmonie**, c'est-à-dire de tout ce qui fait le disque.
+
+Laisser le modèle combler, c'est obtenir le lit rythmique le plus probable
+statistiquement — pour ce tag-là, de la trap mélodique autour de 140 BPM. Ce
+n'est pas un choix, c'est un défaut.
+
+**Règle** : quand le brief ne couvre qu'une couche, le lit rythmique devient
+**la décision de production**, et elle se justifie explicitement. Le
+contre-emploi est souvent le plus productif : une voix qu'on entend presque
+toujours sur des machines change de sens sur des musiciens.
+
+Exemple : `examples/sans-filet.md` — même ADN vocal que `examples/dis-moi.md`,
+posé sur un groupe live à 90 BPM plutôt que sur une programmation Darkchild à
+105. Rien de commun à l'oreille.
