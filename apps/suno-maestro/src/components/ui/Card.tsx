@@ -10,21 +10,32 @@ interface Props {
   accessibilityLabel?: string;
 }
 
+/**
+ * Un seul element rendu, jamais deux imbriques.
+ *
+ * Une version anterieure rendait `Pressable > View` et posait les styles sur le
+ * View interieur : l'enfant flex du parent etait alors le Pressable, sans
+ * largeur, qui se reduisait au contenu — et tout `width: '47%'` passe en prop se
+ * calculait contre cette largeur ecrasee. Les styles de mise en page doivent
+ * atteindre l'element qui participe au layout du parent.
+ */
 export const Card: React.FC<Props> = ({ children, onPress, accent, style, accessibilityLabel }) => {
-  const content = (
-    <View style={[styles.card, accent ? { borderLeftWidth: 3, borderLeftColor: accent } : null, style]}>
-      {children}
-    </View>
-  );
-  if (!onPress) return content;
+  const base: StyleProp<ViewStyle> = [
+    styles.card,
+    accent ? { borderLeftWidth: 3, borderLeftColor: accent } : null,
+    style,
+  ];
+
+  if (!onPress) return <View style={base}>{children}</View>;
+
   return (
     <Pressable
       onPress={onPress}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}
-      style={({ pressed }) => (pressed ? { opacity: 0.85 } : undefined)}
+      style={({ pressed }) => [base, pressed && styles.pressed]}
     >
-      {content}
+      {children}
     </Pressable>
   );
 };
@@ -37,4 +48,5 @@ const styles = StyleSheet.create({
     borderColor: palette.border,
     padding: spacing.lg,
   },
+  pressed: { opacity: 0.85 },
 });
