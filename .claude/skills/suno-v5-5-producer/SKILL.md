@@ -210,7 +210,6 @@ sans lui.
 | `examples/cendres.md` | Boom bap cinématographique 95 BPM, prompt de style fourni |
 | `examples/trois-portes.md` | Golden Era 93 BPM, récit à trois destins, basse jazz-fusion |
 | `examples/ca-resonne.md` | Golden Era club 100 BPM, refrain de salle, pont a cappella |
-| `examples/doucement.md` | Amapiano/afrobeats FR 112 BPM, log drum persistant |
 | `examples/chaleur.md` | Club commercial dembow 96 BPM, ratio hook 2,82 |
 | `examples/plus-fort.md` | French house dur 128 BPM, riff saturé persistant |
 | `examples/chacun-son-tour.md` | Posse cut Golden Era 96 BPM, trois MC, ratio 0,65 |
