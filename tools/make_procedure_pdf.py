@@ -246,6 +246,27 @@ def contenu():
                "ne subsiste.", "Note"))
     f.append(PageBreak())
 
+    f.append(p("Fusionner deux ADN : trois formes, pas une", "Section"))
+    f.append(p("« Un ADN mène, les autres décorent » ne suffit que lorsque les "
+               "ADN portent des choses différentes. Il en existe trois formes, et "
+               "on choisit selon ce qui est disputé."))
+    f.append(tableau(
+        ["Forme", "Quand", "Comment"],
+        [["Un ADN mène", "Les ADN portent des choses différentes",
+          "Ordre de priorité dans le prompt"],
+         ["Répartition par <b>couches</b>", "Deux écoles se disputent une couche",
+          "Le conflit se règle en <b>un seul groupe nominal</b> : le son vient "
+          "d'une école, le placement de l'autre"],
+         ["Répartition par <b>sections</b>",
+          "Deux écoles veulent la même couche à des <b>densités incompatibles</b>",
+          "Couplets à l'une, refrain à l'autre. Le refrain doit répondre au "
+          "dernier vers du couplet, sinon il s'entend comme un bouche-trou"]],
+        [L * 0.22, L * 0.36, L * 0.42]))
+    f.append(Spacer(1, 5))
+    f.append(p("Corollaire sur la persistance : quand un motif appartient aux deux "
+               "ADN à la fois, c'est lui qui doit persister — il fait la jointure "
+               "sans qu'on ait à l'expliquer.", "Note"))
+
     # ---------- 4 ----------
     f.append(p("4. Étape 3 — Construire le champ Style", "Chapitre"))
     f.append(p("L'ordre porte la hiérarchie : Suno pondère la tête du prompt. On "
@@ -278,6 +299,41 @@ def contenu():
         S["Bloc"]))
     f.append(p("<b>Un seul élément persistant par morceau.</b> Deux persistances "
                "se neutralisent : le modèle arbitre et abandonne les deux.", "Note"))
+
+    f.append(p("Le tempo lent qui doit danser", "Section"))
+    f.append(p("Un brief demande parfois « club » sur un tempo qui n'en est pas un "
+               "— 95, 97, 100 BPM. Le réflexe est de monter le BPM ; c'est "
+               "l'erreur, car le tempo décide aussi de la longueur des vers "
+               "chantables. On dissocie le haut et le bas de la rythmique :"))
+    f.append(p("<font face='Courier'>Punchy kick and sharp snare in half-time, "
+               "double-time hats and rapid claps on top</font>", "Code"))
+    f.append(p("Le kick reste au tempo écrit, donc la voix peut chanter des "
+               "phrases entières ; les charleys battent au double, donc la salle "
+               "danse. <b>C'est le haut du morceau qui fait danser, pas le kick.</b> "
+               "Sous ~92 BPM le double-temps s'entend comme du boom bap ; au-delà "
+               "de ~102 la grille simple suffit déjà.", "Note"))
+
+    f.append(p("Où placer une négation", "Section"))
+    f.append(p("Une négation qui qualifie <b>une couche précise</b> reste dans le "
+               "champ positif, collée à la phrase qu'elle qualifie — "
+               "<font face='Courier'>no four-on-the-floor</font> au milieu de la "
+               "phrase de batterie, <font face='Courier'>no build-up risers</font> "
+               "au milieu de la phrase de structure. Une négation <b>globale</b> "
+               "part dans le bloc d'exclusion. Même tag, deux placements, décidés "
+               "par le voisinage : mis dans le bloc, un "
+               "<font face='Courier'>no four-on-the-floor</font> menacerait aussi "
+               "la grille de claps."))
+
+    f.append(p("Puissance maximale : ce que ça veut dire", "Section"))
+    f.append(p("Le prompt le plus puissant n'est pas le plus dense : c'est celui "
+               "dont <b>chaque clause a été vérifiée contre toutes les autres</b>. "
+               "Les prompts surchargés échouent sur une contradiction interne, pas "
+               "sur un manque de tags. Et à ce niveau de remplissage — mesuré à 967 "
+               "caractères sur un morceau réel — le champ dédié <i>Exclude "
+               "Styles</i> n'est plus une commodité, il est la condition "
+               "d'existence du morceau : recollé, le prompt atteindrait 1122. Le "
+               "prix se paie sur les leviers : un morceau à 33 caractères de marge "
+               "n'a plus de levier de re-génération."))
 
     # ---------- 5 ----------
     f.append(p("5. Étape 4 — Écrire les paroles", "Chapitre"))
@@ -325,6 +381,70 @@ def contenu():
                "réduire à un mot de deux syllabes. La règle marche dans les deux "
                "sens — ralentir rachète des syllabes.", "Note"))
     f.append(PageBreak())
+
+    f.append(p("Le piège le plus coûteux : la densité de balises", "Section"))
+    f.append(p("<b>Suno lit toute balise entre crochets placée en début de ligne "
+               "comme l'ouverture d'une nouvelle section.</b> Sur un script client "
+               "très détaillé, 70 balises en début de ligne ont été comptées pour "
+               "12 sections voulues : soixante-dix micro-sections de deux secondes, "
+               "ni couplet, ni refrain, et <b>aucune persistance possible</b> — plus "
+               "rien ne dure assez pour qu'un motif s'installe."))
+    f.append(tableau(
+        ["À éviter", "À écrire"],
+        [["<font face='Courier'>[Male, spoken, dry]</font> seul sur sa ligne",
+          "<font face='Courier'>(lui, parlé, sec, proche du micro)</font>"],
+         ["<font face='Courier'>[Group Vocals]: …</font> en tête de ligne",
+          "<font face='Courier'>(tous, panoramique) …</font>"],
+         ["<font face='Courier'>[Female]: (Call: …)</font>",
+          "<font face='Courier'>(Call: …) Response: [Female Vocal: …]</font>"]],
+        [L * 0.46, L * 0.54]))
+    f.append(Spacer(1, 5))
+    f.append(p("Un crochet est sans danger <b>au milieu</b> d'une ligne, jamais au "
+               "début. C'est précisément pourquoi la syntaxe maison du Call &amp; "
+               "Response place le crochet après "
+               "<font face='Courier'>Response:</font>. Corollaire : ce qui est une "
+               "propriété permanente du morceau — le placement d'une voix, par "
+               "exemple — s'écrit <b>une fois dans le champ de style</b>, pas trente "
+               "fois dans les paroles.", "Note"))
+
+    f.append(p("Écrire un silence", "Section"))
+    f.append(p("Suno ne laisse jamais un trou : une ligne vide, une ligne de "
+               "tirets, un <font face='Courier'>(silence)</font> isolé sont bouchés "
+               "par le modèle. Un silence ne se demande pas en creux, il se demande "
+               "en <b>assignant la mesure à un instrument</b> :"))
+    f.append(p("<font face='Courier'>(la contrebasse seule, deux temps)</font>", "Code"))
+    f.append(p("La moitié de la manœuvre est dans le champ de style : sans un "
+               "instrument désigné pour occuper le trou, l'instruction n'a personne "
+               "à qui s'adresser. Variante plus forte : faire répondre un "
+               "instrument <b>à la place de la voix</b> — la phrase qui manque est "
+               "jouée, pas dite.", "Note"))
+
+    f.append(p("Un refrain entraînant se compte", "Section"))
+    f.append(p("« Entraînant » n'est pas un adjectif vague, c'est une propriété "
+               "<b>métrique</b> : les quatre lignes du refrain partagent le même "
+               "nombre de syllabes chantées, donc le même rythme mélodique, donc "
+               "une seule phrase de quatre mesures que l'auditeur prédit dès la "
+               "première ligne. L'instruction correspondante va dans le champ de "
+               "style, parce que Suno ne compte pas les syllabes tout seul :"))
+    f.append(p("<font face='Courier'>The chorus melody is one four-bar phrase "
+               "repeated with the same rhythm on every line.</font>", "Code"))
+    f.append(p("Deux corollaires. <b>Pas de Call &amp; Response dans un hook chanté "
+               "mélodique</b> — la réponse de groupe couperait la phrase en deux ; "
+               "on la reporte sur le post-refrain. Et <b>le test du pont</b> : "
+               "couper la voix lead et faire porter la mélodie du refrain par un "
+               "autre élément. Un refrain que l'auditeur ne peut pas compléter sans "
+               "la voix n'est pas entraînant, il est seulement joli.", "Note"))
+
+    f.append(p("La note haute est une dépense unique", "Section"))
+    f.append(p("Un ténor qui monte à chaque refrain n'impressionne plus au "
+               "deuxième. On place la note une seule fois, là où le personnage n'a "
+               "plus de mots — et <b>sur une voyelle, sans texte</b> : le registre "
+               "opératique écrase les consonnes."))
+    f.append(p("<font face='Courier'>[Operatic Note: One sustained high tenor note "
+               "on a vowel, no words, four bars]</font>", "Code"))
+    f.append(p("Un seul instrument dessous, et le garde-fou "
+               "<font face='Courier'>no shouted vocals</font> dans les exclusions — "
+               "sans lui, le modèle confond parfois la tenue avec un cri.", "Note"))
 
     # ---------- 6 ----------
     f.append(p("6. Étape 5 — Les exclusions", "Chapitre"))
@@ -421,6 +541,22 @@ def contenu():
         [L * 0.10, L * 0.62, L * 0.28]))
     f.append(PageBreak())
 
+    f.append(p("Le ratio mesure du texte, pas du temps", "Section"))
+    f.append(p("Le ratio hook / couplets se calcule section par section, balises "
+               "comprises. Il a un biais, désormais chiffré : sur un genre à "
+               "plateaux instrumentaux, il <b>sous-lit d'un facteur deux à trois</b>, "
+               "parce qu'un plateau de 16 mesures ne coûte que quelques lignes "
+               "écrites."))
+    f.append(tableau(
+        ["Morceau", "Ratio au texte", "Ratio en mesures", "Écart"],
+        [["Amapiano à plateaux", "2,09", "≈ 4,5", "× 2,2"],
+         ["Version club à bords DJ", "1,24", "3,5", "× 2,8"]],
+        [L * 0.34, L * 0.22, L * 0.22, L * 0.22]))
+    f.append(Spacer(1, 5))
+    f.append(p("Conversion : <font face='Courier'>mesures × 4 × 60 ÷ BPM</font> "
+               "donne les secondes. Sur un genre à boucles longues, ne jamais "
+               "conclure à partir du ratio texte seul.", "Note"))
+
     # ---------- 8 ----------
     f.append(p("8. Étape 7 — Morceaux longs (workflow Extend)", "Chapitre"))
     f.append(p("Au-delà d'environ trois minutes, un morceau ne se compresse "
@@ -495,6 +631,32 @@ def contenu():
                "alors en absolu (<font face='Courier'>in B minor</font>), jamais "
                "en relatif.", "Note"))
 
+    f.append(p("« Remix » est un mot mort", "Section"))
+    f.append(p("Même famille que les rétro-références d'un prompt d'extension : "
+               "<b>Suno n'a pas entendu d'original.</b> "
+               "<font face='Courier'>club remix version</font> coûte des caractères "
+               "et ne produit rien. Ce que le mot veut dire se réécrit "
+               "intégralement en structure — un intro DJ sur un seul motif, des "
+               "plateaux, un outro qui ne descend pas — et les bords deviennent des "
+               "sections comptées en mesures, fermées par "
+               "<font face='Courier'>[End: … no fade, hard stop on the "
+               "downbeat]</font>. Un fondu rend le disque inmixable."))
+
+    f.append(p("Les bords se paient sur la chanson", "Section"))
+    f.append(p("Un intro DJ de 16 mesures et un outro de 12 coûtent 28 mesures, "
+               "soit une minute pleine à 112 BPM. Elles ne s'ajoutent pas au "
+               "morceau : elles s'en <b>retranchent</b>, sinon le dernier refrain "
+               "sort du cadre. On budgète en mesures <b>avant d'écrire une "
+               "ligne</b>."))
+
+    f.append(p("Deux clips, deux ratios", "Section"))
+    f.append(p("Sur un morceau scindé, le ratio se mesure <b>clip par clip</b>. Un "
+               "morceau-étalon du dossier donne 0,98 au clip 1 — qui porte "
+               "l'histoire — et 2,91 au clip 2, qui est du hook pur. Les mesurer "
+               "ensemble donnerait 1,30, un chiffre qui ne décrit ni l'un ni "
+               "l'autre. Ce sont deux disques dans une même enveloppe, et ils n'ont "
+               "pas le même métier."))
+
     # ---------- 9 ----------
     f.append(p("9. Étape 8 — Coller dans Suno", "Chapitre"))
     f.append(tableau(
@@ -567,9 +729,61 @@ def contenu():
         "de 300 Hz.",
     ]))
 
+    f.append(p("11. Plusieurs morceaux au même tempo", "Chapitre"))
+    f.append(p("Quand un brief demande plusieurs morceaux dans le même idiome et au "
+               "même tempo, le problème n'est pas d'écrire : c'est d'éviter trois "
+               "fois le même disque. <b>Ce qui différencie deux disques au même BPM, "
+               "ce n'est jamais le BPM.</b>"))
+    f.append(p("Quatre leviers ; en bouger au moins <b>trois</b> pour que l'oreille "
+               "entende des morceaux différents."))
+    f.append(tableau(
+        ["", "Subdivision", "Densité du couplet", "Forme du hook", "Rupture"],
+        [["1", "Croches droites", "Moyenne, narrative", "Ténor chanté", "Demi-temps"],
+         ["2", "Doubles-croches swinguées", "Dense, technique", "Unisson scandé", "Double-temps"],
+         ["3", "Half-time, caisse claire sur le 3", "Aérée, silences écrits",
+          "Ténor tenu + chœur", "Harmonie coupée"]],
+        [L * 0.05, L * 0.27, L * 0.24, L * 0.22, L * 0.22]))
+    f.append(Spacer(1, 5))
+    f.append(p("La subdivision est le levier le plus fort et le moins cher : "
+               "quelques mots dans la phrase de batterie — "
+               "<font face='Courier'>on straight eighths</font>, "
+               "<font face='Courier'>on heavily swung sixteenths</font>, "
+               "<font face='Courier'>snare on beat three, half-time feel</font> — "
+               "changent tout ce que le corps entend, sans qu'un chiffre bouge.",
+               "Note"))
+
+    f.append(p("Rompre sans perdre le drive", "Section"))
+    f.append(p("« Rythme entraînant du début à la fin » <b>interdit le "
+               "breakdown</b>. La rupture par défaut du dossier est une "
+               "soustraction ; il faut d'autres formes."))
+    f.append(tableau(
+        ["Rupture", "Comment", "Ce qu'on y gagne"],
+        [["Demi-temps", "La batterie ralentit de moitié, elle ne s'arrête pas",
+          "Le poids double, le fil reste"],
+         ["Double-temps", "La batterie double, le riff garde son tempo",
+          "L'urgence, sans changer de morceau"],
+         ["Harmonie coupée", "Instruments harmoniques dehors ; batterie et voix restent",
+          "Le vide se fait par le haut"]],
+        [L * 0.20, L * 0.46, L * 0.34]))
+    f.append(Spacer(1, 5))
+    f.append(p("Dans les trois cas, même consigne de retour : "
+               "<font face='Courier'>return on the downbeat, no fill, no fade</font>. "
+               "<b>Un fill de retour est un aveu de couture.</b> Et le champ de "
+               "style porte la contrainte en clair : "
+               "<font face='Courier'>The groove never stops, no breakdown, drums "
+               "present from the first bar to the last.</font>", "Note"))
+
+    f.append(p("Ce qui fixe le ratio", "Section"))
+    f.append(p("Trois textes indépendants, écrits sur trois prompts différents, ont "
+               "donné 1,56 / 1,55 / 1,49 — <b>0,07 d'écart</b>. Le facteur commun "
+               "n'est pas le prompt, c'est le <b>squelette de sections</b> : deux "
+               "couplets, trois refrains, trois post-refrains, une rupture. Pour "
+               "déplacer un ratio, on change le squelette, pas les mots."))
+    f.append(PageBreak())
+
     # ---------- 11 ----------
     f.append(PageBreak())
-    f.append(p("11. Exemple complet, de bout en bout", "Chapitre"))
+    f.append(p("12. Exemple complet, de bout en bout", "Chapitre"))
     f.append(p("Un morceau réel du dossier, déroulé étape par étape : "
                "<b>« Face B »</b>, club R&B commercial rapide sous identité "
                "Prestige. Fiche complète dans "
@@ -676,7 +890,7 @@ def contenu():
 
     # ---------- 12 ----------
     f.append(PageBreak())
-    f.append(p("12. Checklist avant livraison", "Chapitre"))
+    f.append(p("13. Checklist avant livraison", "Chapitre"))
     f.append(p("Aucune livraison sans ces onze vérifications."))
     f.append(checklist([
         "Le champ de style est en anglais, les paroles dans la langue du brief",
