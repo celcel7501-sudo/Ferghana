@@ -249,3 +249,28 @@ même tonalité — et c'est elle qui rend la coupe inaudible.
 |---|---|
 | La tonalité **change** | Un **vide** — riser sans hauteur, aucun accord |
 | La tonalité **reste** | Une **continuité** — un élément qui tient des deux côtés |
+
+## La persistance se choisit sur le clip le plus pauvre
+
+Sur un morceau scindé, l'élément persistant n'est pas choisi pour le clip le plus
+riche mais pour **le plus restrictif**. C'est lui qui décide, et deux fois de
+suite la contrainte n'a laissé qu'un seul candidat possible.
+
+| Morceau | Ce que le clip 2 retire | Ce que la persistance devait donc être |
+|---|---|---|
+| `examples/ca-se-voit.md` | Tous les instruments | Une **nappe vocale sans paroles** |
+| `examples/fais-tourner.md` | Toutes les machines | Un motif **jouable à la main comme par une machine** |
+
+Sur le second, c'est un **motif de clave** : un rimshot échantillonné le joue au
+clip 1, deux baguettes le jouent au clip 2. Un pluck de synthé, une 808 ou un
+balayage de filtre étaient disqualifiés d'avance — ils n'existent pas dans le
+monde du clip 2.
+
+**Méthode** : avant de choisir, écrire ce que le clip 2 supprime. Ce qui survit à
+cette liste est la liste des candidats. Si elle ne contient qu'un élément, la
+question est réglée — et c'est en général bon signe.
+
+**Corollaire de placement.** Le timbre change entre les deux clips, mais **la
+position dans le champ stéréo ne doit pas bouger**. C'est ce qui fait que
+l'oreille reconnaît le même objet sous un autre habillage, au lieu d'entendre
+deux éléments différents.

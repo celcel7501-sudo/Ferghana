@@ -256,3 +256,4 @@ sans lui.
 | `examples/ca-se-voit.md` | R&B FR 120 BPM, deux clips = a cappella, jointure sans vide |
 | `examples/lache-tout.md` | Club rapide grille Jersey 138 BPM, hook en cellules de deux syllabes |
 | `examples/cet-ete-la.md` | Été mélancolique 92 BPM, refrain club en majeur, tristesse dans le texte seul |
+| `examples/fais-tourner.md` | Club dansant 124 BPM, deux clips = machines puis mains, relais sans coupe |
