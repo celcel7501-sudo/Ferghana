@@ -1,0 +1,8 @@
+# Dependances Python des outils du depot.
+#   pip install -r tools/requirements.txt
+#
+# reportlab : generation de docs/procedure-suno-v5-5.pdf
+#   (tools/make_procedure_pdf.py).
+# count.py, verify_pdf.py et suno_producer.py n'utilisent que la bibliotheque
+# standard.
+reportlab>=4.0
