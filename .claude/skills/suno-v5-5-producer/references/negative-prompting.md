@@ -170,3 +170,18 @@ Si une bande n'a qu'un ou deux occupants, l'exclure ne coûte que des caractère
 **Corollaire déjà connu, rappelé ici** : ne jamais exclure ce que le style
 demande par ailleurs. Une exclusion mal ciblée est du gaspillage ; une exclusion
 contradictoire est un défaut.
+
+## Exclure un registre, pas seulement un timbre
+
+Le bloc d'exclusion vise d'ordinaire des sons — `no distorted vocals`,
+`no trap drums`. Il peut aussi protéger un **registre émotionnel**, et c'est
+alors la seconde moitié d'une consigne portée par le champ positif.
+
+Cas réel, `examples/cet-ete-la.md` : le champ positif dit que la mélancolie doit
+vivre dans le texte et pas dans les accords ; le bloc ajoute `no minor key,
+no dark atmosphere`. Le positif dit **où** l'émotion doit être, le négatif dit
+**où elle ne doit pas aller**.
+
+À n'employer que quand le brief contient une contradiction de registre — sinon
+ce sont deux clauses qui ne protègent rien et coûtent une trentaine de
+caractères.

@@ -184,3 +184,35 @@ et produit infiniment plus.
 cinq kicks étalés régulièrement donnent du four-on-the-floor avec un coup en
 trop ; les mêmes cinq groupés trois puis deux font basculer le corps. Écrire le
 nombre sans le groupement ne sert à rien.
+
+## Dire où vit l'émotion
+
+Écrire `melancholic` dans un champ de style produit presque mécaniquement du
+mineur et du lent : c'est le paramètre le plus facile à bouger pour le modèle.
+Sur un morceau qui doit rester dansant, c'est fatal — le refrain devient une
+ballade avec des claps.
+
+Or le disque triste et majeur existe, et son mécanisme est l'inverse :
+**l'harmonie reste lumineuse, la tristesse est dans le texte.** Le contraste
+entre les deux *est* le genre. Ça se déclare :
+
+```
+in D major. The harmony stays bright and major throughout, the melancholy is in the lyric only, never in the chords.
+```
+
+> **Règle** : quand un registre émotionnel et un registre rythmique se
+> contredisent, préciser **où** vit l'émotion — dans le texte, dans l'harmonie,
+> ou dans l'arrangement. Sans quoi le modèle tranche seul, et il tranche
+> toujours par l'harmonie.
+
+Trois emplacements possibles, trois morceaux du dossier :
+
+| L'émotion vit dans… | Comment | Exemple |
+|---|---|---|
+| Le **texte** seul | Harmonie majeure déclarée, tristesse confinée aux paroles | `examples/cet-ete-la.md` |
+| L'**arrangement** | Mêmes mots, trois habillages, trois sens | `examples/la-derniere.md` |
+| L'**harmonie** | Mineur assumé, c'est le défaut du modèle | La plupart des morceaux conscients |
+
+**Corollaire de dosage.** Sur `cet-ete-la.md`, la mélancolie tient dans **une
+ligne de refrain sur quatre**. À deux lignes sur quatre, le refrain ne se chante
+plus en salle. Le contraste est un rapport, pas une couleur.
