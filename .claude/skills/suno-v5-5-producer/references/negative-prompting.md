@@ -143,3 +143,30 @@ plus nette de ce que vaut le format en cinq sections.
 plus de levier de re-génération. Quand il faut en récupérer, retirer dans l'ordre
 habituel — texture, puis ornement, puis mastering — et **jamais** la ligne de
 persistance ni la phrase de batterie.
+
+## Viser la bande réellement menacée
+
+`no cluttered low end` est une bonne habitude, mais c'est aussi le réflexe qu'on
+écrit sans regarder l'instrumentation. Une exclusion doit viser la bande que le
+**style demandé** met en danger.
+
+Cas réel, `examples/toute-la-famille.md` : claps empilés sur le contretemps et
+fills de darbouka. Le grave n'est pas menacé — kick et basse y sont seuls. Le
+télescopage se produit dans le **médium** : le *doum* de la darbouka est un
+bas-médium, le *tek* un haut-médium, et un clap empilé occupe exactement cette
+fenêtre. L'exclusion utile était donc `no cluttered midrange`, pas
+`no cluttered low end`.
+
+**Méthode** : avant d'écrire le bloc, lister les instruments demandés par bande.
+
+| Bande | Occupants typiques | Exclusion utile si encombrée |
+|---|---|---|
+| Grave | Kick, basse, 808, sub | `no cluttered low end` |
+| Médium | Claps, percussions à main, caisse claire, cuivres, voix | `no cluttered midrange` |
+| Aigu | Charleys, shakers, cordes hautes, chuintantes | `avoid harsh high end` |
+
+Si une bande n'a qu'un ou deux occupants, l'exclure ne coûte que des caractères.
+
+**Corollaire déjà connu, rappelé ici** : ne jamais exclure ce que le style
+demande par ailleurs. Une exclusion mal ciblée est du gaspillage ; une exclusion
+contradictoire est un défaut.

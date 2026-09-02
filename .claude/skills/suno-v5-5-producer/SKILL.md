@@ -252,3 +252,4 @@ sans lui.
 | `examples/encore-une.md` | French Touch disco house 120 BPM, duo, réparation d'un script sur-balisé |
 | `examples/la-grande-salle.md` | **Morceau-étalon** : 100 BPM, 2 clips, 17 dispositifs actifs, style à 967/1000 |
 | `examples/sans-filet.md` | Plume Ninho sur groupe live 90 BPM, faire jouer plutôt que programmer |
+| `examples/toute-la-famille.md` | Golden Era × darbouka 95 BPM, refrain scandé, collision claps/percussion |

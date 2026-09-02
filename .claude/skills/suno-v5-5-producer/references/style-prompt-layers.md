@@ -127,3 +127,35 @@ maquette propre.
 
 Bornes de tempo : au-dessus de ~96 BPM, une batterie jouée à la main recommence
 à sonner comme une machine, et tout le travail d'imperfection est perdu.
+
+## Deux familles de percussion sur les mêmes temps
+
+Empiler des claps `on the backbeat` et des fills de percussion à main ne donne
+pas deux fois plus de rythme : une darbouka laissée libre remplit autour du
+contretemps, donc atterrit exactement là où sont les claps.
+
+**La sortie se joue sur deux axes, et l'un sans l'autre ne suffit pas.**
+
+| Axe | Tag |
+|---|---|
+| **Le temps** | `darbuka fills answering the claps and never landing on the backbeat` |
+| **L'espace** | `darbuka panned wide against the centred claps` |
+
+Séparer dans le temps seulement laisse encore les deux au centre ; séparer dans
+l'espace seulement laisse encore la collision rythmique. Il faut les deux.
+
+**Et il faut quelqu'un sur le premier temps.** Une peau grave — `bendir frame
+drum on the downbeat` — occupe le 1 pendant que la darbouka reste dans les
+trous. Sans elle, la percussion à main perd son ancrage à force d'être repoussée
+hors des temps forts.
+
+Répartition qui fonctionne, vérifiée sur `examples/toute-la-famille.md` :
+
+| Temps | Qui joue |
+|---|---|
+| 1 | Kick, bendir |
+| 2 et 4 | Caisse claire, claps empilés |
+| Entre les temps | **Darbouka seule** |
+
+La règle générale : **quand deux familles de percussion se disputent une place,
+l'une prend les temps, l'autre prend les trous.** Jamais les deux partout.
