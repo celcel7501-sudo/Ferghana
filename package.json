@@ -1,16 +1,31 @@
 {
-  "name": "ferghana-podcasts",
+  "name": "hookprompt-studio",
+  "private": true,
   "version": "1.0.0",
-  "description": "Application web présentant le podcast Ferghana avec le lecteur Ausha",
-  "main": "server.js",
-  "type": "commonjs",
+  "description": "Reconstruction opérationnelle du moteur de prompts de HookGenius.app pour Suno Custom mode",
+  "type": "module",
   "scripts": {
-    "start": "node server.js"
-  },
-  "engines": {
-    "node": ">=18"
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 3000",
+    "typecheck": "tsc --noEmit",
+    "test": "node scripts/run-smoke.mjs"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "clsx": "2.1.1",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "tailwind-merge": "3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.1.17",
+    "@types/node": "22.19.17",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "5.1.1",
+    "tailwindcss": "4.1.17",
+    "typescript": "5.9.3",
+    "vite": "7.3.2",
+    "vite-plugin-singlefile": "2.3.0"
   }
 }
